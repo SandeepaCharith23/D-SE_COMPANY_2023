@@ -59,7 +59,7 @@
                 <a href="#">Forget password</a>
             </div>
 
-            <input type="submit" value="login now" class="button" id="adminloginbutton">
+            <input type="submit" value="login" class="button" id="adminloginbutton">
             <p>Don't have an account <a href="maindashboard.php">Create new Account</a></p>
         </form>
 
@@ -583,7 +583,7 @@
     <!-- link custom js file -->
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=123"></script>
 
     <script type="module">
         import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs'

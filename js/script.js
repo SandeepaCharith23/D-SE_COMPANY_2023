@@ -23,11 +23,12 @@ let adminloginbutton=document.getElementById('adminloginbutton');
 
 // //admin login function
 adminloginbutton.addEventListener('click',function(){
-   window.location.href='maindashboard.php';
-   alert("Redirect user to main Dashboard");
-   
-   
-});
+    console.log('Insert admin login button'); 
+    window.location.href='maindashboard.php';
+    alert("Redirect user to main Dashboard"); 
+
+}
+);
 
 
 //Product Slide show JS Automatic slide show
@@ -95,6 +96,7 @@ document.querySelector('#login-btn').onclick=()=>{
 
 //login form-close button process
 loginformcloseButton.onclick=()=>{
+    console.log('inside Login form close button');
     loginForm.classList.remove('active');
 }
 
@@ -108,11 +110,13 @@ searchbarclosebutton.onclick=()=>{
 
 
 navbar.onclick=()=>{
+    console.log('inside nav bar onlick');
     navbar.classList.remove('active-navbar');
     menubutton.classList.remove('fa-times');
 }
 
 menubutton.onscroll=()=>{
+    console.log('inside menubutton scroll');
     menubutton.classList.remove('fa-times');
     navbar.classList.remove('active-navbar');
 }

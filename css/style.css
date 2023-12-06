@@ -1422,9 +1422,6 @@ section {
     padding: 1rem;
     margin: 0;
   }
-  .header .button {
-    display: none;
-  }
   .home {
     gap: 0.5rem;
   }
