@@ -65,21 +65,16 @@ setInterval(function() {
 
 //End of the Slide show function
 
-//1.menu button in navigation bar process
+//menu button in navigation bar process
 menubutton.onclick=()=>{
-    console.log("onclick");
+    console.log("menu Button onclick");
     menubutton.classList.toggle('fa-times');
     navbar.classList.toggle('active-navbar');
     searchForm.classList.remove('active');
     loginForm.classList.remove('active');
 }
 
-//2.login form-close button process
-loginformcloseButton.onclick=()=>{
-    loginForm.classList.remove('active');
-}
-
-//3.Search Button in navigation bar process
+//Search Button in navigation bar process
 document.querySelector('#search-btn').onclick=()=>{
     console.log('inside search  button');
     searchForm.classList.toggle('active');
@@ -89,30 +84,26 @@ document.querySelector('#search-btn').onclick=()=>{
    
 };
 
-searchbarclosebutton.onclick=()=>{
-    console.log('inside search bar close button');
-    searchForm.classList.remove('active');
-}
-
-
 //Login button in navigation bar process
 document.querySelector('#login-btn').onclick=()=>{
+    console.log('inside Login  button');
     loginForm.classList.toggle('active');
     navbar.classList.remove('active-navbar');
     menubutton.classList.remove('fa-times');
     searchForm.classList.remove('active');
 };
 
+//login form-close button process
+loginformcloseButton.onclick=()=>{
+    loginForm.classList.remove('active');
+}
 
 
-// document.querySelector('#signUp-btn').onclick=()=>{
-//     console.log('Inside sign Up Button');
-//     // SignUpForm.classList.toggle('active');
-//     // navbar.classList.remove('active-navbar');
-//     // menubutton.classList.remove('fa-times');
-//     // searchForm.classList.remove('active');
-// };
-
+//search form-close button process
+searchbarclosebutton.onclick=()=>{
+    console.log('inside search bar close button');
+    searchForm.classList.remove('active');
+}
 
 
 

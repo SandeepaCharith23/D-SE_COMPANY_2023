@@ -29,15 +29,15 @@
             <a href="#products">Products</a>
             <a href="#contact">Contact Us</a>
             <a href="#reviews">Reviews</a>
-            
+
 
         </nav>
-        
+
         <div class="icons">
-        <div id="menu-btn" class="fas fa-bars"></div>
-        <div id="search-btn" class="fas fa-search"></div>
-        <div id="login-btn" class="fas fa-user"></div>
-        <!-- <div id="signUp-btn" class="fas fa-user-plus"></div> -->
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            <div id="login-btn" class="fas fa-user"></div>
+            <!-- <div id="signUp-btn" class="fas fa-user-plus"></div> -->
         </div>
         <a href="#" class="button">Join</a>
 
@@ -46,9 +46,11 @@
             <label for="search-box" class="fas fa-search"></label>
             <i class="fas fa-close" id="searchbarclosebutton"></i>
         </form>
-    
+
         <form action="" class="login-form">
-            <div class="login-heading"><h3>Login for Admin </h3> <span class="close-button" id="close-button"> <i class="fa fa-close"></i></span></div>
+            <div class="login-heading">
+                <h3>Login for Admin </h3> <span class="close-button" id="close-button"> <i class="fa fa-close"></i></span>
+            </div>
             <input type="email" placeholder="Please Enter Your Email address" class="textfield-box">
             <input type="password" placeholder="Please Enter Your password" class="textfield-box">
             <div class="flex">
@@ -56,14 +58,16 @@
                 <label for="remember-me">Remember me</label>
                 <a href="#">Forget password</a>
             </div>
-    
-            <input type="submit" value="login" class="button" id="adminloginbutton">
+
+            <input type="submit" value="login now" class="button" id="adminloginbutton">
             <p>Don't have an account <a href="maindashboard.php">Create new Account</a></p>
         </form>
 
         <!-- sign-Up Screen -->
         <form action="" class="signUp-form">
-            <div class="login-heading"><h3>SignUp Screen </h3> <span class="close-button" id="close-button"> <i class="fa fa-close"></i></span></div>
+            <div class="login-heading">
+                <h3>SignUp Screen </h3> <span class="close-button" id="close-button"> <i class="fa fa-close"></i></span>
+            </div>
             <input type="email" placeholder="Please Enter Your Email address" class="textfield-box">
             <input type="password" placeholder="Please Enter Your password" class="textfield-box">
             <div class="flex">
@@ -71,15 +75,14 @@
                 <label for="remember-me">Remember me</label>
                 <a href="#">Forget password</a>
             </div>
-    
-            <input type="submit" value="SignUp now" class="button" >
-            
+
+            <input type="submit" value="SignUp now" class="button">
+
         </form>
     </header>
     <!-- header section end -->
 
     <!-- home section start -->
-
     <section class="home" id="home">
 
         <div class="image">
@@ -110,10 +113,10 @@
 
 
                 <section class="swiper-slide slide" style="background :url(images/services_banner_01.jpg) no-repeat;">
-                   
-                   
+
+
                     <div class="content">
-                       
+
                         <h3>Electrical System Design and Estimation</h3>
                         <p>
                             Electrical system design and estimation are key components in the field of electrical
@@ -127,10 +130,10 @@
                 </section>
 
                 <section class="swiper-slide slide" style="background :url(images/services_banner_02.jpg) no-repeat;">
-                    
-                    
+
+
                     <div class="content">
-                       
+
                         <h3>Lightining protction System Design and Installation</h3>
                         <p>A Lightning Protection System (LPS) is a set of measures and components designed to protect
                             structures and
@@ -142,10 +145,10 @@
                 </section>
 
                 <section class="swiper-slide slide" style="background :url(images/services_banner_03.jpg) no-repeat;">
-                   
-                    
+
+
                     <div class="content">
-                        
+
                         <h3>Generator/Motor Repair and Services </h3>
                         <p>Generator and motor repair and services involve the maintenance, repair, and optimization of
                             electrical
@@ -157,10 +160,10 @@
                 </section>
 
                 <section class="swiper-slide slide" style="background :url(images/services_banner_04.jpg) no-repeat;">
-                    
-                   
+
+
                     <div class="content">
-                       
+
                         <h3>Industrial troubleshoot and Installation </h3>
                         <p>Industrial troubleshooting and installation involve the processes of identifying and
                             resolving issues, as
@@ -188,15 +191,15 @@
         <div class="heading">
             <span>About Us</span>
             <h1>About our company</h1>
-            
+
         </div>
         <div class="maincontent">
             <div class="image">
                 <img src="images/Questions-cuate.png" alt="No image available here">
             </div>
-    
+
             <div class="content">
-                
+
                 <h2>Welcome to D & SE company <br> "Your Trusted Partner in Electrical Engineering and Products."</h2>
                 <p>Who We Are..<br>
                     At D & SE Company Ltd, we are a team of dedicated professionals specializing in Electrical System
@@ -371,19 +374,19 @@
     </section>
     <!-- Features section End -->
 
-     <!-- start of the product section -->
+    <!-- start of the product section -->
     <section class="products" id="products">
-    
+
         <div class="heading">
             <h1>Explore our Products Store</h1>
         </div>
-        
+
 
         <div class="productslider">
 
             <div class="productslide active">
 
-               <div class="productimage">
+                <div class="productimage">
                     <img src="images/Marketplace-pana.png" alt="">
                 </div>
 
@@ -397,21 +400,21 @@
             <div class="productslide active">
 
                 <div class="productimage">
-                     <img src="images/Product hunt-cuate.png" alt="">
-                 </div>
- 
-                 <div class="productdescription">
-                     <h1>What we sell??</h1>
-                     <p>Embark on a journey of endless possibilities at D & SE Company. As your ultimate shopping destination, we bring you an expansive array of top-notch products, including state-of-the-art electronics, must-have mobile accessories, essential groceries, high-quality tools, and so much more. Our commitment to quality, affordability, and convenience is unparalleled. Explore our online emporium, shop with confidence, and elevate every aspect of your lifestyle with us today. Your satisfaction is our guarantee, and we're dedicated to exceeding your expectations at every turn.</p>
-                     <a href="productshome.php" class="button">Visit Our online market</a>
-                 </div>
-             </div>
+                    <img src="images/Product hunt-cuate.png" alt="">
+                </div>
 
-           
+                <div class="productdescription">
+                    <h1>What we sell??</h1>
+                    <p>Embark on a journey of endless possibilities at D & SE Company. As your ultimate shopping destination, we bring you an expansive array of top-notch products, including state-of-the-art electronics, must-have mobile accessories, essential groceries, high-quality tools, and so much more. Our commitment to quality, affordability, and convenience is unparalleled. Explore our online emporium, shop with confidence, and elevate every aspect of your lifestyle with us today. Your satisfaction is our guarantee, and we're dedicated to exceeding your expectations at every turn.</p>
+                    <a href="productshome.php" class="button">Visit Our online market</a>
+                </div>
+            </div>
+
+
         </div>
-        
-         
-    
+
+
+
     </section>
 
     <!-- End of the product section -->
@@ -436,33 +439,33 @@
 
     <!-- end of the slide show -->
 
-       <!-- Start of the Contact-Us section-07 -->
-<section class="contact" id="contact">
+    <!-- Start of the Contact-Us section-07 -->
+    <section class="contact" id="contact">
 
-    <h1 class="heading">Contact Us</h1>
+        <h1 class="heading">Contact Us</h1>
 
-    <div class="row">
-       
-        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7916.756706946327!2d80.11932463959106!3d7.197600065562845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae31d0bbec3fec3%3A0x6a16de2259fbe118!2sHapitigama!5e0!3m2!1sen!2slk!4v1694664228245!5m2!1sen!2slk"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <form action="" >
-            <h3>Contact us from Email</h3>
-            <input type="text" placeholder="name" class="box">
-            <input type="email" placeholder="Email address" class="box">
-            <input type="number" placeholder="Mobile Number" class="box">
-            <textarea name="" class="box" placeholder="Message" cols="30" rows="10"></textarea>
-            <input type="submit" value="Send email" class="button">
-        </form>
-    
-    </div>
-</section>
+        <div class="row">
 
-<!-- End of the Contact-Us section-07 -->
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7916.756706946327!2d80.11932463959106!3d7.197600065562845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae31d0bbec3fec3%3A0x6a16de2259fbe118!2sHapitigama!5e0!3m2!1sen!2slk!4v1694664228245!5m2!1sen!2slk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <form action="">
+                <h3>Contact us from Email</h3>
+                <input type="text" placeholder="name" class="box">
+                <input type="email" placeholder="Email address" class="box">
+                <input type="number" placeholder="Mobile Number" class="box">
+                <textarea name="" class="box" placeholder="Message" cols="30" rows="10"></textarea>
+                <input type="submit" value="Send email" class="button">
+            </form>
+
+        </div>
+    </section>
+
+    <!-- End of the Contact-Us section-07 -->
     <!-- Reviews section start -->
     <section class="reviews" id="reviews">
         <div class="heading">
             <h1>Our clients reviews</h1>
         </div>
-        
+
         <div class="swiper reviews-slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide slide">
@@ -477,12 +480,12 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
-                               
+
                             </div>
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="swiper-slide slide">
                     <p>"I was very impressed with the work that ABC Construction did on my home. They were very organized and efficient, and they cleaned up after themselves every day. I would definitely use them again."</p>
                     <div class="user">
@@ -495,12 +498,12 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
-                               
+
                             </div>
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="swiper-slide slide">
                     <p>"I had a lot of questions about my project, and the team at ABC Construction was always happy to answer them. They were also very patient with me, even when I changed my mind a few times. I would definitely recommend them."</p>
                     <div class="user">
@@ -513,12 +516,12 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
-                               
+
                             </div>
                         </div>
                     </div>
                 </div>
-    
+
                 <div class="swiper-slide slide">
                     <p>"ABC Construction went above and beyond to make sure that my project was completed to my satisfaction. They were always available to answer my questions, and they were always willing to go the extra mile. I would definitely recommend them."</p>
                     <div class="user">
@@ -531,41 +534,41 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
-                               
+
                             </div>
                         </div>
                     </div>
                 </div>
-    
-    
-                
+
+
+
             </div>
         </div>
     </section>
     <!--End of the review section-->
 
- 
 
-   
+
+
 
     <!-- Start of the footer section-10 -->
 
-<section class="footer">
-    <div class="links">
-        <a class="button" href="#home">Home</a>
-        <a class="button" href="#services">Our services</a>
-        <a class="button" href="#aboutus">About us</a>
-        <a class="button" href="#features">Features</a>
-        <a class="button" href="#products">Products</a>
-        <a class="button" href="#reviews">Reviews</a>
-       
+    <section class="footer">
+        <div class="links">
+            <a class="button" href="#home">Home</a>
+            <a class="button" href="#services">Our services</a>
+            <a class="button" href="#aboutus">About us</a>
+            <a class="button" href="#features">Features</a>
+            <a class="button" href="#products">Products</a>
+            <a class="button" href="#reviews">Reviews</a>
 
 
-    </div>
 
-    <div class="credit">Created by <span><i class="fas fa-copyright"></i><a href="http://www.ageesolution.com/">AG SOFT SOLUTION</a></span> | all rights reserved!</div>
-</section>
-<!-- End of the footer section-10 -->
+        </div>
+
+        <div class="credit">Created by <span><i class="fas fa-copyright"></i><a href="http://www.ageesolution.com/">AG SOFT SOLUTION</a></span> | all rights reserved!</div>
+    </section>
+    <!-- End of the footer section-10 -->
 
 
 
@@ -596,34 +599,34 @@
     </script>
 
 
-<script type="module">
-    import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs'
-  
-    var swiper = new Swiper(".reviews-slider", {
-    loop:true,
-    grabCursor:true,
-    spaceBetween:20,
-    breakpoints: {
-        "@0.00": {
-          slidesPerView: 1,
-          
-        },
-       
+    <script type="module">
+        import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs'
 
-        
-        "@0.75": {
-          slidesPerView: 3,
-          
-        },
-        "@1.00": {
-          slidesPerView: 3,
-          
-        },
-       
-      },
-   
-  });
-  </script>
+        var swiper = new Swiper(".reviews-slider", {
+            loop: true,
+            grabCursor: true,
+            spaceBetween: 20,
+            breakpoints: {
+                "@0.00": {
+                    slidesPerView: 1,
+
+                },
+
+
+
+                "@0.75": {
+                    slidesPerView: 3,
+
+                },
+                "@1.00": {
+                    slidesPerView: 3,
+
+                },
+
+            },
+
+        });
+    </script>
 
 
 
