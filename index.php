@@ -39,12 +39,12 @@
         <div id="login-btn" class="fas fa-user"></div>
         <!-- <div id="signUp-btn" class="fas fa-user-plus"></div> -->
         </div>
-        <a href="#" class="button">Join us</a>
+        <a href="#" class="button">Join</a>
 
         <form action="" class="search-form">
             <input type="search" name="" placeholder="Search here..." id="search-box">
             <label for="search-box" class="fas fa-search"></label>
-            <i class="fas fa-close" id="searchclosebutton"></i>
+            <i class="fas fa-close" id="searchbarclosebutton"></i>
         </form>
     
         <form action="" class="login-form">
@@ -57,8 +57,8 @@
                 <a href="#">Forget password</a>
             </div>
     
-            <input type="submit" value="login now" class="button" >
-            <p>Don't have an account <a href="#">Create new Account</a></p>
+            <input type="submit" value="login" class="button" id="adminloginbutton">
+            <p>Don't have an account <a href="maindashboard.php">Create new Account</a></p>
         </form>
 
         <!-- sign-Up Screen -->

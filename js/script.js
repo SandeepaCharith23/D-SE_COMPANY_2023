@@ -1,6 +1,8 @@
 let menubutton=document.querySelector('#menu-btn');
 let navbar=document.querySelector('.header .navbar');
 let searchForm=document.querySelector('.header .search-form');//select the searchbar
+let searchbarclosebutton=document.getElementById('searchbarclosebutton');
+
 let loginForm=document.querySelector('.header .login-form');//select the loginform
 let loginformcloseButton=document.querySelector('.header .login-form #close-button');
 
@@ -17,6 +19,15 @@ let productBnnerSlides=document.querySelectorAll('.productslide');
 let productBnnerslideIcons=document.querySelectorAll('.slide-icon');
 let productBnnernumberslideIcons=productBnnerSlides.length;
 
+let adminloginbutton=document.getElementById('adminloginbutton');
+
+// //admin login function
+adminloginbutton.addEventListener('click',function(){
+   window.location.href='maindashboard.php';
+   alert("Redirect user to main Dashboard");
+   
+   
+});
 
 
 //Product Slide show JS Automatic slide show
@@ -54,7 +65,7 @@ setInterval(function() {
 
 //End of the Slide show function
 
-
+//1.menu button in navigation bar process
 menubutton.onclick=()=>{
     console.log("onclick");
     menubutton.classList.toggle('fa-times');
@@ -62,11 +73,15 @@ menubutton.onclick=()=>{
     searchForm.classList.remove('active');
     loginForm.classList.remove('active');
 }
+
+//2.login form-close button process
 loginformcloseButton.onclick=()=>{
     loginForm.classList.remove('active');
 }
 
+//3.Search Button in navigation bar process
 document.querySelector('#search-btn').onclick=()=>{
+    console.log('inside search  button');
     searchForm.classList.toggle('active');
     navbar.classList.remove('active-navbar');
     menubutton.classList.remove('fa-times');
@@ -74,8 +89,13 @@ document.querySelector('#search-btn').onclick=()=>{
    
 };
 
+searchbarclosebutton.onclick=()=>{
+    console.log('inside search bar close button');
+    searchForm.classList.remove('active');
+}
 
 
+//Login button in navigation bar process
 document.querySelector('#login-btn').onclick=()=>{
     loginForm.classList.toggle('active');
     navbar.classList.remove('active-navbar');
@@ -85,17 +105,15 @@ document.querySelector('#login-btn').onclick=()=>{
 
 
 
-document.querySelector('#signUp-btn').onclick=()=>{
-    console.log('Inside sign Up Button');
-    // SignUpForm.classList.toggle('active');
-    // navbar.classList.remove('active-navbar');
-    // menubutton.classList.remove('fa-times');
-    // searchForm.classList.remove('active');
-};
+// document.querySelector('#signUp-btn').onclick=()=>{
+//     console.log('Inside sign Up Button');
+//     // SignUpForm.classList.toggle('active');
+//     // navbar.classList.remove('active-navbar');
+//     // menubutton.classList.remove('fa-times');
+//     // searchForm.classList.remove('active');
+// };
 
-document.querySelector('#searchclosebutton').onclick=()=>{
-    searchForm.classList.remove('active');
-}
+
 
 
 navbar.onclick=()=>{
