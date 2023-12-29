@@ -912,7 +912,8 @@ section {
 //start of contact us section-07
 .contact {
     background: $primarycolorlightblue1;
-   // min-height: 40vh;
+
+    // min-height: 40vh;
     .heading {
         color: var(--white);
         @include titleText(3rem);
@@ -1148,7 +1149,7 @@ section {
             color: $light-color;
         }
 
-        
+
         lable {
             @include smalliconBox();
             font-size: 2rem;
@@ -1196,9 +1197,10 @@ section {
 
 }
 
-.useraccountdisplaysection{
+.useraccountdisplaysection {
     background-color: $primarycolorblue;
-    a{
+
+    a {
         font-size: 2rem;
     }
 }
@@ -1222,8 +1224,8 @@ section {
         }
 
         .products-container {
-           // background-color: $primarycoloryellow;
-           // @include grid(30vw);
+            // background-color: $primarycoloryellow;
+            // @include grid(30vw);
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -1248,7 +1250,7 @@ section {
 
                 img {
                     //width: 100%;
-                   // height: 40vh;
+                    // height: 40vh;
                     box-shadow: $box-shadow;
                     border-radius: 2rem;
 
@@ -1295,17 +1297,17 @@ section {
                         }
                     }
                 }
-                
 
-                
+
+
             }
 
 
         }
     }
 
-    .productcategorydisplay{
-       // background-color: $primarycolorblue;
+    .productcategorydisplay {
+        // background-color: $primarycolorblue;
         border: $border;
         box-shadow: $box-shadow;
     }
@@ -1325,11 +1327,11 @@ section {
 }
 
 //product category list Tile scss in products home 
-.productcategorylisttile{
-    background-color: $primarycolorlightblue; 
+.productcategorylisttile {
+    background-color: $primarycolorlightblue;
     border: $border;
-    box-shadow: $box-shadow;  
- }
+    box-shadow: $box-shadow;
+}
 
 .banner {
     .banner-container {
@@ -1496,92 +1498,95 @@ section {
 }
 
 .productshomefooter {
-    
 
-    .column{
+
+    .column {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         padding-left: 5rem;
     }
-   .footer-information{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 5rem 1rem;
-   
 
-    h2 {
-        @include titleText(1.5rem);
-        color: $black;
-        font-family: 'Times New Roman', Times, serif;
-        text-decoration: underline;
-    }
-
-    p{
-        @include graphText(1rem);
-    }
+    .footer-information {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 5rem 1rem;
 
 
-    .footer-column01 {
-        flex: 1 1 20vw;
-       // background-color: #4D45CB;
-        .contact-details-column {
-            padding: 1rem;
-            border: $border;
-            box-shadow: $box-shadow;
-            margin-bottom: 1rem;
-
-            
+        h2 {
+            @include titleText(1.5rem);
+            color: $black;
+            font-family: 'Times New Roman', Times, serif;
+            text-decoration: underline;
         }
 
-        .social-media-column {
-            display: flex;
-            padding: 1rem;
-            border: $border;
-            box-shadow: $box-shadow;
-            i {
-                height: 2rem;
-                width: 2rem;
-                margin-right: 2rem;
-                //color: $white;
+        p {
+            @include graphText(1rem);
+        }
 
-                &:hover {
-                    color: $primarycoloryellow;
+
+        .footer-column01 {
+            flex: 1 1 20vw;
+
+            // background-color: #4D45CB;
+            .contact-details-column {
+                padding: 1rem;
+                border: $border;
+                box-shadow: $box-shadow;
+                margin-bottom: 1rem;
+
+
+            }
+
+            .social-media-column {
+                display: flex;
+                padding: 1rem;
+                border: $border;
+                box-shadow: $box-shadow;
+
+                i {
+                    height: 2rem;
+                    width: 2rem;
+                    margin-right: 2rem;
+                    //color: $white;
+
+                    &:hover {
+                        color: $primarycoloryellow;
+                    }
                 }
             }
         }
+
+        .footer-column02 {
+            flex: 1 1 20vw;
+            //background-color: #c7c5e8;
+
+        }
+
+        .footer-column03 {
+            flex: 1 1 20vw;
+            // background-color: #666;
+        }
+
+        .footer-column04 {
+            flex: 1 1 15vw;
+            // background-color: #36eaba;
+        }
+
+        .footer-column05 {
+            flex: 1 1 100vw;
+            padding-top: 2rem;
+            // background-color:#F1C40F;
+        }
     }
 
-    .footer-column02{
-        flex: 1 1 20vw;
-        //background-color: #c7c5e8;
-    
+    .copy-rights-row {
+        text-align: center;
+        align-items: center;
+        padding-bottom: 2rem;
     }
-
-    .footer-column03{
-        flex: 1 1 20vw;
-       // background-color: #666;
-    }
-
-    .footer-column04{
-        flex: 1 1 15vw;
-       // background-color: #36eaba;
-    }
-
-    .footer-column05{
-        flex: 1 1 100vw;
-        padding-top: 2rem;
-       // background-color:#F1C40F;
-    }
-   }
-    
-   .copy-rights-row{
-    text-align: center;
-    align-items: center;
-    padding-bottom: 2rem;
-   }
 
 
 
@@ -1594,126 +1599,129 @@ section {
 
 //3.Start of the product_details.html page scss
 
-.product-display-section{
-  //background-color: $primarycolorlightblue;
-  padding: 1rem;
-  margin-top: 2rem;
-  width: 100vw;
-  min-height: 20vh;
+.product-display-section {
+    //background-color: $primarycolorlightblue;
+    padding: 1rem;
+    margin-top: 2rem;
+    width: 100vw;
+    min-height: 20vh;
 
-  
 
-  .product-container{
-    display: flex;
-    flex-wrap: wrap;
-    text-align: center;
-    align-items: start;
-    
-    
-    .product-images-column{
-       // background-color: $white;
-        padding: 1rem;
-        flex: 1 1 45vw;
 
-        .main-image-sec{
-            background-color: $primarycolorlightblue2;
-            .main-image{
-                width: 40vw;
-                height: 70%;
-                
-            }
-        }
-
-       .product-images-row{
+    .product-container {
         display: flex;
-        justify-content: space-between;
-        
-        .product-smallimage-col{
-            padding-top: 2rem;
-            .product-images-small{
-                background-color: $primarycolorlightblue2;
-                width: 10vw;
-                border: $border;
-                box-shadow: $box-shadow;
-                flex-basis: 25%;
-                cursor: pointer;
-                height: 95%;
-            }
-        }
-        
-       }
-
-       
-    }
-    .product-details-column{
-        padding: 1.5rem;
-        flex: 1 1 45vw;
-        //background-color: $primarycolorlightblue2;
+        flex-wrap: wrap;
+        text-align: center;
         align-items: start;
-        text-align: start;
 
-        h1{
-            padding: 5rem 1rem 5rem 0;
-            @include titleText(2.5rem);
-            //background-color: $primarycolorlightgreen;
-        }
-      
-        h2{
-            @include graphText(1.5rem);
-            padding: 1rem 1rem 1rem 0;
-            //background-color: $yellow;
-        }
 
-        h4{
-            @include graphText(1.5rem);
-            //background-color: $primarycolorlightblue1;
-            
-        }
+        .product-images-column {
+            // background-color: $white;
+            padding: 1rem;
+            flex: 1 1 45vw;
 
-        p{
-            line-height: 2rem;
-        }
+            .main-image-sec {
+                background-color: $primarycolorlightblue2;
 
-                .select-sizes-section {
-                    display: flex;
-                    gap: 2rem;
-        
-                    select {
+                .main-image {
+                    width: 40vw;
+                    height: 70%;
+
+                }
+            }
+
+            .product-images-row {
+                display: flex;
+                justify-content: space-between;
+
+                .product-smallimage-col {
+                    padding-top: 2rem;
+
+                    .product-images-small {
+                        background-color: $primarycolorlightblue2;
+                        width: 10vw;
                         border: $border;
+                        box-shadow: $box-shadow;
+                        flex-basis: 25%;
+                        cursor: pointer;
+                        height: 95%;
                     }
                 }
 
-        .select-quentity-section{
-            padding-top: 1rem;
-            display: flex;
-           gap: 1rem;
+            }
 
-           .button{
-            padding: 1rem 1rem;
-            margin-right: 1rem;
-            font-size: 1.0rem;
-           }
 
-           input{
-            width: 10%;
-            height: 2rem;
-            border: $border;
-            padding-left: 1rem;
-           }
+        }
+
+        .product-details-column {
+            padding: 1.5rem;
+            flex: 1 1 45vw;
+            //background-color: $primarycolorlightblue2;
+            align-items: start;
+            text-align: start;
+
+            h1 {
+                padding: 5rem 1rem 5rem 0;
+                @include titleText(2.5rem);
+                //background-color: $primarycolorlightgreen;
+            }
+
+            h2 {
+                @include graphText(1.5rem);
+                padding: 1rem 1rem 1rem 0;
+                //background-color: $yellow;
+            }
+
+            h4 {
+                @include graphText(1.5rem);
+                //background-color: $primarycolorlightblue1;
+
+            }
+
+            p {
+                line-height: 2rem;
+            }
+
+            .select-sizes-section {
+                display: flex;
+                gap: 2rem;
+
+                select {
+                    border: $border;
+                }
+            }
+
+            .select-quentity-section {
+                padding-top: 1rem;
+                display: flex;
+                gap: 1rem;
+
+                .button {
+                    padding: 1rem 1rem;
+                    margin-right: 1rem;
+                    font-size: 1.0rem;
+                }
+
+                input {
+                    width: 10%;
+                    height: 2rem;
+                    border: $border;
+                    padding-left: 1rem;
+                }
+            }
         }
     }
-  }
 
 
 }
 
 
- //3.End of the product_details.html page scss
+//3.End of the product_details.html page scss
 
- /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // 4.Start------ of the Main dashboard scss 
-.custom_navitem{
+.custom_navitem {
     background-color: $primarycolorlightblue;
     margin: 0rem 1rem;
     width: 10rem;
@@ -1722,37 +1730,37 @@ section {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    
+
 }
 
-.custom_searchbar{
+.custom_searchbar {
     width: 80vw;
 
-    .custom_searchbutton{
+    .custom_searchbutton {
         background-color: $primarycolorlightblue;
         color: $black;
-        margin:0 1rem;
+        margin: 0 1rem;
     }
 }
 
-.custom_toggler_button{
+.custom_toggler_button {
     background-color: $black;
-   
+
 }
 
-.custom-card-body{
+.custom-card-body {
     width: 10rem;
     align-items: center;
 }
 
-.admin_banner{
+.admin_banner {
     width: 100%;
-    
+
     align-items: center;
     background-color: $primarycolorlightblue;
 }
 
-.analyse_section{
+.analyse_section {
     background-color: $primarycolorlightblue1;
     width: 100%;
     height: 100%;
@@ -1760,7 +1768,7 @@ section {
     margin-right: 1rem;
 }
 
-.custom_footer{
+.custom_footer {
     position: absolute;
     bottom: 0;
 }
@@ -1780,6 +1788,56 @@ section {
 
 // 4.End------ of the Main dashboard scss 
 
+
+//5.Start of the Insert category form
+.form_style01 {
+    background-color: $primarycolorlightblue;
+    padding: 2rem;
+    width: 90%;
+    box-shadow: $box-shadow;
+    text-align: start;
+    border: $border;
+
+
+    .form_heading {
+
+        display: flex;
+
+
+        h3 {
+
+            @include titleText(4rem);
+            padding-bottom: 1rem;
+
+        }
+
+        .close-button {
+            position: absolute;
+            @include iconBox();
+            margin: 1rem;
+            top: 0;
+            right: -12rem;
+            cursor: pointer;
+        }
+
+        .close-button i {
+            font-size: 2rem;
+            /* Set the font size for the close icon */
+            color: $white;
+            /* Set the color of the close icon */
+            padding: 5px;
+            /* Add some padding for the icon */
+        }
+
+    }
+
+    
+
+}
+
+
+
+//5.End of the Insert category form
 
 
 
@@ -1909,11 +1967,11 @@ section {
         min-height: 40vh;
     }
 
-    .productshomefooter{
-        .footer-information{
-          
+    .productshomefooter {
+        .footer-information {
 
-            .footer-column05{
+
+            .footer-column05 {
                 flex: 1 1 100vw;
                 background-color: #F1C40F;
             }
@@ -1993,36 +2051,36 @@ section {
     .productshomesheader {
         min-height: 5vh;
         padding: 3rem 3rem;
-    
+
         .logo {
-           
+
             font-size: 1.5rem;
-    
+
             i {
                 display: none;
                 font-size: 1.5rem;
-    
+
             }
-    
+
         }
-    
+
         .navbar a {
-    
+
             margin: 0 1rem;
             font-size: 2.0rem;
-        
 
-    
+
+
         }
-    
-    
-    
+
+
+
         .icons div {
             display: none;
             @include iconBox();
             margin-left: 0.6rem;
         }
-    
+
         //start of -Search Form
         .search-form {
             position: absolute;
@@ -2033,37 +2091,37 @@ section {
             background: $white;
             box-shadow: $box-shadow;
             padding: 1rem;
-           
-    
+
+
             &.active {
                 display: flex;
             }
-    
+
             input {
                 width: 100%;
                 padding: 1.2rem 1.4rem;
                 font-size: 1.6rem;
-                
+
             }
-    
+
             i {
                 @include smalliconBox();
             }
-    
+
             lable {
-    
+
                 font-size: 1rem;
                 margin: 0 3rem;
-    
-        
-    
+
+
+
             }
         }
-    
+
         //End of -Search Form
-    
-    
-    
+
+
+
     }
 
     .products {
@@ -2092,10 +2150,10 @@ section {
         .productsdisplay {
 
             .products-container {
-               // @include grid(80vw);
+                // @include grid(80vw);
 
                 .product {
-                   // min-width: 90vw;
+                    // min-width: 90vw;
 
                     // img {
                     //     width: 80vw;
@@ -2121,12 +2179,12 @@ section {
         }
     }
 
-    .advertisements-banners-sec{
-        .advertisements-banners{
-            .advertisement-banner-container{
+    .advertisements-banners-sec {
+        .advertisements-banners {
+            .advertisement-banner-container {
                 width: 45vw;
 
-                h1{
+                h1 {
                     font-size: 3rem;
                 }
             }
@@ -2134,10 +2192,10 @@ section {
     }
 
     .newsubscription-section {
-        .newsubscription-form{
+        .newsubscription-form {
             width: 90vw;
 
-            .textfield-box{
+            .textfield-box {
                 width: 90%;
             }
         }
@@ -2311,36 +2369,36 @@ section {
     .productshomesheader {
         min-height: 5vh;
         padding: 3rem 3rem;
-    
+
         .logo {
-           
+
             font-size: 1.0rem;
-    
+
             i {
                 display: none;
                 font-size: 1.0rem;
-    
+
             }
-    
+
         }
-    
+
         .navbar a {
-    
+
             margin: 0 1rem;
             font-size: 1.5rem;
-        
 
-    
+
+
         }
-    
-    
-    
+
+
+
         .icons div {
             display: none;
             @include iconBox();
             margin-left: 0.6rem;
         }
-    
+
         //start of -Search Form
         .search-form {
             position: absolute;
@@ -2351,37 +2409,37 @@ section {
             background: $white;
             box-shadow: $box-shadow;
             padding: 1rem;
-           
-    
+
+
             &.active {
                 display: flex;
             }
-    
+
             input {
                 width: 100%;
                 padding: 1.2rem 1.4rem;
                 font-size: 1.6rem;
-                
+
             }
-    
+
             i {
                 @include smalliconBox();
             }
-    
+
             lable {
-    
+
                 font-size: 1rem;
                 margin: 0 3rem;
-    
-        
-    
+
+
+
             }
         }
-    
+
         //End of -Search Form
-    
-    
-    
+
+
+
     }
 
 
@@ -2389,7 +2447,7 @@ section {
         .productsdisplay {
 
             .products-container {
-               @include grid(80vw);
+                @include grid(80vw);
 
                 .product {
                     min-width: 30vw;
@@ -2418,26 +2476,30 @@ section {
         }
     }
 
-    .advertisements-banners-sec{
-        .advertisements-banners{
-            .advertisement-banner-container{
+    .advertisements-banners-sec {
+        .advertisements-banners {
+            .advertisement-banner-container {
                 width: 100vw;
 
-                h1{
+                h1 {
                     font-size: 3rem;
                 }
             }
         }
     }
 
-    .productshomefooter{
-        .footer-information{
-            .footer-column01,.footer-column02,.footer-column03,.footer-column04{
+    .productshomefooter {
+        .footer-information {
+
+            .footer-column01,
+            .footer-column02,
+            .footer-column03,
+            .footer-column04 {
                 //background-color: #7067f2;
                 flex: 1 1 25vw;
-            } 
+            }
 
-            .footer-column05{
+            .footer-column05 {
                 flex: 1 1 100vw;
                 background-color: #F1C40F;
             }
@@ -2446,34 +2508,36 @@ section {
 
 
     //  3.product_details display section
-    .product-display-section{
-       .product-container{
-          .product-images-column{
-            flex: 1 1 100vw;
-            .main-image-sec{
-               .main-image{
-               height: 100%;
-               } 
-            }
+    .product-display-section {
+        .product-container {
+            .product-images-column {
+                flex: 1 1 100vw;
 
-            .product-images-row{
-                .product-smallimage-col{
-                    .product-images-small{
+                .main-image-sec {
+                    .main-image {
+                        height: 100%;
+                    }
+                }
+
+                .product-images-row {
+                    .product-smallimage-col {
+                        .product-images-small {
                             width: 20vw;
                             border: $border;
                             box-shadow: $box-shadow;
                             flex-basis: 2%;
                             cursor: pointer;
                             height: 100%;
-                        
+
+                        }
                     }
                 }
             }
-          }
-          .product-details-column{
-            flex: 1 1 100vw;
-          }
-       } 
+
+            .product-details-column {
+                flex: 1 1 100vw;
+            }
+        }
     }
 
 

@@ -1244,6 +1244,53 @@ section {
   bottom: 0;
 }
 
+.form_style01 {
+  background-color: #7067f2;
+  padding: 2rem;
+  width: 90%;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  text-align: start;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
+}
+.form_style01 .form_heading {
+  display: flex;
+}
+.form_style01 .form_heading h3 {
+  font-size: 4rem;
+  color: #000;
+  text-transform: capitalize;
+  padding-bottom: 1rem;
+}
+.form_style01 .form_heading .close-button {
+  position: absolute;
+  height: 5rem;
+  width: 5rem;
+  line-height: 5rem;
+  font-size: 2rem;
+  background: #eee;
+  color: #ffffff;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
+  cursor: pointer;
+  text-align: center;
+  background: #4D45CB;
+  margin: 1rem;
+  top: 0;
+  right: -12rem;
+  cursor: pointer;
+}
+.form_style01 .form_heading .close-button:hover {
+  background: #f3b90b;
+  color: #ffffff;
+}
+.form_style01 .form_heading .close-button i {
+  font-size: 2rem;
+  /* Set the font size for the close icon */
+  color: #ffffff;
+  /* Set the color of the close icon */
+  padding: 5px;
+  /* Add some padding for the icon */
+}
+
 @media (max-width: 2560px) {
   html {
     font-size: 72.5%;
@@ -1710,7 +1757,10 @@ section {
   .advertisements-banners-sec .advertisements-banners .advertisement-banner-container h1 {
     font-size: 3rem;
   }
-  .productshomefooter .footer-information .footer-column01, .productshomefooter .footer-information .footer-column02, .productshomefooter .footer-information .footer-column03, .productshomefooter .footer-information .footer-column04 {
+  .productshomefooter .footer-information .footer-column01,
+  .productshomefooter .footer-information .footer-column02,
+  .productshomefooter .footer-information .footer-column03,
+  .productshomefooter .footer-information .footer-column04 {
     flex: 1 1 25vw;
   }
   .productshomefooter .footer-information .footer-column05 {
