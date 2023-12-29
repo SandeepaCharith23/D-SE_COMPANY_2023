@@ -79,7 +79,7 @@
 
   <div class="col-md-3 border">
     <div class="container p-2 pe-1 ps-1 align-items-center" style="width: 15rem;">
-      <h4>Welcome admin</h4>
+      <h4>Welcome admin/User</h4>
       <div class="card admin_banner">
         <img class="card-img-top p-1" src="images/userimage01.jpg" alt="no image" style="width:10rem; height: 10rem;">
         <div class="card-body custom-card-body">
@@ -137,6 +137,25 @@
         </div>
   
       </div>
+
+       <!-- 3.product Categories Dropdown -->
+       <div class="dropdown p-2 mb-3 d-grid">
+      
+          
+      <button class="btn btn-outline-primary dropdown-toggle btn-lg btn-block leftcontenetbutton" type="button"
+      data-bs-toggle="dropdown" aria-expanded="true">
+      Product Categories
+      </button>
+   
+
+    <div class="dropdown-menu w-100 text-center border-black">
+     
+      <a class="dropdown-item" href="#">Add new Category</a>
+      <a class="dropdown-item" href="#">Edit Category</a>
+
+    </div>
+
+  </div>
   
   
     </div>
