@@ -64,7 +64,7 @@
         </form>
 
         <!-- sign-Up Screen -->
-        <form action="" class="signUp-form">
+        <!-- <form action="" class="signUp-form">
             <div class="login-heading">
                 <h3>SignUp Screen </h3> <span class="close-button" id="close-button"> <i class="fa fa-close"></i></span>
             </div>
@@ -78,7 +78,7 @@
 
             <input type="submit" value="SignUp now" class="button">
 
-        </form>
+        </form> -->
     </header>
     <!-- header section end -->
 

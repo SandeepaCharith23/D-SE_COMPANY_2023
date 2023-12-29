@@ -286,104 +286,6 @@ section {
 .header .login-form p a:hover {
   text-decoration: underline;
 }
-.header .signUp-form {
-  position: absolute;
-  top: 120%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  background: #ffffff;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  text-align: center;
-  animation: fadeIn 0.2s linear;
-  display: none;
-  border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
-}
-.header .signUp-form.active {
-  display: block;
-}
-.header .signUp-form .login-heading {
-  display: flex;
-}
-.header .signUp-form .login-heading h3 {
-  font-size: 4rem;
-  color: #000;
-  text-transform: capitalize;
-  padding-bottom: 1rem;
-}
-.header .signUp-form .login-heading .close-button {
-  position: absolute;
-  height: 5rem;
-  width: 5rem;
-  line-height: 5rem;
-  font-size: 2rem;
-  background: #eee;
-  color: #ffffff;
-  border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
-  cursor: pointer;
-  text-align: center;
-  background: #4D45CB;
-  margin: 1rem;
-  top: 0;
-  right: 0;
-  cursor: pointer;
-}
-.header .signUp-form .login-heading .close-button:hover {
-  background: #f3b90b;
-  color: #ffffff;
-}
-.header .signUp-form .login-heading .close-button i {
-  font-size: 2rem;
-  /* Set the font size for the close icon */
-  color: #ffffff;
-  /* Set the color of the close icon */
-  padding: 5px;
-  /* Add some padding for the icon */
-}
-.header .signUp-form .textfield-box {
-  width: 100%;
-  padding: 1.2rem 1.4rem;
-  background: #eee;
-  font-size: 1.6rem;
-  color: #666;
-  margin: 0.5rem 0;
-}
-.header .signUp-form .flex {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding-top: 1.5rem;
-  padding-bottom: 1rem;
-}
-.header .signUp-form .flex label {
-  font-size: 1.5rem;
-  color: #666;
-  cursor: pointer;
-}
-.header .signUp-form .flex a {
-  font-size: 1.5rem;
-  color: #000;
-  margin-left: auto;
-}
-.header .signUp-form .flex a:hover {
-  color: #F1C40F;
-}
-.header .signUp-form .button {
-  width: 100%;
-}
-.header .signUp-form p {
-  font-size: 2rem;
-  color: #000;
-  line-height: 1.5;
-  padding-top: 1rem;
-}
-.header .signUp-form p a {
-  color: #F1C40F;
-}
-.header .signUp-form p a:hover {
-  text-decoration: underline;
-}
 
 .home {
   min-height: 60vh;
@@ -790,10 +692,11 @@ section {
 }
 .productshomesheader .logo i {
   font-size: 2.5rem;
+  color: #4D45CB;
 }
 .productshomesheader .navbar a {
-  margin: 0 1rem;
-  font-size: 2rem;
+  margin: 0 0.5rem;
+  font-size: 1rem;
   color: #000;
 }
 .productshomesheader .navbar a:hover {
@@ -840,7 +743,7 @@ section {
   font-size: 1.6rem;
   color: #666;
 }
-.productshomesheader .search-form i {
+.productshomesheader .search-form lable {
   height: 3rem;
   width: 3rem;
   line-height: 3rem;
@@ -850,15 +753,13 @@ section {
   cursor: pointer;
   text-align: center;
   background: #4D45CB;
-}
-.productshomesheader .search-form i:hover {
-  background: #f3b90b;
-  color: #ffffff;
-}
-.productshomesheader .search-form lable {
-  font-size: 1rem;
+  font-size: 2rem;
   cursor: pointer;
   margin: 0 3rem;
+}
+.productshomesheader .search-form lable:hover {
+  background: #f3b90b;
+  color: #ffffff;
 }
 .productshomesheader .search-form lable:hover {
   background-color: #F1C40F;
@@ -888,6 +789,13 @@ section {
   color: #ffffff;
 }
 
+.useraccountdisplaysection {
+  background-color: #4D45CB;
+}
+.useraccountdisplaysection a {
+  font-size: 2rem;
+}
+
 .products-display-section .productsdisplay {
   text-align: center;
   align-items: center;
@@ -904,9 +812,6 @@ section {
   line-height: 1.5;
 }
 .products-display-section .productsdisplay .products-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50vw, 1fr));
-  gap: 1.5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -918,7 +823,6 @@ section {
   border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
   margin: 1rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  min-width: 45vw;
   cursor: pointer;
   transition: 2ms ease;
   align-items: center;
@@ -927,8 +831,6 @@ section {
   position: relative;
 }
 .products-display-section .productsdisplay .products-container .product img {
-  width: 40vw;
-  height: 40vh;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 2rem;
 }
@@ -975,6 +877,10 @@ section {
   background: #f3b90b;
   color: #ffffff;
 }
+.products-display-section .productcategorydisplay {
+  border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
 
 .product-display-pagination {
   min-width: 10vh;
@@ -998,6 +904,12 @@ section {
 .product-display-pagination a:hover {
   background: #f3b90b;
   color: #ffffff;
+}
+
+.productcategorylisttile {
+  background-color: #7067f2;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
 .banner .banner-container {
@@ -1285,6 +1197,53 @@ section {
   padding-left: 1rem;
 }
 
+.custom_navitem {
+  background-color: #7067f2;
+  margin: 0rem 1rem;
+  width: 10rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.custom_searchbar {
+  width: 80vw;
+}
+.custom_searchbar .custom_searchbutton {
+  background-color: #7067f2;
+  color: #000;
+  margin: 0 1rem;
+}
+
+.custom_toggler_button {
+  background-color: #000;
+}
+
+.custom-card-body {
+  width: 10rem;
+  align-items: center;
+}
+
+.admin_banner {
+  width: 100%;
+  align-items: center;
+  background-color: #7067f2;
+}
+
+.analyse_section {
+  background-color: #c7c3f9;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  margin-right: 1rem;
+}
+
+.custom_footer {
+  position: absolute;
+  bottom: 0;
+}
+
 @media (max-width: 2560px) {
   html {
     font-size: 72.5%;
@@ -1422,6 +1381,9 @@ section {
     padding: 1rem;
     margin: 0;
   }
+  .header .button {
+    display: none;
+  }
   .home {
     gap: 0.5rem;
   }
@@ -1511,26 +1473,14 @@ section {
   .products .productslider .productslide .productdescription {
     flex: 1 1 40vw;
   }
-  .products-display-section .productsdisplay .products-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80vw, 1fr));
-    gap: 1.5rem;
-  }
-  .products-display-section .productsdisplay .products-container .product {
-    min-width: 90vw;
-  }
-  .products-display-section .productsdisplay .products-container .product img {
-    width: 80vw;
-    height: 40vh;
-  }
   .products-display-section .productsdisplay .products-container .product .product-description h1 {
-    font-size: 4rem;
+    font-size: 2rem;
   }
   .products-display-section .productsdisplay .products-container .product .product-description span {
     font-size: 3.5rem;
   }
   .products-display-section .productsdisplay .products-container .product .product-description h2 {
-    font-size: 3.5rem;
+    font-size: 2rem;
   }
   .advertisements-banners-sec .advertisements-banners .advertisement-banner-container {
     width: 45vw;
@@ -1739,10 +1689,10 @@ section {
     gap: 1.5rem;
   }
   .products-display-section .productsdisplay .products-container .product {
-    min-width: 90vw;
+    min-width: 30vw;
   }
   .products-display-section .productsdisplay .products-container .product img {
-    width: 70vw;
+    width: 30vw;
     height: 25vh;
   }
   .products-display-section .productsdisplay .products-container .product .product-description h1 {
