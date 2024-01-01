@@ -17,7 +17,43 @@
 </head>
 
 <body>
-    <form action="" method="get" class="form_style01 m-auto">
+    <?php
+    include('includes/connection.php');
+
+    // form handling
+    if (isset($_POST['insert_category_button'])) {
+        $category_name = $_POST['prouct_category_name'];
+        $category_description = $_POST['product_category_description'];
+
+        //select data from database-check that product category already exist or not
+        $select_querry = "SELECT * FROM `product_categories` WHERE category_name='$category_name'";
+        $result_selected = mysqli_query($conn, $select_querry);
+        $available_rows = mysqli_num_rows($result_selected);
+
+        if ($available_rows > 0) {
+
+            echo "<script>alert('Category already added ,Try another name')</script>";
+        }else{
+
+        // SQL query to insert data into database
+        $insertsql = "INSERT INTO `product_categories` (Category_Name, Category_Description) VALUES ('$category_name', '$category_description')";
+        $result = mysqli_query($conn, $insertsql);
+        
+        if ($result) {
+            echo "<script>alert('Category added successfully')</script>";
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+    }
+    } else {
+        echo "Error: Form was not submitted.";
+    }
+
+    // close the connection
+    mysqli_close($conn);
+    ?>
+
+    <form action="" method="POST" class="form_style01 m-auto">
 
         <div class="form_heading">
             <h3>Insert a New Category</h3> <span class="close-button" id="close-button"> <i class="fa fa-close"></i></span>
@@ -25,18 +61,18 @@
         <!-- 1.product Category name -->
         <div class="mb-4">
             <label for="prouctCategoryName" class="form-label">Enter your product name :</label>
-            <input type="text" class="form-control" id="prouctCategoryName" aria-describedby="productCategoryNamedescription">
+            <input type="text" class="form-control" id="prouctCategoryName" aria-describedby="productCategoryNamedescription" name='prouct_category_name'>
             <div id="productCategoryNamedescription" class="form-text">Product Category Name-must be clear and Easily understand</div>
         </div>
 
-        <!-- 2.ProductCategory -->
+        <!-- 2.Product Category description -->
         <div class="mb-4">
             <label for="prouctCategory" class="form-label">Enter your product Category :</label>
-            <input type="text" class="form-control" id="prouctCategory" aria-describedby="productCategorydescription">
+            <input type="text" class="form-control" id="prouctCategoryDes" aria-describedby="productCategorydescription" name="product_category_description">
             <div id="productCategorydescription" class="form-text">Product Category-must be clear and Easily understand</div>
         </div>
 
-        <div class="input-group  mb-2 m-auto">
+        <div class="mb-2 m-auto">
             <input type="submit" class="form-control bg-info" name="insert_category_button" value="Insert Category">
         </div>
 
