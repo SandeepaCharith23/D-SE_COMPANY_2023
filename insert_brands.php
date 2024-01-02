@@ -47,28 +47,28 @@
         }
     }
     } else {
-        echo "Error: Form was not submitted.";
+        // echo "Error: Form was not submitted.";
     }
 
     // close the connection
     mysqli_close($conn);
     ?>
-    <form action="" method="POST" class="form_style01 m-auto">
+    <form action="" method="POST" class="form_style01 m-auto" onsubmit="return validateForm()">
 
         <div class="form_heading">
-            <h3>Insert a New Brand</h3> <span class="close-button" id="close-button"> <i class="fa fa-close"></i></span>
+            <h3>Insert a New Brand</h3> <span class="close-button" id="close-button" onclick="closeform()"> <i class="fa fa-close"></i></span>
         </div>
         <!-- 1.product Brand name -->
         <div class="mb-4">
             <label for="prouctBrandName" class="form-label">Enter your product Brand :</label>
-            <input type="text" class="form-control" id="prouctBrandName" aria-describedby="productBrandNamedescription" name="prouct_barnd_name">
+            <input type="text" class="form-control" id="prouctBrandName" aria-describedby="productBrandNamedescription" name="prouct_barnd_name" required>
             <div id="productBrandNamedescription" class="form-text">Product Brand Name-must be clear and Easily understand</div>
         </div>
 
         <!-- 2.Product Brand Description -->
         <div class="mb-4">
             <label for="prouctBrandDescription" class="form-label">Enter your product Brand Description:</label>
-            <input type="textarea" class="form-control" id="prouctBrandDescription" aria-describedby="productBranddescription" name="product_brand_description">
+            <input type="textarea" class="form-control" id="prouctBrandDescription" aria-describedby="productBranddescription" name="product_brand_description" required>
             <div id="productBranddescription" class="form-text">Product Brand description-must be clear and Easily understand</div>
         </div>
 
@@ -77,6 +77,33 @@
         </div>
 
     </form>
+
+    <script>
+        
+
+        function closeform() {
+            // Get the form element by its class or ID
+            var form = document.querySelector('.form_style01');
+            // Hide the form by changing its style/display property
+            form.style.display = 'none';
+            window.location.href="maindashboard.php";
+        };
+
+        function validateForm() {
+            //1.Get the input field values
+            var brandName = document.getElementById("prouctBrandName").value;
+            var barndDescription = document.getElementById("prouctBrandDescription").value;
+
+            //2.Validates values
+            if (brandName.trim() == "" || barndDescription.trim() == "") {
+                alert("Please fill those empty fields");
+                return false; // Prevent form submission
+            }
+            // You can add more complex validation logic here if needed
+
+            return true; // Allow form submission if validation passed
+        }
+    </script>
 </body>
 
 </html>

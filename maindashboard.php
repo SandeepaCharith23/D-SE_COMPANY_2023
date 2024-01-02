@@ -180,9 +180,9 @@
     ?>
   </div>
 
-  <!-- <div class="container-fluid bg-info p-3 text-center footer custom_footer">
+  <div class="container-fluid bg-info p-3 text-center footer custom_footer">
     <p>All rights reserved @ Sandeepa Charith</p>
-  </div> -->
+  </div>
 
 
 

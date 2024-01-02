@@ -1240,7 +1240,6 @@ section {
 }
 
 .custom_footer {
-  position: absolute;
   bottom: 0;
 }
 
@@ -1254,6 +1253,7 @@ section {
 }
 .form_style01 .form_heading {
   display: flex;
+  justify-content: space-between;
 }
 .form_style01 .form_heading h3 {
   font-size: 4rem;
@@ -1262,7 +1262,6 @@ section {
   padding-bottom: 1rem;
 }
 .form_style01 .form_heading .close-button {
-  position: absolute;
   height: 5rem;
   width: 5rem;
   line-height: 5rem;

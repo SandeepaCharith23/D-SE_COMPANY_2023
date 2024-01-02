@@ -1768,8 +1768,33 @@ section {
     margin-right: 1rem;
 }
 
+// .form_style01 {
+   
+//     box-shadow: $box-shadow;
+//     padding: 1rem;
+
+
+//     &.active {
+//         display: flex;
+//     }
+
+//     input {
+//         width: 100%;
+//         padding: 1rem 1rem;
+//         font-size: 1rem;
+
+//     }
+
+    
+//     lable {
+
+//         font-size: 1rem;
+//         margin: 0 1rem;
+//     }
+// }
+
 .custom_footer {
-    position: absolute;
+    
     bottom: 0;
 }
 
@@ -1802,7 +1827,7 @@ section {
     .form_heading {
 
         display: flex;
-
+        justify-content: space-between;
 
         h3 {
 
@@ -1812,7 +1837,7 @@ section {
         }
 
         .close-button {
-            position: absolute;
+            
             @include iconBox();
             margin: 1rem;
             top: 0;

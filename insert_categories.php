@@ -33,42 +33,42 @@
         if ($available_rows > 0) {
 
             echo "<script>alert('Category already added ,Try another name')</script>";
-        }else{
-
-        // SQL query to insert data into database
-        $insertsql = "INSERT INTO `product_categories` (Category_Name, Category_Description) VALUES ('$category_name', '$category_description')";
-        $result = mysqli_query($conn, $insertsql);
-        
-        if ($result) {
-            echo "<script>alert('Category added successfully')</script>";
         } else {
-            echo "Error: " . mysqli_error($conn);
+
+            // SQL query to insert data into database
+            $insertsql = "INSERT INTO `product_categories` (Category_Name, Category_Description) VALUES ('$category_name', '$category_description')";
+            $result = mysqli_query($conn, $insertsql);
+
+            if ($result) {
+                echo "<script>alert('Category added successfully')</script>";
+            } else {
+                echo "Error: " . mysqli_error($conn);
+            }
         }
     }
-    } else {
-        echo "Error: Form was not submitted.";
-    }
+
 
     // close the connection
     mysqli_close($conn);
     ?>
 
-    <form action="" method="POST" class="form_style01 m-auto">
+    <form action="" method="POST" class="form_style01 m-auto" onsubmit="return validateForm()">
 
         <div class="form_heading">
-            <h3>Insert a New Category</h3> <span class="close-button" id="close-button"> <i class="fa fa-close"></i></span>
+            <h3>Insert a New Category</h3> <span class="close-button" id="form-close-button" onclick="closeform()"> <i class="fa fa-close"></i></span>
+
         </div>
         <!-- 1.product Category name -->
         <div class="mb-4">
-            <label for="prouctCategoryName" class="form-label">Enter your product name :</label>
-            <input type="text" class="form-control" id="prouctCategoryName" aria-describedby="productCategoryNamedescription" name='prouct_category_name'>
+            <label for="prouctCategoryName" class="form-label">Enter your product Category name :</label>
+            <input type="text" class="form-control" id="prouctCategoryName" aria-describedby="productCategoryNamedescription" name='prouct_category_name' required>
             <div id="productCategoryNamedescription" class="form-text">Product Category Name-must be clear and Easily understand</div>
         </div>
 
         <!-- 2.Product Category description -->
         <div class="mb-4">
-            <label for="prouctCategory" class="form-label">Enter your product Category :</label>
-            <input type="text" class="form-control" id="prouctCategoryDes" aria-describedby="productCategorydescription" name="product_category_description">
+            <label for="prouctCategory" class="form-label">Enter your product Category Description:</label>
+            <input type="text" class="form-control" id="prouctCategoryDes" aria-describedby="productCategorydescription" name="product_category_description" required>
             <div id="productCategorydescription" class="form-text">Product Category-must be clear and Easily understand</div>
         </div>
 
@@ -77,6 +77,35 @@
         </div>
 
     </form>
+
+    <script>
+        // document.getElementById('form-close-button').onclick=()=>{
+        //     alert("Close form");
+        // }
+
+        function closeform() {
+            // Get the form element by its class or ID
+            var form = document.querySelector('.form_style01');
+            // Hide the form by changing its style/display property
+            form.style.display = 'none';
+            window.location.href="maindashboard.php";
+        };
+
+        function validateForm() {
+            //1.Get the input field values
+            var categoryName = document.getElementById("productCategoryName").value;
+            var categoryDescription = document.getElementById("productCategoryDes").value;
+
+            //2.Validates values
+            if (categoryName.trim() == "" || categoryDescription.trim() == "") {
+                alert("Please fill those empty fields");
+                return false; // Prevent form submission
+            }
+            // You can add more complex validation logic here if needed
+
+            return true; // Allow form submission if validation passed
+        }
+    </script>
 </body>
 
 </html>
