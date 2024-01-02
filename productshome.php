@@ -1,3 +1,9 @@
+<?php
+include('includes/connection.php');
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -249,40 +255,68 @@
 
             </div>
 
-            <div class="col-sm-2 productcategorydisplay">
+            <div class="col-sm-2 productcategoryandbrandsdisplay">
+
+
+
+
                 <!-- product categories -->
                 <h2 class="text-center m-1">Product Categories</h2>
+                <!-- add data from database and display data-->
+
                 <ul class="navbar-nav me-auto text-center ">
-                    <li class="nav-item m-1 p-1 productcategorylisttile">
-                        <a href="#" class="nav-link text-light ">
-                            <h4>Product Category 01</h4>
-                        </a>
-                    </li>
+                    <?php
+                    //1.selection querry
+                    $select_category_querry = "SELECT * FROM `product_categories`";
 
-                    <li class="nav-item  m-1 p-1 productcategorylisttile">
-                        <a href="#" class="nav-link text-light">
-                            <h4>Product Category 02</h4>
-                        </a>
-                    </li>
+                    //2.run the querry and get the result form db
+                    $results_fromdb = mysqli_query($conn, $select_category_querry);
 
+                    //3.Fetch the returned data to UI
 
+                    while ($returned_rowdata = mysqli_fetch_assoc($results_fromdb)) {
 
+                        $category_name = $returned_rowdata['Category_Name'];
+                        $category_id = $returned_rowdata['Category_ID'];
+
+                        echo "<li class='nav-item m-1 p-1 productcategorylisttile'>
+                    <a href='productshome.php?cateId=$category_id' class='nav-link text-light'>
+                        <h4> $category_name</h4>
+                    </a>
+                    </li>";
+                    }
+
+                    ?>
                 </ul>
 
                 <!-- product Brands -->
                 <h2 class="text-center m-1 pt-3">Product Brands</h2>
                 <ul class="navbar-nav me-auto text-center ">
-                    <li class="nav-item m-1 p-1 productcategorylisttile">
-                        <a href="#" class="nav-link text-light ">
-                            <h4>Product Brand 01</h4>
-                        </a>
-                    </li>
 
-                    <li class="nav-item  m-1 p-1 productcategorylisttile">
-                        <a href="#" class="nav-link text-light">
-                            <h4>Product Brand 02</h4>
-                        </a>
-                    </li>
+
+                    <?php
+                    //1.selection querry
+                    $select_brands_querry = "SELECT * FROM `product_brands`";
+
+                    //2.run the querry and get the result form db
+                    $results_fromdb = mysqli_query($conn, $select_brands_querry);
+
+                    //3.Fetch the returned data to UI
+
+                    while ($returned_rowdata = mysqli_fetch_assoc($results_fromdb)) {
+
+                        $brand_name = $returned_rowdata['Brand_Name'];
+                        $brand_id = $returned_rowdata['Brand_ID'];
+
+                        echo "<li class='nav-item m-1 p-1 productcategorylisttile'>
+                    <a href='productshome.php?brandId=$brand_id' class='nav-link text-light'>
+                        <h4> $brand_name</h4>
+                    </a>
+                    </li>";
+                    }
+
+                    ?>
+
 
 
 

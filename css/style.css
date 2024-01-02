@@ -877,7 +877,7 @@ section {
   background: #f3b90b;
   color: #ffffff;
 }
-.products-display-section .productcategorydisplay {
+.products-display-section .productcategoryandbrandsdisplay {
   border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }

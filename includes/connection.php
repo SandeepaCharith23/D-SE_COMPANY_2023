@@ -15,7 +15,7 @@ if($conn->connect_error){
     die('Connection failed'.$conn->connect_error);
 }
 
-// echo "Connection Done";
+echo "Connection Done";
 
 }catch(mysqli_sql_exception $e){
     echo "Connection failed: " . $e->getMessage();

@@ -79,9 +79,7 @@
     </form>
 
     <script>
-        // document.getElementById('form-close-button').onclick=()=>{
-        //     alert("Close form");
-        // }
+        
 
         function closeform() {
             // Get the form element by its class or ID
