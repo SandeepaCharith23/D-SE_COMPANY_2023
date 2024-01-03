@@ -116,8 +116,8 @@
 
           <div class="dropdown-menu w-100 text-center border-black">
             <a class="dropdown-item " href="#">Manage Product</a>
-            <a class="dropdown-item" href="#">New Add Product</a>
-            <a class="dropdown-item" href="#">Add new Category</a>
+            
+            <a class="dropdown-item" href="insert_product.php">Add new Product</a>
 
           </div>
 

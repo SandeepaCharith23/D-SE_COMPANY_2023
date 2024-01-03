@@ -1,5 +1,6 @@
 <?php
 include('includes/connection.php');
+include('functions/common_functions.php');
 
 ?>
 
@@ -99,6 +100,92 @@ include('includes/connection.php');
 
                 <!-- products -->
                 <div class="row products-container">
+
+                    <!-- fetch all product data from database -->
+                    <?php
+                    //use common_function
+                    getproducts();
+                    get_unique_category_products();
+                    get_unique_brand_products();
+                  
+                    ?>
+
+                    <!-- product tile -->
+                    <!-- <div class="col-md-4 mb-2">
+                        <div class="card product" onclick="window.location.href='product_details.php'">
+                            <img src="images/product_bag.png" class="card-img-top" alt="no product image">
+                            <div class="card-body product-description">
+                                <h1 class="card-title">Product Name</h1>
+                                <span>Product Brand Name</span>
+                                <p class="card-text">Product Description</p>
+                                <h2>Rs.3000.00</h2>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+
+                                <div class="product-add-to-cart">
+                                    <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                </div>
+                                <a href="#" class="btn btn-primary">See more</a>
+
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="col-md-4 mb-2">
+                        <div class="card product" onclick="window.location.href='product_details.php'">
+                            <img src="images/product_bag.png" class="card-img-top" alt="no image">
+                            <div class="card-body product-description">
+                                <h1 class="card-title">Product Name</h1>
+                                <span>Product Brand Name</span>
+                                <p class="card-text">Product Description</p>
+                                <h2>Rs.3000.00</h2>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+
+                                <div class="product-add-to-cart">
+                                    <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                </div>
+                                <a href="#" class="btn btn-primary">See more</a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-2">
+                        <div class="card product" onclick="window.location.href='product_details.php'">
+                            <img src="images/product_bag.png" class="card-img-top" alt="no image">
+                            <div class="card-body product-description">
+                                <h1 class="card-title">Product Name</h1>
+                                <span>Product Brand Name</span>
+                                <p class="card-text">Product Description</p>
+                                <h2>Rs.3000.00</h2>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+
+                                <div class="product-add-to-cart">
+                                    <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                </div>
+                                <a href="#" class="btn btn-primary">See more</a>
+
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-md-4 mb-2">
                         <div class="card product" onclick="window.location.href='product_details.php'">
                             <img src="images/product_bag.png" class="card-img-top" alt="no product image">
@@ -172,82 +259,7 @@ include('includes/connection.php');
 
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-4 mb-2">
-                        <div class="card product" onclick="window.location.href='product_details.php'">
-                            <img src="images/product_bag.png" class="card-img-top" alt="no product image">
-                            <div class="card-body product-description">
-                                <h1 class="card-title">Product Name</h1>
-                                <span>Product Brand Name</span>
-                                <p class="card-text">Product Description</p>
-                                <h2>Rs.3000.00</h2>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-
-                                <div class="product-add-to-cart">
-                                    <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                                </div>
-                                <a href="#" class="btn btn-primary">See more</a>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-2">
-                        <div class="card product" onclick="window.location.href='product_details.php'">
-                            <img src="images/product_bag.png" class="card-img-top" alt="no image">
-                            <div class="card-body product-description">
-                                <h1 class="card-title">Product Name</h1>
-                                <span>Product Brand Name</span>
-                                <p class="card-text">Product Description</p>
-                                <h2>Rs.3000.00</h2>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-
-                                <div class="product-add-to-cart">
-                                    <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                                </div>
-                                <a href="#" class="btn btn-primary">See more</a>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-2">
-                        <div class="card product" onclick="window.location.href='product_details.php'">
-                            <img src="images/product_bag.png" class="card-img-top" alt="no image">
-                            <div class="card-body product-description">
-                                <h1 class="card-title">Product Name</h1>
-                                <span>Product Brand Name</span>
-                                <p class="card-text">Product Description</p>
-                                <h2>Rs.3000.00</h2>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-
-                                <div class="product-add-to-cart">
-                                    <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                                </div>
-                                <a href="#" class="btn btn-primary">See more</a>
-
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
 
 
 
@@ -266,25 +278,9 @@ include('includes/connection.php');
 
                 <ul class="navbar-nav me-auto text-center ">
                     <?php
-                    //1.selection querry
-                    $select_category_querry = "SELECT * FROM `product_categories`";
-
-                    //2.run the querry and get the result form db
-                    $results_fromdb = mysqli_query($conn, $select_category_querry);
-
-                    //3.Fetch the returned data to UI
-
-                    while ($returned_rowdata = mysqli_fetch_assoc($results_fromdb)) {
-
-                        $category_name = $returned_rowdata['Category_Name'];
-                        $category_id = $returned_rowdata['Category_ID'];
-
-                        echo "<li class='nav-item m-1 p-1 productcategorylisttile'>
-                    <a href='productshome.php?cateId=$category_id' class='nav-link text-light'>
-                        <h4> $category_name</h4>
-                    </a>
-                    </li>";
-                    }
+                    
+                    //use common_function
+                    getcategories();
 
                     ?>
                 </ul>
@@ -295,25 +291,8 @@ include('includes/connection.php');
 
 
                     <?php
-                    //1.selection querry
-                    $select_brands_querry = "SELECT * FROM `product_brands`";
-
-                    //2.run the querry and get the result form db
-                    $results_fromdb = mysqli_query($conn, $select_brands_querry);
-
-                    //3.Fetch the returned data to UI
-
-                    while ($returned_rowdata = mysqli_fetch_assoc($results_fromdb)) {
-
-                        $brand_name = $returned_rowdata['Brand_Name'];
-                        $brand_id = $returned_rowdata['Brand_ID'];
-
-                        echo "<li class='nav-item m-1 p-1 productcategorylisttile'>
-                    <a href='productshome.php?brandId=$brand_id' class='nav-link text-light'>
-                        <h4> $brand_name</h4>
-                    </a>
-                    </li>";
-                    }
+                    //use common_function
+                     getbrands();
 
                     ?>
 

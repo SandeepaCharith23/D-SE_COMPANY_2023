@@ -24,9 +24,9 @@ let adminloginbutton=document.getElementById('adminloginbutton');
 // //admin login function
 adminloginbutton.addEventListener('click',function(){
     console.log('Insert admin login button'); 
-    window.location.href='maindashboard.php';
+   
     alert("Redirect user to main Dashboard"); 
-
+    window.location.href='maindashboard.php';
 }
 );
 
