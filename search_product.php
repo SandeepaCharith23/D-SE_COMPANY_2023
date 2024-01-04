@@ -39,40 +39,35 @@ include('functions/common_functions.php');
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="nav-item">
+                    <li class="nav-item">
                     <a href="#">Home</a>
-                    </ul>
-                    <ul class="nav-item">
+                    </li>
+                    <li class="nav-item">
                     <a href="display_all_products.php">Our Products</a>
-                    </ul>
-                    <ul class="nav-item">
+                    </li>
+                    <li class="nav-item">
                     <a href="#ourdiscountbannersection">Our Discounts</a>
-                    </ul>
-                    <ul class="nav-item">
+                    </li>
+                    <li class="nav-item">
                     <a href="#advertisements-banners-sec">Our Sponsers</a>
-                    </ul>
+                    </li>
                     
-                    <ul class="nav-item">
+                    <li class="nav-item">
                     <a href="#newsubscription-section">Subscribe Us</a>
-                    </ul>
+                    </li>
 
-                    <ul class="nav-item">
+                    <li class="nav-item">
                     <a href="#newsubscription-section">Our contact details</a>
-                    </ul>
-                    <ul class="nav-item">
+                    </li>
+                    <li class="nav-item">
                     <a href="#advertisements-banners-sec">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        <sup>
-                            <?php
-                            cart_item_count();
-                            
-                            ?>
-                        </sup>
+                        <sup>0</sup>
                     </a>
-                    </ul>
-                    <ul class="nav-item">
+                    </li>
+                    <li class="nav-item">
                     <a href="#advertisements-banners-sec">Total price</a>
-                    </ul>
+                    </li>
                     
                     
                     
@@ -91,21 +86,15 @@ include('functions/common_functions.php');
         </div>
 
 
-        <form action="search_product.php" class="search-form" id="producthomesearchform" method="GET">
+        <form action="" class="search-form" id="producthomesearchform" method="GET">
             <input class="form-control me-2" type="search" name="search_data" placeholder="Search here..." id="search-box" aria-label="Search" style="width: 50%;">
             <!-- <label for="search-box" class="fas fa-search"></label> -->
             <!-- <Button class="btn btn-outline-dark" type="submit">Search</Button> -->
-            <input type="submit" class="btn btn-outline-dark" value="Search" name="search_data_product"style="width: 10%;">
+            <input type="submit" class="btn btn-outline-dark" value="Search" name="search_data_product" style="width: 10%;">
         </form>
 
 
     </header>
-    
-    <!-- execute add to cart function -->
-    <?php
-    add_to_cart();
-    
-    ?>
 
     <div id="headerbanner" class="headerbanner">
 
@@ -128,8 +117,6 @@ include('functions/common_functions.php');
     </div>
 
 
- 
-
     <section class="products-display-section" id="products-display-section">
         <div class="heading">
             <h1>Product Display</h1>
@@ -142,18 +129,12 @@ include('functions/common_functions.php');
                 <!-- products -->
                 <div class="row products-container">
 
-                  
-
                     <!-- fetch all product data from database -->
                     <?php
                     //use common_function
-                    getproducts();
+                    search_product_bysearchbar();
                     get_unique_category_products();
                     get_unique_brand_products();
-                    // getIPAddress();
-
-                    // $ip = getIPAddress();  
-                    // echo 'User Real IP Address - '.$ip; 
                   
                     ?>
 
@@ -358,18 +339,18 @@ include('functions/common_functions.php');
         <a href="#">2</a>
         <a href="#"><i class="fa fa-arrow-right"></i></a>
     </section>
-    
 
-    <!-- display our discounts or any banner -->
-    <section class="banner" id="ourdiscountbannersection">
+    <section class="banner">
         <div class="banner-container" style="background-image: url(images/shopping_banner_small.jpg)">
             <h1>Novembr 11-11 Discount</h1>
             <p>Up to <span>50%</span> off discount for our products,Welcome to the grand celebration of shopping! At our e-commerce store, the excitement is at its peak with our exclusive 11-11 Discount Extravaganza. Prepare to be dazzled as we present an irresistible array of products at unbelievable prices. It's your chance to shop smart, save big, and experience the thrill of unbeatable discounts. This 11-11, make every purchase a celebration with us, where shopping meets savings, and the best deals await you!</p>
             <Button class="button">Explore more</Button>
         </div>
     </section>
+
+    <!-- display our advertisements or our sponsers -->
+
     
-     <!-- display our advertisements or our sponsers -->
     <section class="advertisements-banners-sec" id="advertisements-banners-sec">
         <div class="heading">
             <h1>Our sponsers</h1>

@@ -39,40 +39,35 @@ include('functions/common_functions.php');
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="nav-item">
+                    <li class="nav-item">
                     <a href="#">Home</a>
-                    </ul>
-                    <ul class="nav-item">
+                    </li>
+                    <li class="nav-item">
                     <a href="display_all_products.php">Our Products</a>
-                    </ul>
-                    <ul class="nav-item">
+                    </li>
+                    <li class="nav-item">
                     <a href="#ourdiscountbannersection">Our Discounts</a>
-                    </ul>
-                    <ul class="nav-item">
+                    </li>
+                    <li class="nav-item">
                     <a href="#advertisements-banners-sec">Our Sponsers</a>
-                    </ul>
+                    </li>
                     
-                    <ul class="nav-item">
+                    <li class="nav-item">
                     <a href="#newsubscription-section">Subscribe Us</a>
-                    </ul>
+                    </li>
 
-                    <ul class="nav-item">
+                    <li class="nav-item">
                     <a href="#newsubscription-section">Our contact details</a>
-                    </ul>
-                    <ul class="nav-item">
+                    </li>
+                    <li class="nav-item">
                     <a href="#advertisements-banners-sec">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        <sup>
-                            <?php
-                            cart_item_count();
-                            
-                            ?>
-                        </sup>
+                        <sup>0</sup>
                     </a>
-                    </ul>
-                    <ul class="nav-item">
+                    </li>
+                    <li class="nav-item">
                     <a href="#advertisements-banners-sec">Total price</a>
-                    </ul>
+                    </li>
                     
                     
                     
@@ -100,12 +95,6 @@ include('functions/common_functions.php');
 
 
     </header>
-    
-    <!-- execute add to cart function -->
-    <?php
-    add_to_cart();
-    
-    ?>
 
     <div id="headerbanner" class="headerbanner">
 
@@ -128,8 +117,6 @@ include('functions/common_functions.php');
     </div>
 
 
- 
-
     <section class="products-display-section" id="products-display-section">
         <div class="heading">
             <h1>Product Display</h1>
@@ -142,18 +129,12 @@ include('functions/common_functions.php');
                 <!-- products -->
                 <div class="row products-container">
 
-                  
-
                     <!-- fetch all product data from database -->
                     <?php
                     //use common_function
-                    getproducts();
+                    get_all_products_withoutlimit();
                     get_unique_category_products();
                     get_unique_brand_products();
-                    // getIPAddress();
-
-                    // $ip = getIPAddress();  
-                    // echo 'User Real IP Address - '.$ip; 
                   
                     ?>
 
