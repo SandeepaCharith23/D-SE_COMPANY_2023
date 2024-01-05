@@ -79,7 +79,8 @@
                     <th colspan='2'>Operations</th>
                     </thead>
                     <tbody>";
-
+                        
+                        //display all available product
                         while ($carts_array = mysqli_fetch_array($results_carts)) {
                             $cart_product_id = $carts_array['Product_Id'];
                             $cart_product_quentity = $carts_array['Product_Quentity'];
@@ -89,6 +90,8 @@
 
                             while ($product_details_array = mysqli_fetch_array($product_details_result)) {
                                 //get the unit price of the product and set it into array to store as product_price
+
+                                
                                 $product_price = array($product_details_array['Product_UnitPrice']);
 
                                 //get the product unit price , product name,product image form product result
@@ -108,9 +111,10 @@
                                     <td><?php echo $table_product_name ?></td>
                                     <td><img src="<?php echo 'product_images/' . $table_product_image01 ?>" alt="<?php echo $table_product_image01 ?>" style="width: 50px; height: 50px; object-fit: contain;"></td>
 
-                                    <td><input type="text" value="" class="text-center border form-input" name="entered_product_quentity"></td>
+                                    <td><input type="text" value="<?php echo $cart_product_quentity?>" class="text-center border form-input" name="entered_product_quentity"></td>
                                     <?php
-
+                                    
+                                    ////code
                                     //get the entered quentity and update card_details tables in database
                                     $user_ip_address = getIPAddress();
                                     if (isset($_POST['update_cart'])) {
@@ -121,21 +125,30 @@
                                         // mysqli_query($conn,$update_cart_details_query);
 
                                         // Update database using prepared statement
-                                        $update_cart_details_query = "UPDATE `cart_details` SET Product_Quentity = ? WHERE User_IPaddress = ?";
+                                        $update_cart_details_query = "UPDATE `cart_details` SET Product_Quentity = ? WHERE User_IPaddress = ? AND Product_Id= ? ";
 
                                         $stmt = $conn->prepare($update_cart_details_query);
-                                        $stmt->bind_param('is', $updated_product_quentity, $user_ip_address);
+                                        $stmt->bind_param('isi', $updated_product_quentity, $user_ip_address,$cart_product_id);
                                         $stmt->execute();
 
                                         //update total price
                                         // Convert string variables to numbers (int or float)
-                                        // $table_product_unit_price = floatval($table_product_unit_price);
-                                        // $updated_product_quentity = intval($updated_product_quentity);
+                                        $table_product_unit_price = floatval($table_product_unit_price);
+                                        $updated_product_quentity = intval($updated_product_quentity);
 
                                         // Perform multiplication after converting to numbers
-                                        $Total_cart_price = $Total_cart_price * $updated_product_quentity;
-                                    }
+                                         $Total_cart_price = $Total_cart_price * $updated_product_quentity;
 
+                                        
+                                        echo "<script>window.open('my_cart.php','_self')</script>";
+
+                                       
+
+                                          
+
+                                          
+                                    }
+                                    ////code
 
                                     ?>
                                     <td>Rs.<?php echo "$table_product_unit_price" ?></td>
@@ -161,7 +174,7 @@
                                             function displayRemoveItemMessage() {
                                                 // Display an alert when the button is clicked
                                                 alert('Please select item(s) to remove by checking the checkboxes.');
-                                                
+
                                             }
                                         </script>
 
@@ -233,7 +246,7 @@
                     <a href=''><button class='btn btn-primary mx-2'>Check out</button></a>
                     
                     ";
-            } else{
+            } else {
                 echo "<a href='productshome.php'><button class='btn btn-primary mx-2'>Continue shopping</button></a>";
             }
 
