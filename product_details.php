@@ -28,41 +28,10 @@ include('functions/common_functions.php');
 </head>
 
 <body>
+<?php
+include('includes/headersection01.php');
 
-    <header class="productshomesheader">
-        
-
-        
-        <a href="index.php" class="logo"> <i class="fa fa-cogs"></i> D & SE Company PVT.LTD </a>
-
-        <!-- <nav class="navbar">
-            <a href="#">Home</a>
-            <a href="#products-display-section">Our Products</a>
-            <a href="#advertisements-banners-sec">Our Sponsers</a>
-        </nav> -->
-
-        <!-- <div class="icons">
-      
-        <div id="search-btn" class="fas fa-search"></div>
-        <div id="login-btn" class="fas fa-user"></div>
-        </div> -->
-
-
-        <!-- <form action="" class="search-form">
-            <input type="search" name="" placeholder="Search here..." id="search-box">
-            <label for="search-box" class="fas fa-search"></label>
-            <i class="fas fa-close" id="searchclosebutton"></i>
-        </form> -->
-
-
-    </header>
-
-    <div id="headerbanner" class="headerbanner">
-
-        <h1>Welcome to our online shop</h1>
-        <p>In this stage we expect to display our products only ,Then you can contact us on whatsup and email.</p>
-
-    </div>
+?>
 
 
 

@@ -1,5 +1,5 @@
 
-<footer class="productshomefooter">
+<footer class="productshomefooter border border-3">
 
 <div class="footer-information">
 

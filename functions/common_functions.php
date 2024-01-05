@@ -626,7 +626,7 @@ function add_to_cart(){
 
         else{
             //add product to cart_details
-            $insert_querry="INSERT INTO`cart_details`(Product_Id,User_IPaddress,Product_Quentity) VALUES($added_product_id,'$ip_address',0)";
+            $insert_querry="INSERT INTO`cart_details`(Product_Id,User_IPaddress,Product_Quentity) VALUES($added_product_id,'$ip_address',1)";
         
             //execute
             $result_query=mysqli_query($conn,$insert_querry);

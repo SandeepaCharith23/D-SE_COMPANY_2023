@@ -191,6 +191,22 @@ html {
     }
 }
 
+.buttonstyle01{
+    display: inline-block;
+    padding: 1rem;
+    font-size: 1rem;
+    color: $white;
+    background: $primarycolorlightblue;
+    border: $borderwhite;
+    cursor: pointer;
+    border-radius: 10%;
+
+    &:hover {
+        background-color: $primarycoloryellow;
+    }
+
+}
+
 .line-down {
     position: relative;
     z-index: 0;

@@ -60,7 +60,7 @@ include('functions/common_functions.php');
                     <a href="#newsubscription-section">Our contact details</a>
                     </ul>
                     <ul class="nav-item">
-                    <a href="#advertisements-banners-sec">
+                    <a href="my_cart.php">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         <sup>
                             <?php
@@ -71,7 +71,7 @@ include('functions/common_functions.php');
                     </a>
                     </ul>
                     <ul class="nav-item">
-                    <a href="#advertisements-banners-sec">Total price:
+                    <a href="#">Total price:
                         <?php
                          total_cart_price();
                         
