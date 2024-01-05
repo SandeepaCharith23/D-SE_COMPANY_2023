@@ -71,7 +71,12 @@ include('functions/common_functions.php');
                     </a>
                     </ul>
                     <ul class="nav-item">
-                    <a href="#advertisements-banners-sec">Total price</a>
+                    <a href="#advertisements-banners-sec">Total price:
+                        <?php
+                         total_cart_price();
+                        
+                        ?>
+                    </a>
                     </ul>
                     
                     
