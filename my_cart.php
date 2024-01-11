@@ -239,7 +239,7 @@
                      <input type='submit' value='Continue Shopping' class='bg-info px-3 py-2 border mx-3' name='continue_shopping'>
                     <button class='btn btn-primary px-3 mx-3'><a href='' class='text-light text-decoration-none'>Continue Shopping</a></button>
                     
-                    <button class='btn btn-primary px-3 mx-3'><a href='checkout.php' class='text-light text-decoration-none'>Check out</a></button>
+                    <button class='btn btn-primary px-3 mx-3'><a href='user_area/checkout.php' class='text-light text-decoration-none'>Check out</a></button>
                     
                     ";
             } else {

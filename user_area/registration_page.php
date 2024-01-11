@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-include('includes/connection.php');
+include('../includes/connection.php');
 
 ?>
 
@@ -17,7 +17,7 @@ include('includes/connection.php');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <!-- link the css file link -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <link rel="stylesheet" href="fonts/Italianno-Regular.ttf">
 
@@ -126,8 +126,10 @@ include('includes/connection.php');
                     </div>
 
                     <div class="mb-4  m-auto small fw-bold">
-                        <p>Already have an account ? <a href="user_area/login_page.php">Login here</a></p>
+                        <p>Already have an account ? <a href="login_page.php">Login here</a></p>
                     </div>
+
+
 
                     <script>
                         document.getElementById('user_mobilenumber').addEventListener('input', function() {
@@ -175,9 +177,13 @@ include('includes/connection.php');
             </div>
 
             </form>
+
+
         </div>
     </div>
     </div>
+
+    
 
 
 

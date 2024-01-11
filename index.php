@@ -47,7 +47,7 @@
             <i class="fas fa-close" id="searchbarclosebutton"></i>
         </form>
 
-        <form action="" class="login-form">
+        <form action="maindashboard.php" class="login-form">
             <div class="login-heading">
                 <h3>Login for Admin </h3> <span class="close-button" id="close-button"> <i class="fa fa-close"></i></span>
             </div>
@@ -59,8 +59,8 @@
                 <a href="#">Forget password</a>
             </div>
 
-            <input type="submit" value="login" class="button" id="adminloginbutton">
-            <p>Don't have an account <a href="maindashboard.php">Create new Account</a></p>
+           <a href="maindashboard.php"><input type="submit" value="login" class="button" id="adminloginbutton" ></a> 
+            <p>Don't have an account <a href="user_area/registration_page.php">Create new Account</a></p>
         </form>
 
         <!-- sign-Up Screen -->
