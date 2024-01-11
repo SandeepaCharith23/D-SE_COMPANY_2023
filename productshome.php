@@ -40,51 +40,51 @@ include('functions/common_functions.php');
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav-item">
-                    <a href="#">Home</a>
+                        <a href="#">Home</a>
                     </ul>
                     <ul class="nav-item">
-                    <a href="display_all_products.php">Our Products</a>
+                        <a href="display_all_products.php">Our Products</a>
                     </ul>
                     <ul class="nav-item">
-                    <a href="#ourdiscountbannersection">Our Discounts</a>
+                        <a href="#ourdiscountbannersection">Our Discounts</a>
                     </ul>
                     <ul class="nav-item">
-                    <a href="#advertisements-banners-sec">Our Sponsers</a>
-                    </ul>
-                    
-                    <ul class="nav-item">
-                    <a href="#newsubscription-section">Subscribe Us</a>
+                        <a href="#advertisements-banners-sec">Our Sponsers</a>
                     </ul>
 
                     <ul class="nav-item">
-                    <a href="#newsubscription-section">Our contact details</a>
+                        <a href="#newsubscription-section">Subscribe Us</a>
+                    </ul>
+
+                    <ul class="nav-item">
+                        <a href="#newsubscription-section">Our contact details</a>
                     </ul>
                     <ul class="nav-item">
-                    <a href="my_cart.php">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        <sup>
+                        <a href="my_cart.php">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            <sup>
+                                <?php
+                                cart_item_count();
+
+                                ?>
+                            </sup>
+                        </a>
+                    </ul>
+                    <ul class="nav-item">
+                        <a href="#">Total price:
                             <?php
-                            cart_item_count();
-                            
+                            total_cart_price();
+
                             ?>
-                        </sup>
-                    </a>
+                        </a>
                     </ul>
-                    <ul class="nav-item">
-                    <a href="#">Total price:
-                        <?php
-                         total_cart_price();
-                        
-                        ?>
-                    </a>
-                    </ul>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+
+
+
+
+
+
+
                 </div>
             </div>
         </nav>
@@ -100,16 +100,16 @@ include('functions/common_functions.php');
             <input class="form-control me-2" type="search" name="search_data" placeholder="Search here..." id="search-box" aria-label="Search" style="width: 50%;">
             <!-- <label for="search-box" class="fas fa-search"></label> -->
             <!-- <Button class="btn btn-outline-dark" type="submit">Search</Button> -->
-            <input type="submit" class="btn btn-outline-dark" value="Search" name="search_data_product"style="width: 10%;">
+            <input type="submit" class="btn btn-outline-dark" value="Search" name="search_data_product" style="width: 10%;">
         </form>
 
 
     </header>
-    
+
     <!-- execute add to cart function -->
     <?php
     add_to_cart();
-    
+
     ?>
 
     <div id="headerbanner" class="headerbanner">
@@ -133,7 +133,7 @@ include('functions/common_functions.php');
     </div>
 
 
- 
+
 
     <section class="products-display-section" id="products-display-section">
         <div class="heading">
@@ -147,7 +147,7 @@ include('functions/common_functions.php');
                 <!-- products -->
                 <div class="row products-container">
 
-                  
+
 
                     <!-- fetch all product data from database -->
                     <?php
@@ -159,7 +159,7 @@ include('functions/common_functions.php');
 
                     // $ip = getIPAddress();  
                     // echo 'User Real IP Address - '.$ip; 
-                  
+
                     ?>
 
                     <!-- product tile -->
@@ -330,7 +330,7 @@ include('functions/common_functions.php');
 
                 <ul class="navbar-nav me-auto text-center ">
                     <?php
-                    
+
                     //use common_function
                     getcategories();
 
@@ -344,7 +344,7 @@ include('functions/common_functions.php');
 
                     <?php
                     //use common_function
-                     getbrands();
+                    getbrands();
 
                     ?>
 
@@ -363,7 +363,7 @@ include('functions/common_functions.php');
         <a href="#">2</a>
         <a href="#"><i class="fa fa-arrow-right"></i></a>
     </section>
-    
+
 
     <!-- display our discounts or any banner -->
     <section class="banner" id="ourdiscountbannersection">
@@ -373,8 +373,8 @@ include('functions/common_functions.php');
             <Button class="button">Explore more</Button>
         </div>
     </section>
-    
-     <!-- display our advertisements or our sponsers -->
+
+    <!-- display our advertisements or our sponsers -->
     <section class="advertisements-banners-sec" id="advertisements-banners-sec">
         <div class="heading">
             <h1>Our sponsers</h1>
@@ -412,7 +412,7 @@ include('functions/common_functions.php');
             </div>
         </div>
     </section>
-    
+
 
     <!-- subscribe new customers -->
     <section class="newsubscription-section" id="newsubscription-section">
@@ -433,11 +433,11 @@ include('functions/common_functions.php');
 
         </div>
     </section>
-     
+
     <!-- include footer -->
     <?php
     include('includes/footer.php');
-    
+
     ?>
 
     <!-- link custom js file -->

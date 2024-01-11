@@ -1,9 +1,30 @@
 <?php
 
-define('DB_HOST','localhost:3308');
-define('DB_USER','Sandeepa_Charith');
-define('DB_PASS','123456');
-define('DB_NAME','d&secompany');
+if (!defined('DB_HOST')) {
+    // DB_HOST constant is not defined
+    define('DB_HOST', 'localhost:3308');
+}
+
+if (!defined('DB_USER')) {
+    // DB_USER constant is not defined
+    define('DB_USER', 'Sandeepa_Charith');
+}
+
+if (!defined('DB_PASS')) {
+    // DB_PASS constant is not defined
+    define('DB_PASS', '123456');
+}
+
+if (!defined('DB_NAME')) {
+    // DB_NAME constant is not defined
+    define('DB_NAME', 'd&secompany');
+}
+
+
+// define('DB_HOST','localhost:3308');
+// define('DB_USER','Sandeepa_Charith');
+// define('DB_PASS','123456');
+// define('DB_NAME','d&secompany');
 // define('DB_PORT',3308);
 
 try{
