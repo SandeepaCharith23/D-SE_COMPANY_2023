@@ -3,6 +3,7 @@
 
 <?php
 include('../includes/connection.php');
+//include('../functions/common_functions.php');
 
 ?>
 
@@ -10,6 +11,9 @@ include('../includes/connection.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration Page</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 
     <!-- link font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -31,8 +35,12 @@ include('../includes/connection.php');
     <div class="container-fluid m-3">
         <h2 class="text-center">New User Registration</h2>
         <div class="row justify-content-center ">
+            <div id="loadingOverlay">
+                <div class="spinner"></div>
+            </div>
+
             <div class="col-lg-11 col-xl-9">
-                <form action="" class="signUp-form-style" method="POST" enctype="multipart/form-data">
+                <form id="sign_up_Form01" action="" class="signUp-form-style" method="POST" enctype="multipart/form-data">
                     <div class="row p-2 mb-3 mx-2 form-outline border">
                         <label for="user_name" class="col-sm-3 col-form-label bg-light">User name</label>
                         <div class="col-sm-9">
@@ -111,7 +119,7 @@ include('../includes/connection.php');
 
                     <div class="row p-2 mb-3 mx-2 form-outline border">
                         <label for="imageInput" class="form-label">Select Profile Image:</label>
-                        <input type="file" class="form-control mb-1" id="image01" name="image01" required>
+                        <input type="file" class="form-control mb-1" id="image01" name="userimage01" required>
                     </div>
 
 
@@ -130,50 +138,6 @@ include('../includes/connection.php');
                     </div>
 
 
-
-                    <script>
-                        document.getElementById('user_mobilenumber').addEventListener('input', function() {
-
-                            let phoneinput = document.getElementById('user_mobilenumber');
-                            let phoneErrrorMsg = document.getElementById('userphoneerror');
-
-                            let phonenumberpattern = /^\+94[0-9]{9}$/;
-
-                            if (!phonenumberpattern.test(phoneinput.value)) {
-                                phoneErrrorMsg.textContent('Please enter a valid phone number starting with +94 and followed by 9 digits.');
-                                phoneinput.setCustomValidity('Invalid phone number');
-
-                            } else {
-                                phoneErrrorMsg.textContent = '';
-                                phoneInput.setCustomValidity('Corrected');
-                            }
-
-                        });
-
-                        let togglepassword = document.getElementById('togglePassword');
-                        let passwordinput = document.getElementById('user_password');
-
-                        togglepassword.addEventListener('click', function() {
-                            const typeofthepassword = passwordinput.getAttribute('type') === 'password' ? 'text' : 'password';
-                            passwordinput.setAttribute('type', typeofthepassword);
-                            this.querySelector('i').classList.toggle('fa-eye-slash');
-                            this.querySelector('i').classList.toggle('fa-eye');
-                        });
-
-                        let togglepassword1 = document.getElementById('togglePassword1');
-                        let passwordinput1 = document.getElementById('user_confirm_password');
-
-                        togglepassword1.addEventListener('click', function() {
-                            const typeofthepassword = passwordinput1.getAttribute('type') === 'password' ? 'text' : 'password';
-                            passwordinput1.setAttribute('type', typeofthepassword);
-                            this.querySelector('i').classList.toggle('fa-eye-slash');
-                            this.querySelector('i').classList.toggle('fa-eye');
-                        });
-                    </script>
-
-
-
-
             </div>
 
             </form>
@@ -182,6 +146,92 @@ include('../includes/connection.php');
         </div>
     </div>
     </div>
+
+    <script>
+        document.getElementById('user_mobilenumber').addEventListener('input', function() {
+
+            let phoneinput = document.getElementById('user_mobilenumber');
+            let phoneErrrorMsg = document.getElementById('userphoneerror');
+
+            let phonenumberpattern = /^\+94[0-9]{9}$/;
+
+            if (!phonenumberpattern.test(phoneinput.value)) {
+                phoneErrrorMsg.textContent('Please enter a valid phone number starting with +94 and followed by 9 digits.');
+                phoneinput.setCustomValidity('Invalid phone number');
+
+            } else {
+                phoneErrrorMsg.textContent = '';
+                phoneInput.setCustomValidity('Corrected');
+            }
+
+        });
+
+        let togglepassword = document.getElementById('togglePassword');
+        let passwordinput = document.getElementById('user_password');
+
+        togglepassword.addEventListener('click', function() {
+            const typeofthepassword = passwordinput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordinput.setAttribute('type', typeofthepassword);
+            this.querySelector('i').classList.toggle('fa-eye-slash');
+            this.querySelector('i').classList.toggle('fa-eye');
+        });
+
+        let togglepassword1 = document.getElementById('togglePassword1');
+        let passwordinput1 = document.getElementById('user_confirm_password');
+
+        togglepassword1.addEventListener('click', function() {
+            const typeofthepassword = passwordinput1.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordinput1.setAttribute('type', typeofthepassword);
+            this.querySelector('i').classList.toggle('fa-eye-slash');
+            this.querySelector('i').classList.toggle('fa-eye');
+        });
+
+
+
+        //Add a progress bar when user click sign-up-button
+        // $(document).ready(function() {
+        //     // Code inside this block will run when the DOM is fully loaded
+        //     $("#sign_up_Form01").submit(function(e) {
+        //         e.preventDefault(); // Prevent the form from submitting in the traditional way
+
+        //         // Show loading overlay
+        //         $("#loadingOverlay").show();
+
+        //         // Perform AJAX request
+        //         $.ajax({
+        //             url: "registration_page.php", // Replace with the actual path to your PHP file
+        //             type: "post",
+        //             data: new FormData(this),
+        //             contentType: false,
+        //             cache: false,
+        //             processData: false,
+        //             dataType: "json",
+        //             success: function(response) {
+        //                 // Handle the response from the server
+        //                 if (response.success) {
+        //                     alert("Success: " + response.message);
+        //                     // Redirect or update UI as needed
+        //                 } else {
+        //                     alert("Error: " + response.message);
+        //                     // Handle errors or display appropriate messages
+        //                 }
+        //             },
+        //             error: function(xhr, ajaxOptions, thrownError) {
+        //                 alert("AJAX request failed: " + thrownError);
+        //                 // Handle AJAX errors
+        //             },
+        //             complete: function() {
+        //                 // Hide loading overlay
+        //                 $("#loadingOverlay").hide();
+        //             }
+        //         });
+        //     });
+        // });
+
+
+
+        ////////////
+    </script>
 
     
 
@@ -192,3 +242,51 @@ include('../includes/connection.php');
 
 
 </html>
+
+<?php
+if (isset($_POST['sign_up_button'])) {
+
+
+    $EntereduserName = $_POST['username'];
+    $EntereduserPassword = $_POST['userpassword'];
+    $EntereduseerConfirmPassword = $_POST['userconfirmpassword'];
+    $EntereduserFirstName = $_POST['userfirstname'];
+    $EntereduserLastName = $_POST['userlastname'];
+    $EntereduserEmailAddress = $_POST['useremailaddress'];
+    $EntereduserMobileNumber = $_POST['usermobilenumber'];
+    $EntereduserAddress = $_POST['useraddress'];
+    $EntereduserImagename = $_FILES['userimage01']['name'];
+    $EntereduserImagetempname = $_FILES['userimage01']['tmp_name'];
+
+    $userIPAddress = getIPAddress();
+    move_uploaded_file($EntereduserImagetempname, "../images/profileimages/$EntereduserImagename");
+    global $conn;
+
+    $insertAccountDetailsquerry = "INSERT INTO `user_table`(User_Name,User_Password, User_Email,User_FirstName,User_LastName,User_Address, User_MobilePhone,User_ProfileImage,User_IPaddress) VALUES ('$EntereduserName','$EntereduserPassword','$EntereduserEmailAddress','$EntereduserFirstName','$EntereduserLastName','$EntereduserAddress','$EntereduserMobileNumber','$EntereduserImagename','$userIPAddress')";
+    $execute_querry01 = mysqli_query($conn, $insertAccountDetailsquerry);
+    if ($execute_querry01) {
+        // PHP code executed successfully
+        // $response = array(
+        //     'success' => true,
+        //     'message' => 'Saved to Database'
+        // );
+
+        echo "<script>alert('Save to DB')</script>";
+    } else {
+        // PHP code execution failed
+        // $response = array(
+        //     'success' => false,
+        //     'message' => mysqli_errno($conn)
+        // );
+
+        echo "<script>alert('Error to DB')</script>";
+    }
+
+    // Send JSON response back to the client
+    // header('Content-Type: application/json');
+    // echo json_encode($response);
+    exit();
+}
+
+
+?>
