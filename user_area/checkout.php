@@ -31,7 +31,7 @@ include('../functions/common_functions.php');
     <header class="productshomesheader border">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand logo" href="index.php" class="logo"> <i class="fa fa-cogs"></i> D & SE Company PVT.LTD </a>
+                <a class="navbar-brand logo" href="../index.php" class="logo"> <i class="fa fa-cogs"></i> D & SE Company PVT.LTD </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

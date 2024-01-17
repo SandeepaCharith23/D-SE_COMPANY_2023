@@ -188,52 +188,13 @@ include('../includes/connection.php');
 
 
 
-        //Add a progress bar when user click sign-up-button
-        // $(document).ready(function() {
-        //     // Code inside this block will run when the DOM is fully loaded
-        //     $("#sign_up_Form01").submit(function(e) {
-        //         e.preventDefault(); // Prevent the form from submitting in the traditional way
-
-        //         // Show loading overlay
-        //         $("#loadingOverlay").show();
-
-        //         // Perform AJAX request
-        //         $.ajax({
-        //             url: "registration_page.php", // Replace with the actual path to your PHP file
-        //             type: "post",
-        //             data: new FormData(this),
-        //             contentType: false,
-        //             cache: false,
-        //             processData: false,
-        //             dataType: "json",
-        //             success: function(response) {
-        //                 // Handle the response from the server
-        //                 if (response.success) {
-        //                     alert("Success: " + response.message);
-        //                     // Redirect or update UI as needed
-        //                 } else {
-        //                     alert("Error: " + response.message);
-        //                     // Handle errors or display appropriate messages
-        //                 }
-        //             },
-        //             error: function(xhr, ajaxOptions, thrownError) {
-        //                 alert("AJAX request failed: " + thrownError);
-        //                 // Handle AJAX errors
-        //             },
-        //             complete: function() {
-        //                 // Hide loading overlay
-        //                 $("#loadingOverlay").hide();
-        //             }
-        //         });
-        //     });
-        // });
-
+        
 
 
         ////////////
     </script>
 
-    
+
 
 
 
@@ -244,49 +205,48 @@ include('../includes/connection.php');
 </html>
 
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Include database connection code or initialize $conn properly
+
 if (isset($_POST['sign_up_button'])) {
-
-
     $EntereduserName = $_POST['username'];
-    $EntereduserPassword = $_POST['userpassword'];
-    $EntereduseerConfirmPassword = $_POST['userconfirmpassword'];
+    $EntereduserPassword = password_hash($_POST['userpassword'], PASSWORD_DEFAULT); // Hash the password
+    $EntereduserEmailAddress = $_POST['useremailaddress'];
     $EntereduserFirstName = $_POST['userfirstname'];
     $EntereduserLastName = $_POST['userlastname'];
-    $EntereduserEmailAddress = $_POST['useremailaddress'];
-    $EntereduserMobileNumber = $_POST['usermobilenumber'];
     $EntereduserAddress = $_POST['useraddress'];
+    $EntereduserMobileNumber = $_POST['usermobilenumber'];
+
+    // File upload handling
     $EntereduserImagename = $_FILES['userimage01']['name'];
     $EntereduserImagetempname = $_FILES['userimage01']['tmp_name'];
+    $imageUploadPath = "../images/profileimages/";
 
-    $userIPAddress = getIPAddress();
-    move_uploaded_file($EntereduserImagetempname, "../images/profileimages/$EntereduserImagename");
-    global $conn;
-
-    $insertAccountDetailsquerry = "INSERT INTO `user_table`(User_Name,User_Password, User_Email,User_FirstName,User_LastName,User_Address, User_MobilePhone,User_ProfileImage,User_IPaddress) VALUES ('$EntereduserName','$EntereduserPassword','$EntereduserEmailAddress','$EntereduserFirstName','$EntereduserLastName','$EntereduserAddress','$EntereduserMobileNumber','$EntereduserImagename','$userIPAddress')";
-    $execute_querry01 = mysqli_query($conn, $insertAccountDetailsquerry);
-    if ($execute_querry01) {
-        // PHP code executed successfully
-        // $response = array(
-        //     'success' => true,
-        //     'message' => 'Saved to Database'
-        // );
-
-        echo "<script>alert('Save to DB')</script>";
+    // Validate and move uploaded file
+    if (move_uploaded_file($EntereduserImagetempname, $imageUploadPath . $EntereduserImagename)) {
+        // File upload successful
     } else {
-        // PHP code execution failed
-        // $response = array(
-        //     'success' => false,
-        //     'message' => mysqli_errno($conn)
-        // );
-
-        echo "<script>alert('Error to DB')</script>";
+        echo "<script>alert('Error uploading file')</script>";
+        // You might want to exit or redirect the user here
     }
 
-    // Send JSON response back to the client
-    // header('Content-Type: application/json');
-    // echo json_encode($response);
-    exit();
+    $userIPAddress = getIPAddress();
+
+    // Use prepared statements to prevent SQL injection
+    $insertAccountDetailsquery = "INSERT INTO `user_table` (User_Name, User_Password, User_Email, User_FirstName, User_LastName, User_Address, User_MobilePhone, User_ProfileImage, User_IPaddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $insertAccountDetailsquery);
+    
+    // Bind parameters and execute query
+    mysqli_stmt_bind_param($stmt, "sssssssss", $EntereduserName, $EntereduserPassword, $EntereduserEmailAddress, $EntereduserFirstName, $EntereduserLastName, $EntereduserAddress, $EntereduserMobileNumber, $EntereduserImagename, $userIPAddress);
+
+    if (mysqli_stmt_execute($stmt)) {
+        echo "<script>alert('Saved to Database')</script>";
+    } else {
+        echo "<script>alert('Error: " . mysqli_stmt_error($stmt) . "')</script>";
+    }
+
+    mysqli_stmt_close($stmt);
 }
-
-
 ?>
