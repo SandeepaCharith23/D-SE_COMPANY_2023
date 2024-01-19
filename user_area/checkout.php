@@ -3,6 +3,7 @@ include('../includes/connection.php');
 
 include('../functions/common_functions.php');
 
+
 ?>
 
 
@@ -12,14 +13,14 @@ include('../functions/common_functions.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Shop</title>
+    <title>D & SE Company</title>
     <!-- link font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!--Link custom css file for slider-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <!-- link the css file link -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <!-- link bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -100,12 +101,13 @@ include('../functions/common_functions.php');
         <div class="col-md-12">
             <div class="row">
                 <?php
-                if (isset($_SESSION['username'])) {
+                if (!isset($_SESSION['username'])) {
                     //if user doesnot login
                     include('login_page.php');
                 } else {
-                    echo "Please login again to continue shopping";
-                    include('registration_page.php');
+                    //echo "Please login again to continue shopping";
+                    include('payment_page.php');
+                   //include('registration_page.php.');
                 }
 
                 ?>
@@ -198,7 +200,7 @@ include('../functions/common_functions.php');
 </footer>
  
     <!-- link custom js file -->
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 
 </html>

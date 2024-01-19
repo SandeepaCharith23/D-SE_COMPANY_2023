@@ -1,5 +1,6 @@
 <?php
 include('includes/connection.php');
+include('functions/ipaddress.php');
 include('functions/common_functions.php');
 
 ?>

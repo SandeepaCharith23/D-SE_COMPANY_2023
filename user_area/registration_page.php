@@ -3,7 +3,8 @@
 
 <?php
 include('../includes/connection.php');
-//include('../functions/common_functions.php');
+include('../functions/ipaddress.php');
+
 
 ?>
 
@@ -12,7 +13,7 @@ include('../includes/connection.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration Page</title>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 
 
     <!-- link font awesome -->
@@ -23,11 +24,22 @@ include('../includes/connection.php');
     <!-- link the css file link -->
     <link rel="stylesheet" href="../css/style.css">
 
-    <link rel="stylesheet" href="fonts/Italianno-Regular.ttf">
+    <link rel="stylesheet" href="../fonts/Italianno-Regular.ttf">
 
     <!-- link bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
 </head>
 
 <body>
@@ -35,10 +47,12 @@ include('../includes/connection.php');
     <div class="container-fluid m-3">
         <h2 class="text-center">New User Registration</h2>
         <div class="row justify-content-center ">
-            <div id="loadingOverlay">
-                <div class="spinner"></div>
+            <div id="progressIndicator" style="display: none;">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p>Saving to Database...</p>
             </div>
-
             <div class="col-lg-11 col-xl-9">
                 <form id="sign_up_Form01" action="" class="signUp-form-style" method="POST" enctype="multipart/form-data">
                     <div class="row p-2 mb-3 mx-2 form-outline border">
@@ -73,7 +87,7 @@ include('../includes/connection.php');
                                 </button>
                             </div>
 
-                            <div id="userpassworderror" class="text-info"> Please re-enter your password to confirm it matches the one above.</div>
+                            <div id="userpassworderror1" class="text-info"> Please re-enter your password to confirm it matches the one above.</div>
                         </div>
                     </div>
 
@@ -147,6 +161,30 @@ include('../includes/connection.php');
     </div>
     </div>
 
+
+    <!-- Bootstrap Alert Modal -->
+    <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="alertModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Content will be dynamically set -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <script>
         document.getElementById('user_mobilenumber').addEventListener('input', function() {
 
@@ -161,7 +199,9 @@ include('../includes/connection.php');
 
             } else {
                 phoneErrrorMsg.textContent = '';
-                phoneInput.setCustomValidity('Corrected');
+                phoneinput.setCustomValidity('');
+
+
             }
 
         });
@@ -185,14 +225,129 @@ include('../includes/connection.php');
             this.querySelector('i').classList.toggle('fa-eye-slash');
             this.querySelector('i').classList.toggle('fa-eye');
         });
+        ////////////////////
+        //compare password and confirm password fields 
+        document.getElementById('user_confirm_password').addEventListener('input', function() {
+
+            //display error msg-where to display msg 
+            let msgcontainer = document.getElementById('userpassworderror1');
+
+            // Retrieve the values of password and confirm password
+            let passwordValue = document.getElementById('user_password').value;
+            let confirmPasswordValue = this.value; // 'this' refers to the confirm password input field
+
+            //compare the two values
+            if (passwordValue === confirmPasswordValue) {
+                msgcontainer.textContent = 'Password Matches'
+
+            } else {
+                msgcontainer.textContent = 'Password doesnot Matches,Please type again'
+                msgcontainer.style.color = 'red';
+            }
+        });
 
 
-
-        
-
-
+        /////////////////
+        function clearForm() {
+            // Clear all input fields in the form
+            document.getElementById("sign_up_Form01").reset();
+            //console msg
+            console.log('clear forms');
+        }
         ////////////
+        // Add a function to show the progress indicator
+        // function showProgressIndiactor(){
+        //     document.getElementById('progressIndicator').style.display='block';
+        // }
+
+        // Add a function to hide the progress indicator
+        //   function hideProgressIndicator() {
+        //     document.getElementById('progressIndicator').style.display = 'none';
+        // }
+
+        // document.getElementById('sign_up_Form01').addEventListener('submit',function(event){
+        //     event.preventDefault(); // Prevent the form from submitting immediately
+
+        //     // Show the progress indicator
+        //     showProgressIndicator();
+
+        //     //
+
+        //     // Hide the progress indicator after the form submission is complete
+        //     // You may need to adjust the timing based on your actual form submission logic
+        //     setTimeout(function () {
+        //         hideProgressIndicator();
+        //     }, 2000);
+        // })
+
+        //display Toast message using Js tostify-js
+        // Display Toast message using Js Toastify-js
+        function showToast(message, type) {
+            Toastify({
+                text: message,
+                duration: 3000,
+                gravity: 'top',
+                position: 'center',
+                style: {
+                    background: type === 'success' ? '#28a745' : '#dc3545'
+                }
+            }).showToast();
+
+            // Show the success modal
+            if (type === 'success') {
+                // $('#alertModal').modal('show');
+            }
+        };
+
+        //function for bootstrap modal-showAlertModal 
+        function showAlertModal(message, type) {
+            // Get the modal element
+            var modal = $('#alertModal');
+
+            // Set modal content based on the type (success or error)
+            if (type === 'success') {
+                modal.find('.modal-title').text('Success');
+                modal.find('.modal-body').text(message);
+            } else if (type === 'error') {
+                modal.find('.modal-title').text('Error');
+                modal.find('.modal-body').text(message);
+            }
+
+            // Show the modal using Bootstrap's modal() function
+            $('#alertModal').modal('show');
+            // jQuery('#alertModal').modal('show');
+
+
+        }
+
+        //End of function for bootstrap modal-showAlertModal 
     </script>
+
+    <style>
+        .toastify {
+            border: 2px solid #000;
+            /* Set border properties */
+            border-radius: 8px;
+            /* Optional: Add border-radius for rounded corners */
+            text-align: center;
+            align-items: center;
+            height: 20vh;
+            padding: 15px;
+            /* Add padding for better visual appearance */
+            font-family: 'Arial', sans-serif;
+            /* Optional: Set font-family */
+            font-size: 14px;
+            /* Optional: Set font size */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Optional: Add a subtle box shadow */
+            background-color: #fff;
+            /* Optional: Set background color */
+            color: #333;
+            /* Optional: Set text color */
+        }
+    </style>
+
+
 
 
 
@@ -205,14 +360,24 @@ include('../includes/connection.php');
 </html>
 
 <?php
+//session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Include database connection code or initialize $conn properly
-
+global $conn;
 if (isset($_POST['sign_up_button'])) {
+
+    echo "<script>console.log('Inside sign up button function and form submitted');</script>";
+
     $EntereduserName = $_POST['username'];
-    $EntereduserPassword = password_hash($_POST['userpassword'], PASSWORD_DEFAULT); // Hash the password
+    $EntereduserPasswordwithouthash = $_POST['userpassword'];
+    $EntereduserConfirmedPasswordwithouthash = $_POST['userconfirmpassword'];
+    $EntereduserPassword = password_hash($EntereduserPasswordwithouthash, PASSWORD_DEFAULT); // Hash the password
+    // $EntereduserConfirmedPassword = password_hash($EntereduserConfirmedPasswordwithouthash, PASSWORD_DEFAULT); // Hash the password
+    echo "<script>console.log($EntereduserPasswordwithouthash);</script>";
+
+
     $EntereduserEmailAddress = $_POST['useremailaddress'];
     $EntereduserFirstName = $_POST['userfirstname'];
     $EntereduserLastName = $_POST['userlastname'];
@@ -224,29 +389,74 @@ if (isset($_POST['sign_up_button'])) {
     $EntereduserImagetempname = $_FILES['userimage01']['tmp_name'];
     $imageUploadPath = "../images/profileimages/";
 
-    // Validate and move uploaded file
-    if (move_uploaded_file($EntereduserImagetempname, $imageUploadPath . $EntereduserImagename)) {
-        // File upload successful
+    echo "<script>console.log('Data loaded');</script>";
+
+    //check the data already available in DB
+    $select_querry = "SELECT * FROM `user_table` WHERE User_Email='$EntereduserEmailAddress' AND User_Name='$EntereduserName' ";
+    $results_sets_fromdb = mysqli_query($conn, $select_querry);
+    $results_rows = mysqli_num_rows($results_sets_fromdb);
+
+    if ($results_rows > 0) {
+        echo '<script>showToast("User Email address and Username already inserted,Please use another email address", "error");</script>';
+        //echo "<script> showAlertModal('User Email address and Username already inserted,Please use another email address', 'error');</script>";
+    } else if ($EntereduserPasswordwithouthash != $EntereduserConfirmedPasswordwithouthash) {
+        echo '<script>showToast("Passwords doesnot match", "error");</script>';
+        echo "<script>console.log('Error in Password ' + '" . $EntereduserPasswordwithouthash . "' + ' And ' + '" . $EntereduserConfirmedPasswordwithouthash . "');</script>";
     } else {
-        echo "<script>alert('Error uploading file')</script>";
-        // You might want to exit or redirect the user here
+
+
+        // Validate and move uploaded file
+        if (move_uploaded_file($EntereduserImagetempname, $imageUploadPath . $EntereduserImagename)) {
+            // File upload successful
+            echo "<script>console.log('Image  loaded');</script>";
+        } else {
+            echo "<script>alert('Error uploading file')</>";
+            // You might want to exit or redirect the user here
+        }
+
+        //Get the Ip address of Client
+        $userIPAddress = getIPAddress1();
+        echo "<script>console.log('Ip address collected');</script>";
+
+
+        // Use prepared statements to prevent SQL injection
+        $insertAccountDetailsquery = "INSERT INTO `user_table` (User_Name, User_Password, User_Email, User_FirstName, User_LastName, User_Address, User_MobilePhone, User_ProfileImage, User_IPaddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = mysqli_prepare($conn, $insertAccountDetailsquery);
+        echo "<script>console.log('mysqli_prepare done');</script>";
+
+        // Bind parameters and execute query
+        mysqli_stmt_bind_param($stmt, "sssssssss", $EntereduserName, $EntereduserPassword, $EntereduserEmailAddress, $EntereduserFirstName, $EntereduserLastName, $EntereduserAddress, $EntereduserMobileNumber, $EntereduserImagename, $userIPAddress);
+        echo "<script>console.log('Added querry');</script>";
+        if (mysqli_stmt_execute($stmt)) {
+            // echo "<script>alert('Saved to Database')</script>";
+            echo '<script>showToast("Successfully save user Data", "success");</script>';
+            //echo "<script>showAlertModal('User data saved successfully!', 'success');</script>";
+            echo "<script>clearForm();</script>"; // Call JavaScript function to clear form
+            echo "<script>console.log('User registration function completed successfully');</script>"; // Log message to the browser console
+
+
+        } else {
+            echo "<script>alert('Error: " . mysqli_stmt_error($stmt) . "')</script>";
+        }
+
+        //mysqli_stmt_close($stmt);
+
+
+        //checking available cart items -When user click items and add to cart before login to system
+        $select_cart_items="SELECT * FROM `cart_details` WHERE  User_IPaddress='$userIPAddress'";
+        $results_available_carts=mysqli_query($conn,$select_cart_items);
+        if(mysqli_num_rows($results_available_carts)>0){
+
+            //add a session variable -username
+            $_SESSION['username']=$EntereduserName;
+            echo "<script>console.log('Session variable saved');</script>";
+            echo"<script>console.log($_SESSION[username]);</script>";
+            echo "<script>alert('You have few available items in your cart,Please Check out these Items')</script>";
+            echo"<script>window.open('checkout.php','_self')</script>";
+        }else{
+            //redirect user to products home page
+            echo"<script>window.open('productshome.php','_self')</script>";
+        }
     }
-
-    $userIPAddress = getIPAddress();
-
-    // Use prepared statements to prevent SQL injection
-    $insertAccountDetailsquery = "INSERT INTO `user_table` (User_Name, User_Password, User_Email, User_FirstName, User_LastName, User_Address, User_MobilePhone, User_ProfileImage, User_IPaddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    $stmt = mysqli_prepare($conn, $insertAccountDetailsquery);
-    
-    // Bind parameters and execute query
-    mysqli_stmt_bind_param($stmt, "sssssssss", $EntereduserName, $EntereduserPassword, $EntereduserEmailAddress, $EntereduserFirstName, $EntereduserLastName, $EntereduserAddress, $EntereduserMobileNumber, $EntereduserImagename, $userIPAddress);
-
-    if (mysqli_stmt_execute($stmt)) {
-        echo "<script>alert('Saved to Database')</script>";
-    } else {
-        echo "<script>alert('Error: " . mysqli_stmt_error($stmt) . "')</script>";
-    }
-
-    mysqli_stmt_close($stmt);
 }
 ?>

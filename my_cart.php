@@ -26,7 +26,9 @@
     <?php
     include('includes/connection.php');
     include('includes/headersection01.php');
+    include('functions/ipaddress.php');
     include('functions/common_functions.php');
+   
 
     ?>
 
@@ -236,14 +238,14 @@
             if ($data_row_count > 0) {
                 echo "
                     <h4 class='px-3'>Sub Total:RS <strong> $Total_cart_price/=</strong></h4>
-                     <input type='submit' value='Continue Shopping' class='bg-info px-3 py-2 border mx-3' name='continue_shopping'>
-                    <button class='btn btn-primary px-3 mx-3'><a href='' class='text-light text-decoration-none'>Continue Shopping</a></button>
+                    
+                    <button class='btn btn-primary px-3 mx-3'><a href='productshome.php' class='text-light text-decoration-none'>Continue Shopping</a></button>
                     
                     <button class='btn btn-primary px-3 mx-3'><a href='user_area/checkout.php' class='text-light text-decoration-none'>Check out</a></button>
                     
                     ";
             } else {
-                echo "<input type='submit' value='Continue Shopping' class='bg-info px-3 py-2 border mx-3' name='continue_shopping'>";
+                echo "<button class='btn btn-primary px-3 mx-3'><a href='productshome.php' class='text-light text-decoration-none'>Continue Shopping</a></button>";
             }
 
 

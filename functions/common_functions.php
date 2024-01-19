@@ -575,7 +575,7 @@ function getbrands()
 }
 
 
-//get the IP address of the client
+// //get the IP address of the client
 function getIPAddress() {  
     // whether IP is from the shared internet  
     if(!empty($_SERVER['HTTP_CLIENT_IP'])) {  
