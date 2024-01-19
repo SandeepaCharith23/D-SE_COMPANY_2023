@@ -845,6 +845,104 @@ section {
 .productshomesheader .search-form lable:hover {
   background-color: #F1C40F;
 }
+.productshomesheader .login-form-user {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: #ffffff;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+  animation: fadeIn 0.2s linear;
+  display: none;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
+}
+.productshomesheader .login-form-user.active {
+  display: block;
+}
+.productshomesheader .login-form-user .login-heading {
+  display: flex;
+}
+.productshomesheader .login-form-user .login-heading h3 {
+  font-size: 4rem;
+  color: #000;
+  text-transform: capitalize;
+  padding-bottom: 1rem;
+}
+.productshomesheader .login-form-user .login-heading .close-button {
+  position: absolute;
+  height: 5rem;
+  width: 5rem;
+  line-height: 5rem;
+  font-size: 2rem;
+  background: #eee;
+  color: #ffffff;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
+  cursor: pointer;
+  text-align: center;
+  background: #4D45CB;
+  margin: 1rem;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+.productshomesheader .login-form-user .login-heading .close-button:hover {
+  background: #f3b90b;
+  color: #ffffff;
+}
+.productshomesheader .login-form-user .login-heading .close-button i {
+  font-size: 2rem;
+  /* Set the font size for the close icon */
+  color: #ffffff;
+  /* Set the color of the close icon */
+  padding: 5px;
+  /* Add some padding for the icon */
+}
+.productshomesheader .login-form-user .textfield-box {
+  width: 100%;
+  padding: 1.2rem 1.4rem;
+  background: #eee;
+  font-size: 1.6rem;
+  color: #666;
+  margin: 0.5rem 0;
+}
+.productshomesheader .login-form-user .flex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+}
+.productshomesheader .login-form-user .flex label {
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+}
+.productshomesheader .login-form-user .flex a {
+  font-size: 1.5rem;
+  color: #000;
+  margin-left: auto;
+}
+.productshomesheader .login-form-user .flex a:hover {
+  color: #F1C40F;
+}
+.productshomesheader .login-form-user .button {
+  width: 100%;
+}
+.productshomesheader .login-form-user p {
+  font-size: 2rem;
+  color: #000;
+  line-height: 1.5;
+  padding-top: 1rem;
+}
+.productshomesheader .login-form-user p a {
+  color: #F1C40F;
+}
+.productshomesheader .login-form-user p a:hover {
+  text-decoration: underline;
+}
 
 .headerbanner {
   background-image: url("images/shopping_banner_small.jpg");

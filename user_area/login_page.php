@@ -26,50 +26,70 @@ include('../functions/ipaddress.php');
     <!-- link bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <style>
+        body {
+            background-color: blueviolet;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Ensure full viewport height */
+        }
 
+        /* Additional styles for the form container */
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Adjust the background color and opacity as needed */
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
 
 </head>
 
 <body>
-    <div class="fluid-container m-3 p-3 border">
-        <div class="row">
-            <div class="col">
-                <form class="login-form-style" action="" method="POST" onsubmit="return validateForm()">
-                    <h2 class="text-center mb-4 fw-bold">Login User</h2>
-                    
-                    <div class="p-2 mb-3 mx-2 border">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your User name" required>
-                        <div id="usernameError" class="text-danger"></div>
-                    </div>
-                    
-                    <div class="p-2 mb-3 mx-2 border">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form class="border p-4 shadow" action="" method="POST" onsubmit="return validateForm()">
+                <h2 class="text-center mb-4 fw-bold">Login User</h2>
+
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your Username" required>
+                    <div id="usernameError" class="text-danger"></div>
+                </div>
+
+                <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group">
-                        
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your Password" required>
                         <button class="btn btn-outline-secondary" type="button" id="togglePassword3">
                             <i class="fas fa-eye-slash" aria-hidden="true"></i>
                         </button>
-                        <div id="passwordError" class="text-danger"></div>
-                        </div>
                     </div>
-                    <div class="p-2 mb-3 mx-2 ">
-                        <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Remember Me</label>
-                    </div>
-                    <div class="text-center mb-3">
-                        <input type="submit" name="user_login" value="Login" class="btn btn-outline-primary px-3 py-2 w-50 ">
-                    </div>
-                    <div class="fw-bold small">
-                        <a href="forgot_password.php">Forgot Password?</a>
-                        <p>Don't have an account? <a href="registration_page.php">Create One</a></p>
-                        <p><a href="privacy_policy.php">Privacy Policy</a> | <a href="terms_of_service.php">Terms of Service</a></p>
-                    </div>
-                </form>
-            </div>
+                    <div id="passwordError" class="text-danger"></div>
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe">
+                    <label class="form-check-label" for="rememberMe">Remember Me</label>
+                </div>
+
+                <div class="text-center mb-3">
+                    <input type="submit" name="user_login" value="Login" class="btn btn-primary px-4 py-2">
+                </div>
+
+                <div class="fw-bold small text-center">
+                    <a href="forgot_password.php">Forgot Password?</a>
+                    <p>Don't have an account? <a href="registration_page.php">Create One</a></p>
+                    <p><a href="privacy_policy.php">Privacy Policy</a> | <a href="terms_of_service.php">Terms of Service</a></p>
+                </div>
+            </form>
         </div>
     </div>
+</div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function validateForm() {

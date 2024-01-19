@@ -40,19 +40,37 @@ include('../functions/ipaddress.php');
 
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
+    <style>
+        body {
+            background-color: blueviolet;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Ensure full viewport height */
+        }
+
+        /* Additional styles for the form container */
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Adjust the background color and opacity as needed */
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
+
 </head>
 
 <body>
 
-    <div class="container-fluid m-3">
+    <div class="container center ">
         <h2 class="text-center">New User Registration</h2>
         <div class="row justify-content-center ">
-            <div id="progressIndicator" style="display: none;">
+            <!-- <div id="progressIndicator" style="display: none;">
                 <div class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
                 <p>Saving to Database...</p>
-            </div>
+            </div> -->
             <div class="col-lg-11 col-xl-9">
                 <form id="sign_up_Form01" action="" class="signUp-form-style" method="POST" enctype="multipart/form-data">
                     <div class="row p-2 mb-3 mx-2 form-outline border">
@@ -158,7 +176,7 @@ include('../functions/ipaddress.php');
 
 
         </div>
-    </div>
+     </div>
     </div>
 
 

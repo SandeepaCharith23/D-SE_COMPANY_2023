@@ -1280,6 +1280,119 @@ section {
 
     //End of -Search Form
 
+    //login-form-for user
+    .login-form-user {
+        position: absolute;
+        top: 120%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        background: $white;
+        box-shadow: $box-shadow;
+        padding: 2rem;
+        text-align: center;
+        animation: fadeIn .2s linear;
+        display: none;
+        border: $border;
+
+        &.active {
+            display: block;
+        }
+
+        .login-heading {
+
+            display: flex;
+
+
+            h3 {
+
+                @include titleText(4rem);
+                padding-bottom: 1rem;
+
+            }
+
+            .close-button {
+                position: absolute;
+                @include iconBox();
+                margin: 1rem;
+                top: 0;
+                right: 0;
+                cursor: pointer;
+            }
+
+            .close-button i {
+                font-size: 2rem;
+                /* Set the font size for the close icon */
+                color: $white;
+                /* Set the color of the close icon */
+                padding: 5px;
+                /* Add some padding for the icon */
+            }
+
+        }
+
+
+
+        .textfield-box {
+            width: 100%;
+            padding: 1.2rem 1.4rem;
+            background: $light-bg;
+            font-size: 1.6rem;
+            color: $light-color;
+            margin: .5rem 0;
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            padding-top: 1.5rem;
+            padding-bottom: 1rem;
+
+            label {
+                font-size: 1.5rem;
+                color: $light-color;
+                cursor: pointer;
+            }
+
+            a {
+                font-size: 1.5rem;
+                color: $black;
+                margin-left: auto;
+
+
+                &:hover {
+                    color: $yellow;
+                }
+            }
+
+
+
+
+        }
+
+        .button {
+            width: 100%;
+        }
+
+        p {
+            @include graphText(2rem);
+            padding-top: 1rem;
+
+            a {
+                color: $yellow;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+
+        }
+    }
+
+    //login-form-for user
+
 
 
 }

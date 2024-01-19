@@ -80,20 +80,12 @@ include('functions/common_functions.php');
                         </a>
                     </ul>
 
-
-
-
-
-
-
                 </div>
             </div>
         </nav>
 
         <div class="icons">
-
-            <div id="search-btn" class="fas fa-search"></div>
-            <div id="login-btn" class="fas fa-user"></div>
+            <div id="login-btn-user" class="fas fa-user"></div>
         </div>
 
 
@@ -103,6 +95,29 @@ include('functions/common_functions.php');
             <!-- <Button class="btn btn-outline-dark" type="submit">Search</Button> -->
             <input type="submit" class="btn btn-outline-dark" value="Search" name="search_data_product" style="width: 10%;">
         </form>
+
+        <!-- user login form -->
+        <div action="" class="login-form-user" id="login-form-user">
+            <div class="login-heading">
+                <h3>Login for user </h3> <span class="close-button" id="userlogin-close-button"> <i class="fa fa-close"></i></span>
+            </div>
+            <input type="email" placeholder="Please Enter Your Email address" class="textfield-box">
+            <input type="password" placeholder="Please Enter Your password" class="textfield-box">
+            <div class="flex">
+                <input type="checkbox" name="" id="remember-me">
+                <label for="remember-me">Remember me</label>
+                <a href="#">Forget password</a>
+            </div>
+
+            <a href="productshome.php"><input type="submit" value="login" class="button" id="adminloginbutton"></a>
+            <p>Don't have an account <a href="user_area/registration_page.php">Create new Account</a></p>
+             
+
+            
+
+        </div>
+
+        
 
 
     </header>
@@ -163,156 +178,7 @@ include('functions/common_functions.php');
 
                     ?>
 
-                    <!-- product tile -->
-                    <!-- <div class="col-md-4 mb-2">
-                        <div class="card product" onclick="window.location.href='product_details.php'">
-                            <img src="images/product_bag.png" class="card-img-top" alt="no product image">
-                            <div class="card-body product-description">
-                                <h1 class="card-title">Product Name</h1>
-                                <span>Product Brand Name</span>
-                                <p class="card-text">Product Description</p>
-                                <h2>Rs.3000.00</h2>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-
-                                <div class="product-add-to-cart">
-                                    <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                                </div>
-                                <a href="#" class="btn btn-primary">See more</a>
-
-                            </div>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-4 mb-2">
-                        <div class="card product" onclick="window.location.href='product_details.php'">
-                            <img src="images/product_bag.png" class="card-img-top" alt="no image">
-                            <div class="card-body product-description">
-                                <h1 class="card-title">Product Name</h1>
-                                <span>Product Brand Name</span>
-                                <p class="card-text">Product Description</p>
-                                <h2>Rs.3000.00</h2>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-
-                                <div class="product-add-to-cart">
-                                    <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                                </div>
-                                <a href="#" class="btn btn-primary">See more</a>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-2">
-                        <div class="card product" onclick="window.location.href='product_details.php'">
-                            <img src="images/product_bag.png" class="card-img-top" alt="no image">
-                            <div class="card-body product-description">
-                                <h1 class="card-title">Product Name</h1>
-                                <span>Product Brand Name</span>
-                                <p class="card-text">Product Description</p>
-                                <h2>Rs.3000.00</h2>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-
-                                <div class="product-add-to-cart">
-                                    <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                                </div>
-                                <a href="#" class="btn btn-primary">See more</a>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-2">
-                        <div class="card product" onclick="window.location.href='product_details.php'">
-                            <img src="images/product_bag.png" class="card-img-top" alt="no product image">
-                            <div class="card-body product-description">
-                                <h1 class="card-title">Product Name</h1>
-                                <span>Product Brand Name</span>
-                                <p class="card-text">Product Description</p>
-                                <h2>Rs.3000.00</h2>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-
-                                <div class="product-add-to-cart">
-                                    <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                                </div>
-                                <a href="#" class="btn btn-primary">See more</a>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-2">
-                        <div class="card product" onclick="window.location.href='product_details.php'">
-                            <img src="images/product_bag.png" class="card-img-top" alt="no image">
-                            <div class="card-body product-description">
-                                <h1 class="card-title">Product Name</h1>
-                                <span>Product Brand Name</span>
-                                <p class="card-text">Product Description</p>
-                                <h2>Rs.3000.00</h2>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-
-                                <div class="product-add-to-cart">
-                                    <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                                </div>
-                                <a href="#" class="btn btn-primary">See more</a>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-2">
-                        <div class="card product" onclick="window.location.href='product_details.php'">
-                            <img src="images/product_bag.png" class="card-img-top" alt="no image">
-                            <div class="card-body product-description">
-                                <h1 class="card-title">Product Name</h1>
-                                <span>Product Brand Name</span>
-                                <p class="card-text">Product Description</p>
-                                <h2>Rs.3000.00</h2>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-
-                                <div class="product-add-to-cart">
-                                    <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                                </div>
-                                <a href="#" class="btn btn-primary">See more</a>
-
-                            </div>
-                        </div>
-                    </div> -->
+                 
 
 
 
@@ -443,7 +309,41 @@ include('functions/common_functions.php');
 
     <!-- link custom js file -->
 
+    <script>
+        let loginFormuser = document.getElementById('login-form-user');
+        let closebuttonofuserlogin=document.getElementById('userlogin-close-button');
+        document.querySelector('#login-btn-user').onclick = () => {
+            console.log('inside Login  button');
+            //loginFormuser.classList.toggle('active');
+            window.open('user_area/login_page.php','_self');
 
+            // Call the function to load the login page when the page loads
+            //loadLoginPage();
+            // navbar.classList.remove('active-navbar');
+            // menubutton.classList.remove('fa-times');
+            // searchForm.classList.remove('active');
+        };
+
+        closebuttonofuserlogin.onclick=()=>{
+            loginFormuser.classList.remove('active');  
+        }
+
+        // Function to load login page content into the specified div
+        // function loadLoginPage() {
+        //     var xhttp = new XMLHttpRequest();
+        //     xhttp.onreadystatechange = function() {
+        //         if (this.readyState == 4 && this.status == 200) {
+        //             // Replace the content of the div with the response from login.php
+        //             document.getElementById("login-form-user").innerHTML = this.responseText;
+        //         }
+        //     };
+        //     // Specify the path to your login.php file
+        //     xhttp.open("GET", "user_area/login_page.php", true);
+        //     xhttp.send();
+        // }
+
+        //
+    </script>
     <script src="js/script.js"></script>
 </body>
 
