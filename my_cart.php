@@ -28,20 +28,46 @@
     include('includes/headersection01.php');
     include('functions/ipaddress.php');
     include('functions/common_functions.php');
-   
+    @session_start();
 
     ?>
 
     <!-- 2-child-user details -->
+    <!-- 2.user account details and logout or login button -->
     <div id="useraccountdisplaysection" class="useraccountdisplaysection">
         <nav class="navbar navbar-expand-lg navbar-dark bg-gradient m-2">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Welcome guest</a>
+                    <a class="nav-link" href="#">
+                        <?php
+                        if (!isset($_SESSION['username'])) {
+                            echo "Welocome guest";
+                        } else {
+                            echo "Welcome  " . $_SESSION['username'];
+                        }
+                        ?>
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
+
+                <?php
+                if (!isset($_SESSION['username'])) {
+                    echo "
+                            <li class='nav-item'>
+                            <a class='nav-link' href='..\user_area\login_page.php'>Log in
+                            </a>
+                            </li>
+                            ";
+                } else {
+                    echo "
+                            <li class='nav-item'>
+                            <a class='nav-link' href='user_area\login_out.php'>Log Out
+                            </a>
+                            </li>
+                            ";
+                }
+                ?>
+
+
             </ul>
         </nav>
     </div>

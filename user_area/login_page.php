@@ -4,7 +4,7 @@
 <?php
 include('../includes/connection.php');
 include('../functions/ipaddress.php');
-
+session_start();
 
 ?>
 
@@ -29,7 +29,7 @@ include('../functions/ipaddress.php');
     
     <style>
         body {
-            background-color: blueviolet;
+            /* background-color: blueviolet; */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
