@@ -155,6 +155,8 @@ include('../functions/ipaddress.php');
                     <button class='btn btn-primary px-3 mx-3'><a href='' class='text-light text-decoration-none'>Confirm Order</a></button>
                     
                     <button class='btn btn-primary px-3 mx-3'><a href='' class='text-light text-decoration-none'>Check out</a></button>
+
+                    <button class='btn btn-primary px-3 mx-3'><a href='../productshome.php' class='text-light text-decoration-none'>Back to Product home</a></button>
                     
                     ";
                         } else {
