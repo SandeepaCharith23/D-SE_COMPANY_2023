@@ -46,12 +46,14 @@ include('../functions/ipaddress.php');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            height: 100vh; /* Ensure full viewport height */
+            height: 100vh;
+            /* Ensure full viewport height */
         }
 
         /* Additional styles for the form container */
         .container {
-            background-color: rgba(255, 255, 255, 0.8); /* Adjust the background color and opacity as needed */
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Adjust the background color and opacity as needed */
             border-radius: 10px;
             padding: 20px;
             margin-top: 50px;
@@ -149,6 +151,61 @@ include('../functions/ipaddress.php');
                         </div>
                     </div>
 
+                    <!-- postal code  field -->
+                    <div class="row p-2 mb-3 mx-2 form-outline border">
+                    <label for="user_postalcode" class="col-sm-3 col-form-label bg-light">Postal Code</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="user_postalcode" name="userpostalcode" placeholder="Please Enter your postal code" autocomplete="off" required>
+                            <div id="userpostcodeerror" class="text-info">This postal code  will be used for personalized your account</div>
+                        </div>
+                    </div>
+
+                    <!-- Province selection field -->
+                    <div class="row p-2 mb-3 mx-2 form-outline border">
+                        <label for="user_province" class="col-sm-3 col-form-label bg-light">Province</label>
+                        <div class="col-sm-9">
+                            <select class="form-select" id="user_province" name="userprovince" required>
+                                <option selected disabled>Select Province</option>
+                                <option value="Central">Central</option>
+                                <option value="Eastern">Eastern</option>
+                                <option value="Northern">Northern</option>
+                                <option value="North Central">North Central</option>
+                                <option value="North Western">North Western</option>
+                                <option value="Sabaragamuwa">Sabaragamuwa</option>
+                                <option value="Southern">Southern</option>
+                                <option value="Uva">Uva</option>
+                                <option value="Western">Western</option>
+                            </select>
+                            <div id="provinceError" class="text-info">Please select your province</div>
+                        </div>
+                    </div>
+
+                    <!-- District selection field -->
+                    <div class="row p-2 mb-3 mx-2 form-outline border">
+                        <label for="user_district" class="col-sm-3 col-form-label bg-light">District</label>
+                        <div class="col-sm-9">
+                            <select class="form-select" id="user_district" name="userdistrict" required>
+                                <option selected disabled>Select District</option>
+                                <!-- District options will be dynamically added here based on the selected province -->
+                            </select>
+                            <div id="districtError" class="text-info">Please select your district</div>
+                        </div>
+                    </div>
+
+                    <!-- City selection field -->
+                    <div class="row p-2 mb-3 mx-2 form-outline border">
+                        <label for="user_city" class="col-sm-3 col-form-label bg-light">City</label>
+                        <div class="col-sm-9">
+                            <select class="form-select" id="user_city" name="usercity" required>
+                                <option selected disabled>Select City</option>
+                                <!-- City options will be dynamically added here based on the selected district -->
+                            </select>
+                            <div id="cityError" class="text-info">Please select your city</div>
+                        </div>
+                    </div>
+
+
+
                     <div class="row p-2 mb-3 mx-2 form-outline border">
                         <label for="imageInput" class="form-label">Select Profile Image:</label>
                         <input type="file" class="form-control mb-1" id="image01" name="userimage01" required>
@@ -174,9 +231,160 @@ include('../functions/ipaddress.php');
 
             </form>
 
+            <!-- jQuery script for dynamic district options -->
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    // District options based on provinces
+                    const districtOptions = {
+                        'Central': ['Kandy', 'Matale', 'Nuwara Eliya'],
+                        'Eastern': ['Trincomalee', 'Batticaloa', 'Ampara'],
+                        'Northern': ['Jaffna', 'Kilinochchi', 'Mannar', 'Mullaitivu', 'Vavuniya'],
+                        'North Central': ['Anuradhapura', 'Polonnaruwa'],
+                        'North Western': ['Kurunegala', 'Puttalam'],
+                        'Sabaragamuwa': ['Ratnapura', 'Kegalle'],
+                        'Southern': ['Galle', 'Matara', 'Hambantota'],
+                        'Uva': ['Badulla', 'Monaragala'],
+                        'Western': ['Colombo', 'Gampaha', 'Kalutara'],
+                    };
+
+
+                    // Event listener for province selection
+                    $('#user_province').change(function() {
+                        const selectedProvince = $(this).val();
+                        const districtSelect = $('#user_district');
+
+                        // Clear existing options
+                        districtSelect.empty();
+
+                        // Add default option
+                        districtSelect.append('<option selected disabled>Select District</option>');
+
+                        // Add options based on the selected province
+                        if (selectedProvince in districtOptions) {
+                            const districts = districtOptions[selectedProvince];
+                            $.each(districts, function(i, district) {
+                                districtSelect.append('<option value="' + district + '">' + district + '</option>');
+                            });
+                        }
+                    });
+                });
+
+
+
+                ////////////////////
+
+                $(document).ready(function() {
+                    // area options based on District
+                    const areaOptions = {
+
+                        // Administrative divisions in Kandy District
+                        'Kandy': ['Akurana', 'Gampola', 'Kandy', 'Kundasale', 'Pilimatalawa', 'Teldeniya'],
+
+                        // Administrative divisions in Matale District
+                        'Matale': ['Dambulla', 'Galewela', 'Laggala-Pallegama', 'Matale', 'Naula', 'Palapathwela', 'Rattota', 'Ukuwela', 'Wilgamuwa'],
+
+                        // Administrative divisions in Nuwara Eliya District
+                        'Nuwara Eliya': ['Ambagamuwa', 'Hanguranketha', 'Kotmale', 'Maskeliya', 'Nuwara Eliya'],
+
+                        // Administrative divisions in Trincomalee District
+                        'Trincomalee': ['Gomarankadawala', 'Kantalai', 'Kinniya', 'Muttur', 'Seruvila', 'Thambalagamuwa', 'Trincomalee Town and Gravets'],
+
+                        // Administrative divisions in Batticaloa District
+                        'Batticaloa': ['Batticaloa', 'Eravur Pattu', 'Kalkudah', 'Koralaipattu', 'Manmunai', 'Porativu Pattu', 'Paddiruppu', 'Vaharai'],
+
+                        // Administrative divisions in Ampara District
+                        'Ampara': ['Akkaraipattu', 'Alayadivembu', 'Ampara', 'Dehiattakandiya', 'Kalmunai', 'Karaitivu Pattu', 'Lahugala', 'Mahaoya'],
+
+                        // Administrative divisions in Jaffna District
+                        'Jaffna': ['Chavakachcheri', 'Jaffna', 'Kankesanthurai', 'Karaveddy', 'Maruthankerney', 'Nallur', 'Sandilipay'],
+
+                        // Administrative divisions in Kilinochchi District
+                        'Kilinochchi': ['Kilinochchi'],
+
+                        // Administrative divisions in Mannar District
+                        'Mannar': ['Madhu', 'Mannar', 'Musali', 'Nanaddan'],
+
+                        // Administrative divisions in Mullaitivu District
+                        'Mullaitivu': ['Mullaitivu'],
+
+                        // Administrative divisions in Vavuniya District
+                        'Vavuniya': ['Vavuniya', 'Vengalacheddikulam'],
+
+                        // Administrative divisions in Anuradhapura District
+                        'Anuradhapura': ['Anuradhapura', 'Galnewa', 'Horowpathana', 'Ipalogama', 'Kahatagasdigiliya', 'Kebitigollawa', 'Kekirawa', 'Medawachchiya', 'Mihintale', 'Nachchadoowa', 'Nochchiyagama', 'Padaviya', 'Palagala', 'Thalawa'],
+
+                        // Administrative divisions in Polonnaruwa District
+                        'Polonnaruwa': ['Dimbulagala', 'Hingurakgoda', 'Lankapura', 'Medirigiriya', 'Polonnaruwa', 'Welikanda'],
+
+                        // Administrative divisions in Kurunegala District
+                        'Kurunegala': ['Alawwa', 'Bingiriya', 'Galgamuwa', 'Ganewatta', 'Giribawa', 'Ibbagamuwa', 'Kuliyapitiya', 'Kurunegala', 'Maho', 'Maspotha', 'Nikaweratiya', 'Panduwasnuwara', 'Pannala', 'Polgahawela', 'Rasnayakapura', 'Wariyapola', 'Weerambugedara'],
+
+                        // Administrative divisions in Puttalam District
+                        'Puttalam': ['Anamaduwa', 'Chilaw', 'Karaitivu', 'Madampe', 'Mahakumbukkadawala', 'Nawagattegama', 'Nattandiya', 'Norochcholai', 'Pallama', 'Pomparippu', 'Puttalam', 'Vanathavilluwa'],
+
+                        // Administrative divisions in Ratnapura District
+                        'Ratnapura': ['Balangoda', 'Eheliyagoda', 'Elapatha', 'Embilipitiya', 'Godakawela', 'Imbulpe', 'Kiriella', 'Nivithigala', 'Opanayaka', 'Pelmadulla', 'Ratnapura', 'Weligepola'],
+
+                        // Administrative divisions in Kegalle District
+                        'Kegalle': ['Aranayaka', 'Bulathkohupitiya', 'Dehiowita', 'Deraniyagala', 'Galigamuwa', 'Kegalle', 'Kitulgala', 'Kotiyakumbura', 'Mawanella', 'Rambukkana', 'Ruwanwella', 'Warakapola'],
+
+                        // Administrative divisions in Galle District
+                        'Galle': ['Ambalangoda', 'Baddegama', 'Balapitiya', 'Bentota', 'Boossa', 'Elpitiya', 'Galle', 'Habaraduwa', 'Hikkaduwa', 'Karandeniya', 'Nagoda', 'Neluwa', 'Thawalama', 'Weligama'],
+
+                        // Administrative divisions in Matara District
+                        'Matara': ['Akuressa', 'Devinuwara', 'Hakmana', 'Kamburupitiya', 'Kekanadura', 'Kirinda Puhulwella', 'Matara', 'Pasgoda', 'Pitabeddara', 'Thihagoda', 'Weligama'],
+
+                        // Administrative divisions in Hambantota District
+                        'Hambantota': ['Ambalantota', 'Angunakolapelessa', 'Beliatta', 'Hambantota', 'Lunugamvehera', 'Sooriyawewa', 'Tissamaharama'],
+
+                        // Administrative divisions in Badulla District
+                        'Badulla': ['Badulla', 'Bandarawela', 'Ella', 'Haldummulla', 'Hali Ela', 'Haputale', 'Kandaketiya', 'Lunugala', 'Mahiyanganaya', 'Meegahakivula', 'Passara', 'Rideemaliyadda', 'Welimada'],
+
+                        // Administrative divisions in Monaragala District
+                        'Monaragala': ['Badalkumbura', 'Bibile', 'Buttala', 'Kataragama', 'Madulla', 'Medagama', 'Monaragala', 'Sevanagala', 'Tanamalwila', 'Wellawaya'],
+
+                        // Administrative divisions in Colombo District
+                        'Colombo': ['Colombo 1', 'Colombo 2', 'Colombo 3', 'Colombo 4', 'Colombo 5', 'Colombo 6', 'Colombo 7', 'Colombo 8', 'Colombo 9', 'Colombo 10', 'Colombo 11', 'Colombo 12', 'Colombo 13', 'Colombo 14', 'Colombo 15'],
+
+                        // Administrative divisions in Gampaha District
+                        'Gampaha': ['Attanagalla', 'Biyagama', 'Divulapitiya', 'Dompe', 'Gampaha', 'Ja-Ela', 'Katana', 'Kelaniya', 'Mahara', 'Minuwangoda', 'Mirigama', 'Negombo'],
+
+                        // Administrative divisions in Kalutara District
+                        'Kalutara': ['Agalawatta', 'Bandaragama', 'Beruwala', 'Bulathsinhala', 'Dodangoda', 'Horana', 'Ingiriya', 'Kalutara', 'Madurawala', 'Matugama', 'Panadura', 'Walallawita'],
+
+
+
+                    };
+
+
+                    // Event listener for province selection
+                    $('#user_district').change(function() {
+                        const selectedDistrict = $(this).val();
+                        const citySelect = $('#user_city');
+
+                        // Clear existing options
+                        citySelect.empty();
+
+                        // Add default option
+                        citySelect.append('<option selected disabled>Select City</option>');
+
+                        // Add options based on the selected district
+                        if (selectedDistrict in areaOptions) {
+                            const areas = areaOptions[selectedDistrict];
+                            $.each(areas, function(i, area) {
+                                citySelect.append('<option value="' + area + '">' + area + '</option>');
+                            });
+                        }
+                    });
+                });
+            </script>
+
+
+
 
         </div>
-     </div>
+    </div>
     </div>
 
 
@@ -402,6 +610,11 @@ if (isset($_POST['sign_up_button'])) {
     $EntereduserAddress = $_POST['useraddress'];
     $EntereduserMobileNumber = $_POST['usermobilenumber'];
 
+    $Entereduserpostalcode = $_POST['userpostalcode'];
+    $Entereduserprovince = $_POST['userprovince'];
+    $Entereduserdistrict = $_POST['userdistrict'];
+    $Enteredusercity = $_POST['usercity'];
+
     // File upload handling
     $EntereduserImagename = $_FILES['userimage01']['name'];
     $EntereduserImagetempname = $_FILES['userimage01']['tmp_name'];
@@ -438,12 +651,12 @@ if (isset($_POST['sign_up_button'])) {
 
 
         // Use prepared statements to prevent SQL injection
-        $insertAccountDetailsquery = "INSERT INTO `user_table` (User_Name, User_Password, User_Email, User_FirstName, User_LastName, User_Address, User_MobilePhone, User_ProfileImage, User_IPaddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $insertAccountDetailsquery = "INSERT INTO `user_table` (User_Name, User_Password, User_Email, User_FirstName, User_LastName, User_Address, User_MobilePhone, User_ProfileImage, User_IPaddress,User_Province,User_District,User_City, User_PostalCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $insertAccountDetailsquery);
         echo "<script>console.log('mysqli_prepare done');</script>";
 
         // Bind parameters and execute query
-        mysqli_stmt_bind_param($stmt, "sssssssss", $EntereduserName, $EntereduserPassword, $EntereduserEmailAddress, $EntereduserFirstName, $EntereduserLastName, $EntereduserAddress, $EntereduserMobileNumber, $EntereduserImagename, $userIPAddress);
+        mysqli_stmt_bind_param($stmt, "sssssssssssss", $EntereduserName, $EntereduserPassword, $EntereduserEmailAddress, $EntereduserFirstName, $EntereduserLastName, $EntereduserAddress, $EntereduserMobileNumber, $EntereduserImagename, $userIPAddress,$Entereduserprovince,$Entereduserdistrict,$Enteredusercity,$Entereduserpostalcode);
         echo "<script>console.log('Added querry');</script>";
         if (mysqli_stmt_execute($stmt)) {
             // echo "<script>alert('Saved to Database')</script>";
@@ -461,19 +674,19 @@ if (isset($_POST['sign_up_button'])) {
 
 
         //checking available cart items -When user click items and add to cart before login to system
-        $select_cart_items="SELECT * FROM `cart_details` WHERE  User_IPaddress='$userIPAddress'";
-        $results_available_carts=mysqli_query($conn,$select_cart_items);
-        if(mysqli_num_rows($results_available_carts)>0){
+        $select_cart_items = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$userIPAddress'";
+        $results_available_carts = mysqli_query($conn, $select_cart_items);
+        if (mysqli_num_rows($results_available_carts) > 0) {
 
             //add a session variable -username
-            $_SESSION['username']=$EntereduserName;
+            $_SESSION['username'] = $EntereduserName;
             echo "<script>console.log('Session variable saved');</script>";
-            echo"<script>console.log($_SESSION[username]);</script>";
+            echo "<script>console.log($_SESSION[username]);</script>";
             echo "<script>alert('You have few available items in your cart,Please Check out these Items')</script>";
-            echo"<script>window.open('checkout.php','_self')</script>";
-        }else{
+            echo "<script>window.open('checkout.php','_self')</script>";
+        } else {
             //redirect user to products home page
-            echo"<script>window.open('productshome.php','_self')</script>";
+            echo "<script>window.open('productshome.php','_self')</script>";
         }
     }
 }

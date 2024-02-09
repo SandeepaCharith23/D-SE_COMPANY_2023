@@ -120,7 +120,7 @@
                             $cart_product_id = $carts_array['Product_Id'];
                             $cart_product_quentity = $carts_array['Product_Quentity'];
 
-                           // echo '<script>console.log("display products function --cart product id is : ' . $cart_product_id . '");</script>';
+                            // echo '<script>console.log("display products function --cart product id is : ' . $cart_product_id . '");</script>';
 
                             $product_details_query = "SELECT * FROM `products` WHERE Product_ID=$cart_product_id";
                             $product_details_result = mysqli_query($conn, $product_details_query);
@@ -139,19 +139,14 @@
                                 $table_product_image01 = $product_details_array['Product_Image01'];
 
 
-                                $product_price=$cart_product_quentity * $table_product_unit_price;
-                              //  echo '<script>console.log("Inside 2 nd while loop  --product id  is : ' . $cart_product_id . ' ");</script>';
-                              //  echo '<script>console.log("Inside 2 nd while loop  --product quentity  is : ' . $cart_product_quentity . ' ");</script>';
-                              //  echo '<script>console.log("Inside 2 nd while loop  --product unit price   is : ' . $table_product_unit_price . ' ");</script>';
-                              //  echo '<script>console.log("Inside 2 nd while loop  --product  price for above item  is : ' . $product_price . ' ");</script>';
+                                $product_price = $cart_product_quentity * $table_product_unit_price;
+                                //  echo '<script>console.log("Inside 2 nd while loop  --product id  is : ' . $cart_product_id . ' ");</script>';
+                                //  echo '<script>console.log("Inside 2 nd while loop  --product quentity  is : ' . $cart_product_quentity . ' ");</script>';
+                                //  echo '<script>console.log("Inside 2 nd while loop  --product unit price   is : ' . $table_product_unit_price . ' ");</script>';
+                                //  echo '<script>console.log("Inside 2 nd while loop  --product  price for above item  is : ' . $product_price . ' ");</script>';
 
-                                
-                                //set the product_values in cart.using array sum
-                                //$current_cart_products_value = array_sum($product_price);
 
-                                //add values
-                              //  $Total_cart_price += $current_cart_products_value;
-                              $Total_cart_price += $product_price;
+                                $Total_cart_price += $product_price;
 
 
                     ?>
@@ -296,7 +291,7 @@
 
 
 
-                
+
 
                 <!-- update cart start -->
                 <?php
@@ -327,7 +322,7 @@
 
                         //echo '<script>console.log("Inside for each loop");</script>';
 
-                       // echo '<script>alert("In side update button -cart product id is : ' . $cart_product_id . '");</script>';
+                        // echo '<script>alert("In side update button -cart product id is : ' . $cart_product_id . '");</script>';
                         //echo '<script>alert("In side update button-cart product quentity is : ' . $updated_product_quentity . '");</script>';
 
 
@@ -346,53 +341,50 @@
                         echo '<script>alert("All items are now  updated according to your choice.");</script>';
 
 
-                         // Fetch the updated quantities from the database
-                     $select_carts_querry = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$user_ip_address' AND Product_ID=$cart_product_id ";
-                     $results_carts = mysqli_query($conn, $select_carts_querry);
+                        // Fetch the updated quantities from the database
+                        $select_carts_querry = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$user_ip_address' AND Product_ID=$cart_product_id ";
+                        $results_carts = mysqli_query($conn, $select_carts_querry);
 
-                     // Recalculate the total cart price
-                    
+                        // Recalculate the total cart price
 
-                     while ($carts_array = mysqli_fetch_array($results_carts)) {
-                        // Your existing code to fetch product details...
 
-                        //select product details
-                        $select_product_querry = "SELECT * FROM `products` WHERE Product_ID=$cart_product_id ";
-                        $results_product = mysqli_query($conn, $select_product_querry);
+                        while ($carts_array = mysqli_fetch_array($results_carts)) {
+                            // Your existing code to fetch product details...
 
-                        while($product_details=mysqli_fetch_array($results_product)){
+                            //select product details
+                            $select_product_querry = "SELECT * FROM `products` WHERE Product_ID=$cart_product_id ";
+                            $results_product = mysqli_query($conn, $select_product_querry);
 
-                        //echo '<script>console.log("updated product quentity:'.$carts_array['Product_Quentity'].'");</script>';
-                        //echo '<script>console.log("product unit price:'.$product_details['Product_UnitPrice'].'");</script>';
-                        
-                        //update total price
-                        // Convert string variables to numbers (int or float)
-                        $product_quentity = floatval($carts_array['Product_Quentity']);
-                        $product_unit_price = intval($product_details['Product_UnitPrice']);
+                            while ($product_details = mysqli_fetch_array($results_product)) {
 
-                        // Perform multiplication after converting to numbers
-                        $Amount_item_price = $product_quentity*$product_unit_price;
+                                //echo '<script>console.log("updated product quentity:'.$carts_array['Product_Quentity'].'");</script>';
+                                //echo '<script>console.log("product unit price:'.$product_details['Product_UnitPrice'].'");</script>';
 
-                        echo '<script>alert("Price for item '.$Amount_item_price.'");</script>';
+                                //update total price
+                                // Convert string variables to numbers (int or float)
+                                $product_quentity = floatval($carts_array['Product_Quentity']);
+                                $product_unit_price = intval($product_details['Product_UnitPrice']);
 
-                        $Total_cart_price += $Amount_item_price;
+                                // Perform multiplication after converting to numbers
+                                $Amount_item_price = $product_quentity * $product_unit_price;
 
-                       // echo '<script>alert("All items amount updated according to your choice.");</script>';
+                                echo '<script>alert("Price for item ' . $Amount_item_price . '");</script>';
 
-                        echo '<script>alert("Updated new Total Cart Price is Rs.'.$Total_cart_price.'");</script>';
+                                $Total_cart_price += $Amount_item_price;
 
-                       
+                                // echo '<script>alert("All items amount updated according to your choice.");</script>';
+
+                                echo '<script>alert("Updated new Total Cart Price is Rs.' . $Total_cart_price . '");</script>';
+                            }
                         }
-                    
-                    }
-                    //  echo "<script>window.open('my_cart.php','_self')</script>";
+                        //  echo "<script>window.open('my_cart.php','_self')</script>";
 
-                        
+
                     }
 
-                    
 
-                   
+
+
 
 
 

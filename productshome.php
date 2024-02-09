@@ -140,7 +140,7 @@ session_start();
         <nav class="navbar navbar-expand-lg navbar-dark bg-gradient m-2">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="user_area/user_profile.php">
                         <?php
                         if (!isset($_SESSION['username'])) {
                             echo "Welocome guest";

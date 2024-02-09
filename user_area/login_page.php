@@ -4,7 +4,9 @@
 <?php
 include('../includes/connection.php');
 include('../functions/ipaddress.php');
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 ?>
 
@@ -82,7 +84,7 @@ session_start();
 
                 <div class="fw-bold small text-center">
                     <a href="forgot_password.php">Forgot Password?</a>
-                    <p>Don't have an account? <a href="registration_page.php">Create One</a></p>
+                    <p>Don't have an account? <a href="../user_area/registration_page.php">Create One</a></p>
                     <p><a href="privacy_policy.php">Privacy Policy</a> | <a href="terms_of_service.php">Terms of Service</a></p>
                 </div>
             </form>

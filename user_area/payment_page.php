@@ -19,9 +19,9 @@ include('../functions/ipaddress.php');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <!-- link the css file link -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
-    <link rel="stylesheet" href="fonts/Italianno-Regular.ttf">
+    <link rel="stylesheet" href="../fonts/Italianno-Regular.ttf">
 
     <!-- link bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -64,6 +64,7 @@ include('../functions/ipaddress.php');
                     <th>Product Image</th>
                     <th>Product Quentity</th>
                     <th>Product Unitprice</th>
+                    <th>Product Sub Total</th>
                     
                     
                     </thead>
@@ -88,11 +89,11 @@ include('../functions/ipaddress.php');
                                             $table_product_name = $product_details_array['Product_Name'];
                                             $table_product_image01 = $product_details_array['Product_Image01'];
 
-                                            //set the product_values in cart.using array sum
-                                            $current_cart_products_value = array_sum($product_price);
 
-                                            //add values
-                                            $Total_cart_price += $current_cart_products_value;
+
+                                            $product_price = $cart_product_quentity * $table_product_unit_price;
+
+                                            $Total_cart_price += $product_price;
 
 
                                 ?>
@@ -103,19 +104,21 @@ include('../functions/ipaddress.php');
                                                 <td><input type="text" value="<?php echo $cart_product_quentity ?>" class="text-center border form-input" name="entered_product_quentity"></td>
                                                 <?php
 
-                                             
+
                                                 ////code
 
                                                 ?>
                                                 <td>Rs.<?php echo "$table_product_unit_price" ?></td>
-                                                <!-- <td>
-                            Rs.
-                            <?php
-                                            $product_sub_total_amount = $table_product_unit_price * $cart_product_quentity;
-                                            echo $product_sub_total_amount;
-                            ?>
-                        </td> -->
-                                             
+                                                <td>
+                                                    Rs.
+                                                    <?php
+                                                    // $product_sub_total_amount = $table_product_unit_price * $cart_product_quentity;
+                                                    $product_sub_total_amount = floatval($table_product_unit_price) * floatval($cart_product_quentity);
+
+                                                    echo $product_sub_total_amount;
+                                                    ?>
+                                                </td>
+
                                             </tr>
 
                                 <?php
@@ -133,7 +136,7 @@ include('../functions/ipaddress.php');
                         </form>
 
                         <!-- function to remove item -->
-                        
+
                     </div>
 
                     <div class="d-flex p-4 mb-5">
@@ -143,6 +146,17 @@ include('../functions/ipaddress.php');
 
                         $user_ip_address = getIPAddress1();
 
+                        function getusercredential($conn,$user_ip_address){
+                          $select_user_credential_querry="SELECT * FROM `user_table` WHERE User_IPaddress='$user_ip_address'";
+                          $user_details_results=mysqli_query($conn,$select_user_credential_querry);
+                          $user_details_array_result=mysqli_fetch_array($user_details_results); 
+
+                          $user_id=$user_details_array_result['User_ID'];
+
+                          return $user_id;
+
+                        };
+
                         $select_carts_querry = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$user_ip_address'";
                         $results_carts = mysqli_query($conn, $select_carts_querry);
 
@@ -150,11 +164,12 @@ include('../functions/ipaddress.php');
 
                         if ($data_row_count > 0) {
                             echo "
-                    <h4 class='px-3'>Sub Total:RS <strong> $Total_cart_price/=</strong></h4>
+                    <h4 class='px-3'>Total price for your cart: Rs <strong> $Total_cart_price/=</strong> +shipping cost </h4>
                     
-                    <button class='btn btn-primary px-3 mx-3'><a href='' class='text-light text-decoration-none'>Confirm Order</a></button>
                     
-                    <button class='btn btn-primary px-3 mx-3'><a href='' class='text-light text-decoration-none'>Check out</a></button>
+                    <button class='btn btn-primary px-3 mx-3'><a href='confirm_order.php?user_id=" . getusercredential($conn, $user_ip_address) . "' class='text-light text-decoration-none'>Confirm Order </a></button>
+                    
+                    <button class='btn btn-primary px-3 mx-3'><a href='../my_cart.php' class='text-light text-decoration-none'>Back to Cart </a></button>
 
                     <button class='btn btn-primary px-3 mx-3'><a href='../productshome.php' class='text-light text-decoration-none'>Back to Product home</a></button>
                     
@@ -164,7 +179,7 @@ include('../functions/ipaddress.php');
                         }
 
 
-                        
+
 
                         ?>
 

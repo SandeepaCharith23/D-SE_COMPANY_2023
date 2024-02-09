@@ -1,7 +1,9 @@
 <?php
 include('../includes/connection.php');
 include('../functions/common_functions.php');
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 ?>
 

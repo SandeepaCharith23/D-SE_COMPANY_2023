@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log out</title>
     <?php
-    session_start();
+    
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     session_unset();
     session_destroy();
     echo "<script>alert('successfully signout')</script>";

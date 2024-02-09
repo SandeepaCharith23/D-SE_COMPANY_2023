@@ -707,19 +707,24 @@ function total_cart_price(){
 
    while($carts_array=mysqli_fetch_array($results_cart)){
          $cart_product_id=$carts_array['Product_Id'];
+         $available_product_quentity_in_DB=$carts_array['Product_Quentity'];
          
          $product_details_query="SELECT * FROM `products` WHERE Product_ID=$cart_product_id";
          $product_details_result=mysqli_query($conn,$product_details_query);
 
          while($product_details_array=mysqli_fetch_array($product_details_result)){
             //get the unit price of the product and set it into array to store as product_price
-            $product_price=array($product_details_array['Product_UnitPrice']);
+            $product_unit_price=$product_details_array['Product_UnitPrice'];
+
+            $product_sub_price=$product_unit_price * $available_product_quentity_in_DB;
+
+
 
             //set the product_values in cart.using array sum
-            $current_cart_products_value=array_sum($product_price);
+           // $current_cart_products_value=array_sum($product_price);
 
             //add values
-            $Total_cart_price+=$current_cart_products_value;
+            $Total_cart_price+= $product_sub_price;
 
 
 
