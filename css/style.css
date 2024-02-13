@@ -1528,6 +1528,14 @@ section {
   margin-top: -20px;
 }
 
+.updateuserdetails-form-style {
+  max-width: 100vw;
+  margin: 0 auto;
+  margin: 10px;
+  padding: 20px;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

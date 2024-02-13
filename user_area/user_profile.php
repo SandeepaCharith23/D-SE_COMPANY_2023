@@ -80,7 +80,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
             <nav class="navbar navbar-expand-lg" style=" width:40%">
                 <div class="container-fluid">
-                    <a class="navbar-brand logo" href="../index.php" class="logo"> <i class="fa fa-cogs"></i> D & SE Company PVT.LTD </a>
+                    <a class="navbar-brand logo" href="../productshome.php" class="logo"> <i class="fa fa-cogs"></i> D & SE Company PVT.LTD </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -171,7 +171,7 @@ if (session_status() == PHP_SESSION_NONE) {
     
     <!-- dashboard container -->
     <div class="dashboard-container">
-        <!-- Profile Column -->
+        <!-- Main Column -->
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 p-2  justify-content-start  shadow ">
             <div class="text-center">
                 <?php 
@@ -181,7 +181,16 @@ if (session_status() == PHP_SESSION_NONE) {
                   $results_user=mysqli_query($conn,$select_user_details_querry);
                   $result_user_array=mysqli_fetch_array($results_user);
                   $userimage=$result_user_array['User_ProfileImage'];
-                  echo "<script>alert('user image catches')</script>"; 
+                  $userfirstname=$result_user_array['User_FirstName'];
+                  $userlastname=$result_user_array['User_LastName'];
+                  $useremailaddress=$result_user_array['User_Email'];
+                  $usermobilenumber=$result_user_array['User_MobilePhone'];
+                  $useraddress=$result_user_array['User_Address'];
+                  $userpostcode=$result_user_array['User_PostalCode'];
+                  $userprovince=$result_user_array['User_Province'];
+                  $userdistrict=$result_user_array['User_District'];
+                  $usercity=$result_user_array['User_City'];
+                 // echo "<script>alert('user image catches')</script>"; 
                 ?>
             <img src="../images/profileimages/<?php echo $userimage?>" alt="Profile Picture" class="profile-picture">
             <h3><?php echo $username?></h3>
@@ -194,18 +203,18 @@ if (session_status() == PHP_SESSION_NONE) {
                 <div class="sub-section mt-2">
                     <h3>Manage My Account</h3>
                     <ul>
-                        <li><a href="#">My Profile</a></li>
-                        <li><a href="#">My Payment Options</a></li>
-                        <li><a href="#">Delete Account</a></li>
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="user_profile.php?my_profille">My Profile</a></li>
+                        <li><a href="user_profile.php?my_payment_options">My Payment Options</a></li>
+                        <li><a href="user_profile.php?delete_account">Delete Account</a></li>
+                        <li><a href="login_out.php">Logout</a></li>
                     </ul>
                 </div>
                 <div class="sub-section">
                     <h3>My Orders</h3>
                     <ul>
-                        <li><a href="#">My Orders</a></li>
-                        <li><a href="#">My Pending Orders</a></li>
-                        <li><a href="#">My Cancellations</a></li>
+                        <li><a href="user_profile.php?my_orders">My Orders</a></li>
+                        <li><a href="user_profile.php?my_pending_orders">My Pending Orders</a></li>
+                        <li><a href="user_profile.php?my_cancellations">My Cancellations</a></li>
                     </ul>
                 </div>
                 <div class="sub-section">
@@ -220,6 +229,20 @@ if (session_status() == PHP_SESSION_NONE) {
         <!-- Content Column -->
         <div class="col-md-9 p-2  justify-content-start  shadow content-column">
             <!-- Content goes here -->
+            <?php
+             get_user_pending_orders();
+             if(isset($_GET['my_profille']))
+             {
+                //redirect to edit user details page
+                include('edit_account_details.php');
+             }
+
+             if(isset($_GET['my_orders']))
+             {
+                //redirect to edit user details page
+                include('user_orders.php');
+             }
+            ?>
         </div>
     </div>
 
@@ -319,3 +342,51 @@ if (session_status() == PHP_SESSION_NONE) {
 </body>
 
 </html>
+
+<?php
+
+function get_user_pending_orders(){
+    global $conn;
+    $currentusername=$_SESSION['username'];
+    
+    //get the user details according to given username in session.
+    $select_user_details_querry="SELECT * FROM `user_table` WHERE User_Name='$currentusername'";
+    $user_details_resultes=mysqli_query($conn,$select_user_details_querry);
+    $user_details_array=mysqli_fetch_array($user_details_resultes);
+    if($user_details_array){
+         $currentuserID=$user_details_array['User_ID'];
+         //echo "<script>console.log('current user id is'.$currentuserID)</script>";
+
+         //check if user click any button my profile,my payment options,delete account ,my orders or my cancellation,.
+         if(!isset($_GET['my_profille'])){
+            if(!isset($_GET['my_payment_options'])){
+                if(!isset($_GET['delete_account'])){
+                    if(!isset($_GET['my_orders'])){
+                        if(!isset($_GET['my_cancellations'])){
+                              // get the current available pending orders count and display it.
+                              $getting_user_orders_querry="SELECT * FROM `user_order` WHERE user_id=$currentuserID AND order_status='pending'";
+                              $user_orders_results=mysqli_query($conn,$getting_user_orders_querry);
+                              $user_order_count=mysqli_num_rows($user_orders_results);
+
+                              if($user_order_count>0)
+                              {
+                                 echo "<h3 class='text-center mt-5'>You have $user_order_count user orders which are pending to confirm. </h3>
+                                 <p class='text-center'><a href=''>Oder details</a></p>";
+                              } else{
+                                echo "<h3 class='text-center mt-5'>You have 0 user orders which are pending to confirm. </h3>
+                                <p class='text-center'><a href=''>Explore market</a></p>";
+                              }
+           
+                        };
+           
+                    };
+           
+                };
+           
+            };
+           
+         };
+    }
+}
+
+?>

@@ -181,15 +181,7 @@ include('../functions/ipaddress.php');
 
                         if ($data_row_count > 0) {
                             echo "
-                    <h4 class='px-3'>Total price for your cart: Rs <strong> $Total_cart_price/=</strong> +shipping cost </h4>
-                    
-                    
-                    <button class='btn btn-primary px-3 mx-3'><a href='confirm_order.php?user_id=" . getusercredential($conn, $user_ip_address) . "' class='text-light text-decoration-none'>Confirm Order </a></button>
-                    
-                    <button class='btn btn-primary px-3 mx-3'><a href='../my_cart.php' class='text-light text-decoration-none'>Back to Cart </a></button>
-
-                    <button class='btn btn-primary px-3 mx-3'><a href='../productshome.php' class='text-light text-decoration-none'>Back to Product home</a></button>
-                    
+                    <h4 class='px-3'>Total price for your cart: Rs <strong> $Total_cart_price /=</strong> + shipping cost/Delivery Cost </h4>  
                     ";
                         } else {
                             echo "<button class='btn btn-primary px-3 mx-3'><a href='' class='text-light text-decoration-none'>Continue Shopping</a></button>";
