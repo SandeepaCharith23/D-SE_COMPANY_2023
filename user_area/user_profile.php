@@ -242,6 +242,12 @@ if (session_status() == PHP_SESSION_NONE) {
                 //redirect to edit user details page
                 include('user_orders.php');
              }
+
+             if(isset($_GET['delete_account']))
+             {
+                //redirect to edit user details page
+                include('delete_user_account.php');
+             }
             ?>
         </div>
     </div>

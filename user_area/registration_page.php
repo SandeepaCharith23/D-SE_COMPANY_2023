@@ -686,7 +686,7 @@ if (isset($_POST['sign_up_button'])) {
             echo "<script>window.open('checkout.php','_self')</script>";
         } else {
             //redirect user to products home page
-            echo "<script>window.open('productshome.php','_self')</script>";
+            echo "<script>window.open('../productshome.php','_self')</script>";
         }
     }
 }
