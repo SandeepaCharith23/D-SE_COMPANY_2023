@@ -84,9 +84,19 @@ session_start();
             </div>
         </nav>
 
-        <div class="icons">
-            <div id="login-btn-user" class="fas fa-user"></div>
-        </div>
+        <?php
+                if (!isset($_SESSION['username'])) {
+                    echo "
+                    <div class='icons'>
+                    <div id='login-btn-user' class='fas fa-user'></div>
+                </div>
+                            ";
+                } else {
+                    
+                }
+                ?>
+
+        
 
 
         <form action="search_product.php" class="search-form" id="producthomesearchform" method="GET">

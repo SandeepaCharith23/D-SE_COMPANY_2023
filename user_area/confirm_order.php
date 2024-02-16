@@ -258,12 +258,11 @@ include('../functions/ipaddress.php');
 
                     <!-- Payment Method -->
                     <div class="form-group mb-3">
-                        <label for="paymentMethod">Payment Method-In this stage only cash</label>
+                        <label for="paymentMethod">Payment Method-In this stage ,We only accept Cash on Delivery.</label>
                         <select class="form-control" id="paymentMethod" name="product_payment_method">
-                            <option>Cash</option>
-                            <option disabled>Credit Card</option>
-                            <option disabled>PayPal</option>
-                            <option disabled>Bank Transfer</option>
+                            <option>Cash on Delivery</option>
+                            <option disabled>Online payment</option>
+                            
                         </select>
                     </div>
 
@@ -379,7 +378,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order_button'
     echo "<script>console.log('Inside function');</script>";
     // $invoicenumber = mt_rand();
     echo "<script>console.log('Invoice number is $invoicenumber');</script>";
-    $product_status = "pending";
+    $product_status = "Cash on delivery";
     $product_payment_method = $_POST['product_payment_method'];
     $order_billing_address = $_POST['billingAddress'];
     $order_delivery_address = $_POST['deliveryAddress'];
@@ -388,10 +387,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order_button'
     echo "<script>console.log('product amount is $Total_cart_price');</script>";
     echo "<script>console.log('Order billing address  is $order_billing_address');</script>";
     echo "<script>console.log('Order delivering address  is $order_delivery_address');</script>";
+    
 
+    //insert order as a user orders
     $insert_order_querry = "INSERT INTO `user_order`(user_id, total_amount, invoice_number, total_ordered_products, order_date, order_status, payment_method, billing_address, delivery_address) VALUES ($user_id,$Total_cart_price,$invoicenumber,$data_row_count,NOW(),'$product_status','$product_payment_method','$order_billing_address','$order_delivery_address')";
     if (mysqli_query($conn, $insert_order_querry)) {
-        echo "<script>alert('Order is successfully submitted');</script>";
+        echo "<script>alert('Order is successfully submitted ,you will be contact from our staff.');</script>";
+        echo "<script>console.log('insert data into user order table')</script>";
     }
 
     //Insert order as a pending order
@@ -399,12 +401,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order_button'
        $result_pending_orders=mysqli_query($conn,$insert_pending_order);
 
        echo "<script>alert('Order is saved in pending list');</script>";
+       echo "<script>console.log('insert data into pending orders table')</script>";
+    
 
     //    //Delete cart detail from the cart details
        $delete_cart_querry="DELETE  FROM `cart_details` WHERE User_IPaddress='$user_ip_address'";
        $result_delete_cart=mysqli_query($conn,$delete_cart_querry);
 
     echo "<script>alert('Order is delete from cart details');</script>";
+    echo "<script>console.log('Delete data from cart table')</script>";
     echo "<script>window.open('user_profile.php','_self')</script>";
 }
 ?>

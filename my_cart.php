@@ -338,7 +338,7 @@
                         $stmt->bind_param('isi', $updated_product_quentity, $user_ip_address, $cart_product_id);
                         $stmt->execute();
 
-                        echo '<script>alert("All items are now  updated according to your choice.");</script>';
+                        
 
 
                         // Fetch the updated quantities from the database
@@ -368,13 +368,13 @@
                                 // Perform multiplication after converting to numbers
                                 $Amount_item_price = $product_quentity * $product_unit_price;
 
-                                echo '<script>alert("Price for item ' . $Amount_item_price . '");</script>';
+                               // echo '<script>alert("Price for item ' . $Amount_item_price . '");</script>';
 
                                 $Total_cart_price += $Amount_item_price;
 
                                 // echo '<script>alert("All items amount updated according to your choice.");</script>';
 
-                                echo '<script>alert("Updated new Total Cart Price is Rs.' . $Total_cart_price . '");</script>';
+                               // echo '<script>alert("Updated new Total Cart Price is Rs.' . $Total_cart_price . '");</script>';
                             }
                         }
                         //  echo "<script>window.open('my_cart.php','_self')</script>";
@@ -387,7 +387,7 @@
 
 
 
-
+                    echo '<script>alert("All items are now  updated according to your choice.");</script>';
 
                     echo "<script>window.open('my_cart.php','_self')</script>";
                 }
