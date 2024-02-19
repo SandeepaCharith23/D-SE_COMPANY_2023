@@ -262,7 +262,7 @@ include('../functions/ipaddress.php');
                         <select class="form-control" id="paymentMethod" name="product_payment_method">
                             <option>Cash on Delivery</option>
                             <option disabled>Online payment</option>
-                            
+
                         </select>
                     </div>
 
@@ -376,7 +376,7 @@ include('../functions/ipaddress.php');
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order_button'])) {
     echo "<script>console.log('Inside function');</script>";
-    // $invoicenumber = mt_rand();
+   
     echo "<script>console.log('Invoice number is $invoicenumber');</script>";
     $product_status = "Cash on delivery";
     $product_payment_method = $_POST['product_payment_method'];
@@ -387,7 +387,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order_button'
     echo "<script>console.log('product amount is $Total_cart_price');</script>";
     echo "<script>console.log('Order billing address  is $order_billing_address');</script>";
     echo "<script>console.log('Order delivering address  is $order_delivery_address');</script>";
-    
+
 
     //insert order as a user orders
     $insert_order_querry = "INSERT INTO `user_order`(user_id, total_amount, invoice_number, total_ordered_products, order_date, order_status, payment_method, billing_address, delivery_address) VALUES ($user_id,$Total_cart_price,$invoicenumber,$data_row_count,NOW(),'$product_status','$product_payment_method','$order_billing_address','$order_delivery_address')";
@@ -396,17 +396,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order_button'
         echo "<script>console.log('insert data into user order table')</script>";
     }
 
-    //Insert order as a pending order
-       $insert_pending_order="INSERT INTO `pending_orders`(user_id,invoice_number,product_ids, product_quentity, order_status) VALUES($user_id,$invoicenumber,$cart_product_id,$cart_product_quentity,'$product_status')";
-       $result_pending_orders=mysqli_query($conn,$insert_pending_order);
+    //get all available product id and quenties from cart table
+    $select_carts_querry1 = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$user_ip_address'";
+    $results_carts1 = mysqli_query($conn, $select_carts_querry1);
+    $order_id = mt_rand();
 
-       echo "<script>alert('Order is saved in pending list');</script>";
-       echo "<script>console.log('insert data into pending orders table')</script>";
+    while($cart_details1_array=mysqli_fetch_array($results_carts1)){
+        $cart_product_id=$cart_details1_array['Product_Id'];
+        $cart_product_quentity=$cart_details1_array['Product_Quentity'];
+
+        echo "<script>console.log('selected product id is $cart_product_id and quantity is $cart_product_quentity');</script>";
+        
+        //Insert order as a pending order
+       // INSERT INTO `pending_orders`(`order_id`, `user_id`, `invoice_number`, `product_id`, `product_quentity`, `order_status`)
+    $insert_pending_order = "INSERT INTO `pending_orders`(user_id,invoice_number,product_id, product_quentity, order_status) VALUES( $user_id,$invoicenumber,$cart_product_id,$cart_product_quentity,'$product_status')";
+    $result_pending_orders = mysqli_query($conn, $insert_pending_order);
+
+    echo "<script>alert('Order is saved in pending list');</script>";
+    echo "<script>console.log('insert data into pending orders table')</script>";
+    }
+
     
 
+
     //    //Delete cart detail from the cart details
-       $delete_cart_querry="DELETE  FROM `cart_details` WHERE User_IPaddress='$user_ip_address'";
-       $result_delete_cart=mysqli_query($conn,$delete_cart_querry);
+    $delete_cart_querry = "DELETE  FROM `cart_details` WHERE User_IPaddress='$user_ip_address'";
+    $result_delete_cart = mysqli_query($conn, $delete_cart_querry);
 
     echo "<script>alert('Order is delete from cart details');</script>";
     echo "<script>console.log('Delete data from cart table')</script>";

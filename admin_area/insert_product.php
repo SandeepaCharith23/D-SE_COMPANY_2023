@@ -1,5 +1,5 @@
 <?php
-include('includes/connection.php');
+include('../includes/connection.php');
 
 if (isset($_POST['product_save_button'])) {
     $Product_Name = $_POST['productName'];
@@ -36,10 +36,10 @@ if (isset($_POST['product_save_button'])) {
 
         //1.save data into filed
         //1.1 Move uploaded /selected images to the local folder(new location) before uploading
-        move_uploaded_file($Product_tempImage01, "product_images/$Product_Imagename01");
-        move_uploaded_file($Product_tempImage02, "product_images/$Product_Imagename02");
-        move_uploaded_file($Product_tempImage03, "product_images/$Product_Imagename03");
-        move_uploaded_file($Product_tempImage04, "product_images/$Product_Imagename04");
+        move_uploaded_file($Product_tempImage01, "../product_images/$Product_Imagename01");
+        move_uploaded_file($Product_tempImage02, "../product_images/$Product_Imagename02");
+        move_uploaded_file($Product_tempImage03, "../product_images/$Product_Imagename03");
+        move_uploaded_file($Product_tempImage04, "../product_images/$Product_Imagename04");
 
         //1.2.create inser querry 
         // $Insert_product_query="INSERT INTO `products`(`Product_Name`, `Product_Keyword`, `Category_ID`, `Brand_ID`, `Product_Description`, `Product_Quentity`, `Product_UnitPrice`, `Product_Image01`, `Product_Image02`, `Product_Image03`, `Product_Image04`, `Product_Date`, `Product_Status`) 
@@ -89,7 +89,7 @@ if (isset($_POST['product_save_button'])) {
     <!-- link font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -98,7 +98,7 @@ if (isset($_POST['product_save_button'])) {
 <body>
     <!--Add new product form example-->
     <div class="border p-2 mt-3 cardexample">
-        <h1>Insert a new Product</h1>
+        <h1 class="text-center">Insert a new Product</h1>
 
         <!-- add a product form -->
 
