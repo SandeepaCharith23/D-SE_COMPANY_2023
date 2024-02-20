@@ -23,11 +23,13 @@ include('../includes/connection.php');
     <table class="table table-bordered mt-2 text-center">
         <thead class="bg-info">
         <tr> 
-          <th>Product Name</th>
+          <th>Product ID</th>
           <th>Product Name</th>
           <th>Product Category</th>
           <th>Product Brand</th> 
-          <th>Product Quentity</th>
+          <th>Product Starting Quentity</th>
+          <th>Product in Pending orders</th>
+          <th>Total balance products in stock</th>
           <th>Product Unitprice</th> 
           <th>Product Image</th>
           <th>Product Status</th>
@@ -58,11 +60,30 @@ include('../includes/connection.php');
             $brand_result_array=mysqli_fetch_array(mysqli_query($conn,$select_brand_name_querry));
             $available_product_brand_name=$brand_result_array['Brand_Name'];
 
-            //get available balance quentity
-            // $select_products_from_pending_orders_querry="SELECT * FROM `pending_orders` WHERE product_ids=$available_product_id";
-            
-           
+                //get available balance quentity
+                //echo "<script>console.log('Start of the available product querry')</script>";
 
+                $select_products_from_pending_orders_querry = "SELECT * FROM `pending_orders` WHERE product_id = $available_product_id";
+                $result_pending_orders = mysqli_query($conn, $select_products_from_pending_orders_querry);
+                
+                $total_pending_products=0;
+
+
+                while ($selected_product_available_in_pending_orders_array = mysqli_fetch_array($result_pending_orders)) {
+                    $product_quentity_available_in_pending_orders = $selected_product_available_in_pending_orders_array['product_quentity'];
+
+                    // $total_pending_products=array_sum($product_quentity_available_in_pending_orders);
+                    // Sum up the quantity for each pending order
+                    $total_pending_products += $product_quentity_available_in_pending_orders;
+
+                    // Example: Print the quantity
+                  //  echo "<script>console.log('Product id -$available_product_id ,Total product quentity: $total_pending_products')</script>";
+                  //  echo "<script>console.log('Product id -$available_product_id ,Quentity Pending Orders: $product_quentity_available_in_pending_orders')</script>";
+                }
+
+           // echo "<script>console.log('$product_quentity_available_in_pending_orders')</script>";
+           $balance_product_quentity=$available_product_quentity-$total_pending_products ;
+           //echo "<script>console.log('End of the available product querry')</script>";
 
 
 
@@ -73,6 +94,8 @@ include('../includes/connection.php');
             <td>$available_product_category_name</td>
             <td>$available_product_brand_name</td>
             <td>$available_product_quentity</td>
+            <td>$total_pending_products</td>
+            <td>$balance_product_quentity</td>
             <td>$available_product_unitprice</td>
             <td><img src='../product_images/$available_product_image01' style='width:50px;height:50px;'></td>
             <td>$available_product_status</td>
