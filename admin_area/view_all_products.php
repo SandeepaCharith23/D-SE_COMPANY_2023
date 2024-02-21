@@ -99,7 +99,7 @@ include('../includes/connection.php');
             <td>$available_product_unitprice</td>
             <td><img src='../product_images/$available_product_image01' style='width:50px;height:50px;'></td>
             <td>$available_product_status</td>
-            <td><a href='maindashboard.php?edit_product'>Edit</a></td>
+            <td><a href='maindashboard.php?edit_product=$available_product_id'>Edit</a></td>
             <td><a href=''>Delete</a></td>
             </tr>
             

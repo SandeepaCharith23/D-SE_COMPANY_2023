@@ -399,7 +399,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order_button'
     //get all available product id and quenties from cart table
     $select_carts_querry1 = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$user_ip_address'";
     $results_carts1 = mysqli_query($conn, $select_carts_querry1);
-    $order_id = mt_rand();
+    //$order_id = mt_rand();
 
     while($cart_details1_array=mysqli_fetch_array($results_carts1)){
         $cart_product_id=$cart_details1_array['Product_Id'];

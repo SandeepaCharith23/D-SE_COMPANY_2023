@@ -9,7 +9,8 @@ if (isset($_POST['product_save_button'])) {
     $Product_Brand = $_POST['product_brands'];
     $Product_Quentity = $_POST['productQuentity'];
     $Product_UnitPrice = $_POST['productUnitPrice'];
-    $Product_Status = 'active';
+    // $Product_Status = 'active';
+    $Product_Status = $_POST['Product_Status'];
 
     //access images-name
     $Product_Imagename01 = $_FILES['image01']['name'];
@@ -45,10 +46,10 @@ if (isset($_POST['product_save_button'])) {
         // $Insert_product_query="INSERT INTO `products`(`Product_Name`, `Product_Keyword`, `Category_ID`, `Brand_ID`, `Product_Description`, `Product_Quentity`, `Product_UnitPrice`, `Product_Image01`, `Product_Image02`, `Product_Image03`, `Product_Image04`, `Product_Date`, `Product_Status`) 
         // VALUES ('$Product_Name',' $Product_Keywords',' $Product_Category','$Product_Brand','$Product_Description','$Product_Quentity','$Product_UnitPrice','$Product_Imagename01','$Product_Imagename02','$Product_Imagename03','$Product_Imagename04',Now(),'$Product_Status')";
         // $result_query = mysqli_query($conn, $Insert_product_query);
-        
-        
-        
-        
+
+
+
+
         //1.2 avoid form sql injection-Create querry for create insert product data
         // ... (Previous code remains unchanged)
 
@@ -67,12 +68,11 @@ if (isset($_POST['product_save_button'])) {
         // ... (Rest of your code)
 
 
-       
+
         if ($stmt->execute()) {
             echo "<script>alert('Successfully uploaded Product data into DB')</script>";
-        }
-        else{
-            echo "Errors :" .$stmt->error;
+        } else {
+            echo "Errors :" . $stmt->error;
         }
     }
 }
@@ -127,34 +127,7 @@ if (isset($_POST['product_save_button'])) {
                             <label for="productCategory" class="form-label">Enter your product Category :</label>
                         </div>
                         <div class="col-auto">
-                            <!-- <div class="dropdown">
-                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="productCategoryList" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Select Your Product Category
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="productCategoryList">
-                                    <?php
-                                    //1.selection querry
-                                    $select_category_querry = "SELECT * FROM `product_categories`";
 
-                                    //2.run the querry and get the result form db
-                                    $results_fromdb = mysqli_query($conn, $select_category_querry);
-
-                                    //3.Fetch the returned data to UI
-
-                                    while ($returned_rowdata = mysqli_fetch_assoc($results_fromdb)) {
-
-                                        $category_name = $returned_rowdata['Category_Name'];
-                                        $category_id = $returned_rowdata['Category_ID'];
-
-                                        echo "<li class='dropdown-item'>
-                                       <h4> $category_name</h4>
-                                        </li>";
-                                    }
-
-                                    ?>
-
-                                </ul>
-                            </div> -->
 
                             <select name="product_category" id="" class="form-select">
                                 <option value="">Select a Product Category</option>
@@ -298,6 +271,19 @@ if (isset($_POST['product_save_button'])) {
                     <label class="form-check-label" for="productAvailability">Products are Availabe?</label>
                     <input class="form-check-input" type="checkbox" name="productAvailability" id="productAvailability" role="switch" required>
 
+                    <!-- Add a hidden input field to store the actual value sent to the server -->
+                    <input type="hidden" name="Product_Status" id="productStatusHidden" value="">
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            // Add event listener to the checkbox
+                            document.getElementById('productAvailability').addEventListener('change', function() {
+                                // Update the hidden input field based on checkbox state
+                                document.getElementById('productStatusHidden').value = this.checked ? 'active' : 'inactive';
+                            });
+                        });
+                    </script>
+
                 </div>
 
                 <!-- 10.Product Agreement -->
@@ -323,3 +309,4 @@ if (isset($_POST['product_save_button'])) {
 </body>
 
 </html>
+
