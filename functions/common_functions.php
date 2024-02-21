@@ -15,7 +15,7 @@ function getproducts()
 
         if (!isset($_GET['brandId'])) {
             //1.create search querry
-            $select_products_query = "SELECT * FROM `products` ORDER BY RAND() LIMIT 0,6";
+            $select_products_query = "SELECT * FROM `products`  WHERE Product_Status='active' ORDER BY RAND() LIMIT 0,10";
 
             //2.excute query and fetch data
             $results_products = mysqli_query($conn, $select_products_query);
@@ -79,7 +79,7 @@ function get_selected_product()
         $selected_product_id = $_GET['product_id'];
 
         //1.create search querry
-        $select_products_query = "SELECT * FROM `products` WHERE Product_ID=$selected_product_id";
+        $select_products_query = "SELECT * FROM `products` WHERE Product_ID=$selected_product_id AND Product_Status='active'";
 
         //2.excute query and fetch data
         $results_products = mysqli_query($conn, $select_products_query);
@@ -194,7 +194,7 @@ function get_selected_product_related_products()
         $selected_product_Id = $_GET['product_id'];
 
         //1.create search querry
-        $select_products_query = "SELECT * FROM `products` WHERE Category_ID=$selected_product_category AND Product_ID <> $selected_product_Id ";
+        $select_products_query = "SELECT * FROM `products` WHERE Category_ID=$selected_product_category AND Product_ID <> $selected_product_Id AND Product_Status='active' ";
 
         //2.excute query and fetch data
         $results_products = mysqli_query($conn, $select_products_query);
@@ -260,7 +260,7 @@ function get_all_products_withoutlimit()
 
         if (!isset($_GET['brandId'])) {
             //1.create search querry
-            $select_products_query = "SELECT * FROM `products` ORDER BY RAND()";
+            $select_products_query = "SELECT * FROM `products` WHERE Product_Status='active' ORDER BY RAND() ";
 
             //2.excute query and fetch data
             $results_products = mysqli_query($conn, $select_products_query);
@@ -282,13 +282,18 @@ function get_all_products_withoutlimit()
                 $product_image01 = $row_products_data['Product_Image01'];
                 $product_date = $row_products_data['Product_Date'];
                 $product_status = $row_products_data['Product_Status'];
+                
+                $select_brandname_querry="SELECT * FROM `product_brands` WHERE Brand_ID=$product_brand_ID";
+                $brand_name_array=mysqli_fetch_array(mysqli_query($conn,$select_brandname_querry));
+                $brand_name=$brand_name_array['Brand_Name'];
+
                 echo "
         <div class='col-md-4 mb-2'>
         <div class='card product' onclick='#' >
         <img src='product_images/$product_image01' class='card-img-top' alt='$product_name'>
         <div class='card-body product-description'>
         <h1 class='card-title'>$product_name</h1>
-        <span>$product_brand_ID</span>
+        <span>$brand_name</span>
         <p class='card-text'>$product_description</p>
         <h2>$product_unitprice</h2>
         <div class='stars'>
@@ -325,7 +330,7 @@ function search_product_bysearchbar()
         $searched_data_value = $_GET['search_data'];
 
         //1.create search querry
-        $search_products_query = "SELECT * FROM `products` where Product_Keyword LIKE '%$searched_data_value%'";
+        $search_products_query = "SELECT * FROM `products` where Product_Keyword LIKE '%$searched_data_value%' AND Product_Status='active'";
 
         //2.excute query and fetch data
         $results_products = mysqli_query($conn, $search_products_query);
@@ -357,13 +362,18 @@ function search_product_bysearchbar()
                 $product_image01 = $row_products_data['Product_Image01'];
                 $product_date = $row_products_data['Product_Date'];
                 $product_status = $row_products_data['Product_Status'];
+
+                $select_brandname_querry="SELECT * FROM `product_brands` WHERE Brand_ID=$product_brand_ID";
+                $brand_name_array=mysqli_fetch_array(mysqli_query($conn,$select_brandname_querry));
+                $brand_name=$brand_name_array['Brand_Name'];
                 echo "
         <div class='col-md-4 mb-2'>
         <div class='card product' onclick='#' >
         <img src='product_images/$product_image01' class='card-img-top' alt='$product_name'>
         <div class='card-body product-description'>
         <h1 class='card-title'>$product_name</h1>
-        <span>$product_brand_ID</span>
+        <span>$brand_name</span>
+       
         <p class='card-text'>$product_description</p>
         <h2>$product_unitprice</h2>
         <div class='stars'>
@@ -397,7 +407,7 @@ function get_unique_category_products()
         $selected_product_category = $_GET['cateId'];
 
         //1.create search querry
-        $select_products_query = "SELECT * FROM `products` WHERE Category_ID =$selected_product_category ";
+        $select_products_query = "SELECT * FROM `products` WHERE Category_ID =$selected_product_category  AND Product_Status='active' ";
 
         //2.excute query and fetch data
         $results_products = mysqli_query($conn, $select_products_query);
@@ -465,7 +475,7 @@ function get_unique_brand_products()
         $selected_product_brand = $_GET['brandId'];
 
         //1.create search querry
-        $select_products_query = "SELECT * FROM `products` WHERE Brand_ID =$selected_product_brand ";
+        $select_products_query = "SELECT * FROM `products` WHERE Brand_ID =$selected_product_brand AND Product_Status='active'";
 
         //2.excute query and fetch data
         $results_products = mysqli_query($conn, $select_products_query);

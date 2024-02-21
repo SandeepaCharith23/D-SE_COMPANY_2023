@@ -29,6 +29,10 @@ if (isset($_GET['edit_product'])) {
     // echo "<script>console.log('product name is $selected_product_name')</script>";
 }
 
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -194,26 +198,26 @@ if (isset($_GET['edit_product'])) {
                     <input type="file" class="form-control mb-1" id="image01" name="image01">
                     <div class="d-flex mb-4  m-auto">
                         <!-- Text input to display the filename -->
-                    <label for="selectedFileName">The selected image name</label>
-                    <input type="text" class="form-control mb-1" readonly value="<?php echo $selected_product_image01 ?>" id="selectedFileName">
+                        <label for="selectedFileName">The selected image name</label>
+                        <input type="text" class="form-control mb-1" readonly value="<?php echo $selected_product_image01 ?>" id="selectedFileName">
                     </div>
-                    <input type="file" class="form-control mb-1" id="image02" name="image02" >
+                    <input type="file" class="form-control mb-1" id="image02" name="image02">
                     <div class="d-flex mb-4  m-auto">
                         <!-- Text input to display the filename -->
-                    <label for="selectedFileName">The selected image name</label>
-                    <input type="text" class="form-control mb-1" readonly value="<?php echo $selected_product_image02 ?>" id="selectedFileName">
+                        <label for="selectedFileName">The selected image name</label>
+                        <input type="text" class="form-control mb-1" readonly value="<?php echo $selected_product_image02 ?>" id="selectedFileName">
                     </div>
-                    <input type="file" class="form-control mb-1" id="image03" name="image03" >
+                    <input type="file" class="form-control mb-1" id="image03" name="image03">
                     <div class="d-flex mb-4  m-auto">
                         <!-- Text input to display the filename -->
-                    <label for="selectedFileName">The selected image name</label>
-                    <input type="text" class="form-control mb-1" readonly value="<?php echo $selected_product_image03 ?>" id="selectedFileName">
+                        <label for="selectedFileName">The selected image name</label>
+                        <input type="text" class="form-control mb-1" readonly value="<?php echo $selected_product_image03 ?>" id="selectedFileName">
                     </div>
-                    <input type="file" class="form-control mb-1" id="image04" name="image04" >
+                    <input type="file" class="form-control mb-1" id="image04" name="image04">
                     <div class="d-flex mb-4  m-auto">
                         <!-- Text input to display the filename -->
-                    <label for="selectedFileName">The selected image name</label>
-                    <input type="text" class="form-control mb-1" readonly value="<?php echo $selected_product_image04 ?>" id="selectedFileName">
+                        <label for="selectedFileName">The selected image name</label>
+                        <input type="text" class="form-control mb-1" readonly value="<?php echo $selected_product_image04 ?>" id="selectedFileName">
                     </div>
                     <!-- The 'multiple' attribute allows selecting multiple files -->
                     <!-- The 'accept' attribute ensures only image files can be selected -->
@@ -275,7 +279,7 @@ if (isset($_POST['product_update_button'])) {
     $updated_product_UnitPrice = $_POST['productUnitPrice'];
     // $Product_Status = 'active';
     //$updated_product_Status = $_POST['productAvailability'];
-    $updated_product_Status=$_POST['productAvailability'] ? 'active' : 'inactive';
+    $updated_product_Status = $_POST['productAvailability'] ? 'active' : 'inactive';
 
     //access images-name
     $updated_product_Imagename01 = $_FILES['image01']['name'];
@@ -310,7 +314,7 @@ if (isset($_POST['product_update_button'])) {
     //check that all variables are not empty
     if (
         $updated_product_name == '' || $updated_product_Keywords == '' || $updated_product_Description == '' || $updated_product_Category_ID == ''
-        || $updated_product_Brand_ID == '' || $updated_product_Quentity == '' || $updated_product_UnitPrice == '' 
+        || $updated_product_Brand_ID == '' || $updated_product_Quentity == '' || $updated_product_UnitPrice == ''
     ) {
 
         echo "<script>alert('Please fill the  available empty field')</script>";
