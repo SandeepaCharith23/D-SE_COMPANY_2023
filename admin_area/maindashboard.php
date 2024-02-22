@@ -163,6 +163,11 @@
           include('edit_product_details.php');
         }
 
+        if(isset($_GET['delete_product']))
+        {
+          include('delete_selected_product.php');
+        }
+
 
         ?>
       </div>
