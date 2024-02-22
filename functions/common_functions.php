@@ -37,13 +37,18 @@ function getproducts()
                 $product_image01 = $row_products_data['Product_Image01'];
                 $product_date = $row_products_data['Product_Date'];
                 $product_status = $row_products_data['Product_Status'];
+                
+                $select_brandname_querry="SELECT * FROM `product_brands` WHERE Brand_ID=$product_brand_ID";
+                $brand_name_array=mysqli_fetch_array(mysqli_query($conn,$select_brandname_querry));
+                $brand_name=$brand_name_array['Brand_Name'];
+
                 echo "
         <div class='col-md-4 mb-2'>
         <div class='card product' onclick='' >
         <img src='product_images/$product_image01' class='card-img-top' alt='$product_name'>
         <div class='card-body product-description'>
         <h1 class='card-title'>$product_name</h1>
-        <span>$product_brand_ID</span>
+        <span>$brand_name</span>
         <p class='card-text'>$product_description</p>
         <h2>$product_unitprice</h2>
         <div class='stars'>
@@ -110,10 +115,18 @@ function get_selected_product()
             $product_date = $row_products_data['Product_Date'];
             $product_status = $row_products_data['Product_Status'];
 
+            $select_brandname_querry="SELECT * FROM `product_brands` WHERE Brand_ID=$product_brand_ID";
+            $brand_name_array=mysqli_fetch_array(mysqli_query($conn,$select_brandname_querry));
+            $brand_name=$brand_name_array['Brand_Name'];
+
+            $select_category_querry="SELECT * FROM `product_categories` WHERE Category_ID='$product_category_ID'";
+            $category_array=mysqli_fetch_array(mysqli_query($conn,$select_category_querry));
+            $category_name=$category_array['Category_Name'];
+
 
             echo "
                     <h1>$product_name</h1>
-                    <h2>$product_brand_ID</h2>
+                    <h2>$brand_name</h2>
 
                     <div class='product-container'>
                     <div class='product-images-column'>
@@ -143,7 +156,7 @@ function get_selected_product()
     
             </div>
                      <div class='product-details-column'>
-                     <h1>$product_name / $product_category_ID</h1>
+                     <h1>$product_name / $brand_name /$category_name </h1>
                      <h4>Product Category description</h4>
                      <h2>Rs.$product_unitprice</h2>
 

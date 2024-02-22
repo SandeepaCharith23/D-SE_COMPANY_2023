@@ -71,6 +71,7 @@ if (isset($_POST['product_save_button'])) {
 
         if ($stmt->execute()) {
             echo "<script>alert('Successfully uploaded Product data into DB')</script>";
+            echo "<script>window.open('maindashboard.php?available_products','_self')</script>";
         } else {
             echo "Errors :" . $stmt->error;
         }
@@ -129,7 +130,7 @@ if (isset($_POST['product_save_button'])) {
                         <div class="col-auto">
 
 
-                            <select name="product_category" id="" class="form-select">
+                            <select name="product_category" id="" class="form-select" required>
                                 <option value="">Select a Product Category</option>
 
 
@@ -175,7 +176,7 @@ if (isset($_POST['product_save_button'])) {
                         </div>
                         <div class="col-auto">
 
-                            <select name="product_brands" id="" class="form-select">
+                            <select name="product_brands" id="" class="form-select" required>
                                 <option value=''>
                                     <h4>Select a Product Category</h4>
                                 </option>"

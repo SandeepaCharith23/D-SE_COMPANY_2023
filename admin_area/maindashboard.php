@@ -116,8 +116,8 @@
           <!-- 2.Order management dropdown -->
           <h3>Order Managemnet</h3>
           <ul>
-            <li><a href="#">Pending Orders</a></li>
-            <li><a href="#">Completed Orders</a></li>
+            <li><a href="maindashboard.php?pending_orders">Pending Orders</a></li>
+            <li><a href="maindashboard.php?completed_orders">Completed Orders</a></li>
 
           </ul>
 
@@ -125,7 +125,9 @@
           <h3>Product Categories and Brands</h3>
           <ul>
             <li><a href="maindashboard.php?insert_categories">Add new Category</a></li>
+            <li><a href="maindashboard.php?edit_categories">Available Categories</a></li>
             <li><a href="maindashboard.php?insert_brands">Add new Brand</a></li>
+            <li><a href="maindashboard.php?edit_brands">Available Brands</a></li>
           </ul>
 
         </div>
@@ -150,12 +152,31 @@
           include('insert_product.php');
         }
 
+        if (isset($_GET['edit_categories'])) {
+          include('view_all_categories.php');
+        }
+
+        if(isset($_GET['edit_selected_category_id']))
+        {
+          include('edit_selected_category.php');
+        }
+
         if (isset($_GET['insert_categories'])) {
           include('insert_categories.php');
         }
 
+
         if (isset($_GET['insert_brands'])) {
           include('insert_brands.php');
+        }
+
+        if (isset($_GET['edit_brands'])) {
+          include('view_all_brands.php');
+        }
+
+        
+        if (isset($_GET['edit_selected_brand_id'])) {
+          include('edit_selected_brand.php');
         }
 
         if(isset($_GET['edit_product']))
@@ -166,6 +187,21 @@
         if(isset($_GET['delete_product']))
         {
           include('delete_selected_product.php');
+        }
+        
+        if(isset($_GET['delete_selected_category_id']))
+        {
+          include('delete_selected_category.php');
+        }
+
+        if(isset($_GET['delete_selected_brand_id']))
+        {
+          include('delete_selected_brand.php');
+        }
+
+        if(isset($_GET['pending_orders']))
+        {
+          include('all_pending_orders.php');
         }
 
 

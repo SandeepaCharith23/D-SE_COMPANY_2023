@@ -42,6 +42,7 @@
         
         if ($result) {
             echo "<script>alert('Brand added successfully')</script>";
+            echo "<script>window.open('maindashboard.php?edit_brands','_self')</script>";
         } else {
             echo "Error: " . mysqli_error($conn);
         }

@@ -1,10 +1,10 @@
 <?php
 include('../includes/connection.php');
 
-if (isset($_GET['delete_product'])) {
+if (isset($_GET['delete_selected_brand_id'])) {
 
-    $selected_product_id = $_GET['delete_product'];
-    echo "<script>console.log('selected product id is $selected_product_id')</script>";
+    $selected_product_brand_id = $_GET['delete_selected_brand_id'];
+    echo "<script>console.log('selected product category  id is  $selected_product_brand_id')</script>";
 }
 
 
@@ -27,16 +27,16 @@ if (isset($_GET['delete_product'])) {
 <body>
 
     <div class="text-center container mt-5 border p-2 shadow">
-        <h2>Product Management</h2>
+        <h2>Product Brand Management</h2>
 
         <!-- Trigger for Delete Confirmation Modal -->
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmationModal">
-            Delete Product
+            Delete Product Brand
         </button>
 
         <!-- Trigger for Deactivate Confirmation Modal -->
         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#deactivateConfirmationModal">
-            Deactivate Product
+            Deactivate Product Brand
         </button>
     </div>
 
@@ -55,13 +55,13 @@ if (isset($_GET['delete_product'])) {
 
                     <!-- Modal Body -->
                     <div class="modal-body">
-                        Are you sure you want to delete the selected product?
+                        Are you sure you want to delete the selected product brand?
                     </div>
 
                     <!-- Modal Footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-danger" name="delete_product_button">Delete</button>
+                        <button type="submit" class="btn btn-danger" name="delete_product_brand_button">Delete</button>
                     </div>
 
                 </div>
@@ -84,7 +84,7 @@ if (isset($_GET['delete_product'])) {
 
                     <!-- Modal Body -->
                     <div class="modal-body">
-                        Are you sure you want to deactivate the selected product?
+                        Are you sure you want to deactivate the selected product brand?
                     </div>
 
                     <!-- Modal Footer -->
@@ -107,14 +107,14 @@ if (isset($_GET['delete_product'])) {
 <?php
 
 // Check if the "delete_product" button is clicked
-if (isset($_POST['delete_product_button'])) {
+if (isset($_POST['delete_product_brand_button'])) {
     // Output a JavaScript console log message
 
-    $delete_product_querry = "DELETE FROM `products` WHERE Product_ID=$selected_product_id";
+    $delete_product_brand_querry = "DELETE FROM `product_brands` WHERE Brand_ID=$selected_product_brand_id";
 
-    if (mysqli_query($conn, $delete_product_querry)) {
-        echo "<script>alert('Successfully delete the product from database.');</script>";
-        echo "<script>window.open('maindashboard.php','_self')</script>";
+    if (mysqli_query($conn,  $delete_product_brand_querry)) {
+        echo "<script>alert('Successfully delete the product brand from database.');</script>";
+        echo "<script>window.open('maindashboard.php?edit_brands','_self')</script>";
     }
 }
 

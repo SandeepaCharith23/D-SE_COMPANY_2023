@@ -74,7 +74,7 @@ include('../includes/connection.php');
         $category_result_array = mysqli_fetch_array(mysqli_query($conn, $select_category_name_querry));
         $available_product_category_name = $category_result_array['Category_Name'];
 
-        $select_brand_name_querry = "SELECT * FROM `product_brands` WHERE Brand_ID='$available_product_category_id'";
+        $select_brand_name_querry = "SELECT * FROM `product_brands` WHERE Brand_ID='$available_product_brand_id'";
         $brand_result_array = mysqli_fetch_array(mysqli_query($conn, $select_brand_name_querry));
         $available_product_brand_name = $brand_result_array['Brand_Name'];
 

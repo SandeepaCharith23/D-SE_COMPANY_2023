@@ -354,7 +354,7 @@ if (isset($_POST['product_update_button'])) {
 
         if ($stmt->execute()) {
             echo "<script>alert('Successfully updated Product details.')</script>";
-            echo "<script>window.open('maindashboard.php','_self')</script>";
+            echo "<script>window.open('maindashboard.php?available_products','_self')</script>";
         } else {
             echo "Errors :" . $stmt->error;
         }
