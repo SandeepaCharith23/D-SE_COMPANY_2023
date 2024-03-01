@@ -8,7 +8,7 @@ include('../includes/connection.php');?>
     <title>Document</title>
 </head>
 <body>
-   <h2 class="text-center text-success">All pending orders.</h2>
+   <h2 class="text-center text-success">All pending orders.waiting for shippment</h2>
    <table class="table table-bordered mt-2 text-center">
     <thead class="bg-info">
         <tr>
@@ -24,10 +24,12 @@ include('../includes/connection.php');?>
             <th>Product Unitprice</th>
             <th>Product SubTotal</th>
             <th>Shipping status</th>
+            <th>Online payment status</th>
             <th>Delete order</th>
+            <th>Complete Shipment</th>
             <tbody>
                 <?php
-                $get_pending_orders_querry="SELECT * FROM `pending_orders`";
+                $get_pending_orders_querry="SELECT * FROM `pending_orders` WHERE order_shipment_status='Not Shipped'";
                 $results_pending_orders=mysqli_query($conn,$get_pending_orders_querry);
                 $serial_number=1;
                 while($pending_orders_array=mysqli_fetch_array($results_pending_orders))
@@ -38,12 +40,14 @@ include('../includes/connection.php');?>
                    $pending_order_product_id=$pending_orders_array['product_id'];
                    $pending_order_product_quentity=$pending_orders_array['product_quentity'];
                    $pending_order_status=$pending_orders_array['order_status'];
+                   $pending_order_shippment_status=$pending_orders_array['order_shipment_status'];
                    
                    //get invoice details
                    $select_invoice_details_querry="SELECT * FROM `user_order` WHERE invoice_number=$pending_order_invoice_number";
                    $select_invoice_details_array = mysqli_fetch_array( mysqli_query($conn, $select_invoice_details_querry));
                    
                    $pending_order_invoice_total_amount=$select_invoice_details_array['total_amount'];
+                   $pending_order_online_payment_status=$select_invoice_details_array['order_status'];
                    $pending_order_invoice_total_amount_formatted=number_format($pending_order_invoice_total_amount,2);
 
                    //get the product details
@@ -76,8 +80,10 @@ include('../includes/connection.php');?>
                     <td>$pending_order_product_quentity</td>
                     <td>$pending_order_product_unit_price</td>
                     <td>$pending_order_product_sub_total_formatted</td>
-                    <td>Not-shipped</td>
+                    <td>$pending_order_shippment_status</td>
+                    <td>$pending_order_online_payment_status</td>
                     <td>Delete order</td>
+                    <td><a href='maindashboard.php?user_id=$pending_order_user_id&order_invoice_number=$pending_order_invoice_number&product_id=$pending_order_product_id' class='text-info'>Complete Order<a></td>
                 </tr>";
 
                 $serial_number++;

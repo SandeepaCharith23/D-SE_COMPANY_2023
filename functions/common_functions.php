@@ -156,7 +156,7 @@ function get_selected_product()
     
             </div>
                      <div class='product-details-column'>
-                     <h1>$product_name / $brand_name /$category_name </h1>
+                     <h1>$product_name / $brand_name /$category_name  </h1>
                      <h4>Product Category description</h4>
                      <h2>Rs.$product_unitprice</h2>
 
@@ -301,7 +301,7 @@ function get_all_products_withoutlimit()
                 $brand_name=$brand_name_array['Brand_Name'];
 
                 echo "
-        <div class='col-md-4 mb-2'>
+        <div class='col-md-4 mb-2' >
         <div class='card product' onclick='#' >
         <img src='product_images/$product_image01' class='card-img-top' alt='$product_name'>
         <div class='card-body product-description'>

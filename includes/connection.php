@@ -21,11 +21,7 @@ if (!defined('DB_NAME')) {
 }
 
 
-// define('DB_HOST','localhost:3308');
-// define('DB_USER','Sandeepa_Charith');
-// define('DB_PASS','123456');
-// define('DB_NAME','d&secompany');
-// define('DB_PORT',3308);
+
 
 try{
 //1.create a connection

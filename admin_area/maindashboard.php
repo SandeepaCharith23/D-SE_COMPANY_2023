@@ -116,8 +116,9 @@
           <!-- 2.Order management dropdown -->
           <h3>Order Managemnet</h3>
           <ul>
-            <li><a href="maindashboard.php?pending_orders">Pending Orders</a></li>
-            <li><a href="maindashboard.php?completed_orders">Completed Orders</a></li>
+            <li><a href="maindashboard.php?pending_orders">Shipment Pending Orders</a></li>
+            <li><a href="maindashboard.php?completed_orders">Shipment completed Orders</a></li>
+            <li><a href="maindashboard.php?invoice_details">Invoices details</a></li>
 
           </ul>
 
@@ -204,6 +205,35 @@
           include('all_pending_orders.php');
         }
 
+        if (
+          isset($_GET['user_id']) &&
+          isset($_GET['order_invoice_number']) &&
+          isset($_GET['product_id'])
+        ) {
+          // Include the file when all parameters are set
+          include('complete_shippment.php');
+        }
+
+        
+        if(isset($_GET['completed_orders']))
+        {
+          include('completed_orders.php');
+        }
+
+        if(isset($_GET['invoice_details']))
+        {
+          include('invoices_details.php');
+        }
+
+        if (
+          isset($_GET['invoice_number_id']) &&
+          isset($_GET['user_id'])
+        ) {
+          // Include the file when all parameters are set
+          include('complete_shippment_invoice.php');
+        }
+
+        
 
         ?>
       </div>

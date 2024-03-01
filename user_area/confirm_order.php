@@ -379,6 +379,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order_button'
    
     echo "<script>console.log('Invoice number is $invoicenumber');</script>";
     $product_status = "Cash on delivery";
+    $order_shipment_status='Not Shipped';
     $product_payment_method = $_POST['product_payment_method'];
     $order_billing_address = $_POST['billingAddress'];
     $order_delivery_address = $_POST['deliveryAddress'];
@@ -390,7 +391,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order_button'
 
 
     //insert order as a user orders
-    $insert_order_querry = "INSERT INTO `user_order`(user_id, total_amount, invoice_number, total_ordered_products, order_date, order_status, payment_method, billing_address, delivery_address) VALUES ($user_id,$Total_cart_price,$invoicenumber,$data_row_count,NOW(),'$product_status','$product_payment_method','$order_billing_address','$order_delivery_address')";
+    $insert_order_querry = "INSERT INTO `user_order`(user_id, total_amount, invoice_number, total_ordered_products, order_date, order_status, payment_method, billing_address, delivery_address,order_shipment_status) VALUES ($user_id,$Total_cart_price,$invoicenumber,$data_row_count,NOW(),'$product_status','$product_payment_method','$order_billing_address','$order_delivery_address','$order_shipment_status')";
     if (mysqli_query($conn, $insert_order_querry)) {
         echo "<script>alert('Order is successfully submitted ,you will be contact from our staff.');</script>";
         echo "<script>console.log('insert data into user order table')</script>";
@@ -409,7 +410,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order_button'
         
         //Insert order as a pending order
        // INSERT INTO `pending_orders`(`order_id`, `user_id`, `invoice_number`, `product_id`, `product_quentity`, `order_status`)
-    $insert_pending_order = "INSERT INTO `pending_orders`(user_id,invoice_number,product_id, product_quentity, order_status) VALUES( $user_id,$invoicenumber,$cart_product_id,$cart_product_quentity,'$product_status')";
+    $insert_pending_order = "INSERT INTO `pending_orders`(user_id,invoice_number,product_id, product_quentity, order_status,order_shipment_status) VALUES( $user_id,$invoicenumber,$cart_product_id,$cart_product_quentity,'$product_status','$order_shipment_status')";
     $result_pending_orders = mysqli_query($conn, $insert_pending_order);
 
     echo "<script>alert('Order is saved in pending list');</script>";
