@@ -21,6 +21,8 @@ let productBnnernumberslideIcons=productBnnerSlides.length;
 
 let adminloginbutton=document.getElementById('adminloginbutton');
 
+console.log(adminloginbutton);
+
 // //admin login function
 adminloginbutton.addEventListener('submit',function(){
     console.log('Insert admin login button'); 

@@ -83,7 +83,7 @@ include('../includes/connection.php');?>
                     <td>$pending_order_shippment_status</td>
                     <td>$pending_order_online_payment_status</td>
                     <td>Delete order</td>
-                    <td><a href='maindashboard.php?user_id=$pending_order_user_id&order_invoice_number=$pending_order_invoice_number&product_id=$pending_order_product_id' class='text-info'>Complete Order<a></td>
+                    <td><a href='maindashboard.php?user_id=$pending_order_user_id&order_invoice_number=$pending_order_invoice_number&product_id=$pending_order_product_id' class='bg-success p-1 text-white'>Complete Order<a></td>
                 </tr>";
 
                 $serial_number++;

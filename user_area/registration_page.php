@@ -614,6 +614,7 @@ if (isset($_POST['sign_up_button'])) {
     $Entereduserprovince = $_POST['userprovince'];
     $Entereduserdistrict = $_POST['userdistrict'];
     $Enteredusercity = $_POST['usercity'];
+    $UserAccountStatus='Active';
 
     // File upload handling
     $EntereduserImagename = $_FILES['userimage01']['name'];
@@ -651,12 +652,12 @@ if (isset($_POST['sign_up_button'])) {
 
 
         // Use prepared statements to prevent SQL injection
-        $insertAccountDetailsquery = "INSERT INTO `user_table` (User_Name, User_Password, User_Email, User_FirstName, User_LastName, User_Address, User_MobilePhone, User_ProfileImage, User_IPaddress,User_Province,User_District,User_City, User_PostalCode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $insertAccountDetailsquery = "INSERT INTO `user_table` (User_Name, User_Password, User_Email, User_FirstName, User_LastName, User_Address, User_MobilePhone, User_ProfileImage, User_IPaddress,User_Province,User_District,User_City, User_PostalCode,User_Account_Status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
         $stmt = mysqli_prepare($conn, $insertAccountDetailsquery);
         echo "<script>console.log('mysqli_prepare done');</script>";
 
         // Bind parameters and execute query
-        mysqli_stmt_bind_param($stmt, "sssssssssssss", $EntereduserName, $EntereduserPassword, $EntereduserEmailAddress, $EntereduserFirstName, $EntereduserLastName, $EntereduserAddress, $EntereduserMobileNumber, $EntereduserImagename, $userIPAddress,$Entereduserprovince,$Entereduserdistrict,$Enteredusercity,$Entereduserpostalcode);
+        mysqli_stmt_bind_param($stmt, "ssssssssssssss", $EntereduserName, $EntereduserPassword, $EntereduserEmailAddress, $EntereduserFirstName, $EntereduserLastName, $EntereduserAddress, $EntereduserMobileNumber, $EntereduserImagename, $userIPAddress,$Entereduserprovince,$Entereduserdistrict,$Enteredusercity,$Entereduserpostalcode,$UserAccountStatus);
         echo "<script>console.log('Added querry');</script>";
         if (mysqli_stmt_execute($stmt)) {
             // echo "<script>alert('Saved to Database')</script>";

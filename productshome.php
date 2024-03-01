@@ -85,18 +85,17 @@ session_start();
         </nav>
 
         <?php
-                if (!isset($_SESSION['username'])) {
-                    echo "
+        if (!isset($_SESSION['username'])) {
+            echo "
                     <div class='icons'>
                     <div id='login-btn-user' class='fas fa-user'></div>
                 </div>
                             ";
-                } else {
-                    
-                }
-                ?>
+        } else {
+        }
+        ?>
 
-        
+
 
 
         <form action="search_product.php" class="search-form" id="producthomesearchform" method="GET">
@@ -121,13 +120,13 @@ session_start();
 
             <a href="productshome.php"><input type="submit" value="login" class="button" id="adminloginbutton"></a>
             <p>Don't have an account <a href="user_area/registration_page.php">Create new Account</a></p>
-             
 
-            
+
+
 
         </div>
 
-        
+
 
 
     </header>
@@ -144,7 +143,7 @@ session_start();
         <p>In this stage we expect to display our products only ,Then you can contact us on whatsup and email.</p>
 
     </div>
-    
+
     <!-- user account details and logout or login button -->
     <div id="useraccountdisplaysection" class="useraccountdisplaysection">
         <nav class="navbar navbar-expand-lg navbar-dark bg-gradient m-2">
@@ -214,7 +213,7 @@ session_start();
 
                     ?>
 
-                 
+
 
 
 
@@ -345,13 +344,16 @@ session_start();
 
     <!-- link custom js file -->
 
-    <script>
+   
+</body>
+
+<script>
         let loginFormuser = document.getElementById('login-form-user');
-        let closebuttonofuserlogin=document.getElementById('userlogin-close-button');
+        let closebuttonofuserlogin = document.getElementById('userlogin-close-button');
         document.querySelector('#login-btn-user').onclick = () => {
             console.log('inside Login  button');
             //loginFormuser.classList.toggle('active');
-            window.open('user_area/login_page.php','_self');
+            window.open('user_area/login_page.php', '_self');
 
             // Call the function to load the login page when the page loads
             //loadLoginPage();
@@ -360,8 +362,8 @@ session_start();
             // searchForm.classList.remove('active');
         };
 
-        closebuttonofuserlogin.onclick=()=>{
-            loginFormuser.classList.remove('active');  
+        closebuttonofuserlogin.onclick = () => {
+            loginFormuser.classList.remove('active');
         }
 
         // Function to load login page content into the specified div
@@ -381,6 +383,5 @@ session_start();
         //
     </script>
     <script src="js/script.js"></script>
-</body>
 
 </html>

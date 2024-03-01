@@ -106,7 +106,7 @@
         <div class="mx-2 p-3 border shadow">
           <!-- 1.product Management Dropdown -->
 
-          <h3>Manage My Account</h3>
+          <h3>Manage products</h3>
           <ul>
             <li> <a href="maindashboard.php?available_products">Available Product</a></li>
             <li> <a href="maindashboard.php?insert_products">Add new Product</a></li>
@@ -120,6 +120,11 @@
             <li><a href="maindashboard.php?completed_orders">Shipment completed Orders</a></li>
             <li><a href="maindashboard.php?invoice_details">Invoices details</a></li>
 
+          </ul>
+
+          <h3>User managemnet</h3>
+          <ul>
+            <li><a href="maindashboard.php?available_users">Available users</a></li>
           </ul>
 
           <!-- 3.product Categories Dropdown -->
@@ -231,6 +236,29 @@
         ) {
           // Include the file when all parameters are set
           include('complete_shippment_invoice.php');
+        }
+
+        if(isset($_GET['available_users']))
+        {
+          include('all_available_user.php');
+        }
+
+        if (
+          isset($_GET['selected_user_name']) &&
+          isset($_GET['selected_user_emailaddress'])
+        ) {
+          // Include the file when all parameters are set
+          include('suspend_user.php');
+        }
+
+       
+
+        if (
+          isset($_GET['selected_user_name_activate']) &&
+          isset($_GET['selected_user_emailaddress_activate'])
+        ) {
+          // Include the file when all parameters are set
+          include('activate_account.php');
         }
 
         
