@@ -261,6 +261,11 @@
           include('activate_account.php');
         }
 
+        if(isset($_GET['user_id']))
+        {
+          include('selected_user_details.php');
+        }
+
         
 
         ?>
