@@ -143,7 +143,7 @@ if (session_status() == PHP_SESSION_NONE) {
         $user_userpassword = $_POST['password'];
 
         //2.Select the entered values from Daatabase
-        $select_user = "SELECT * FROM `user_table` WHERE User_Name='$user_username'";
+        $select_user = "SELECT * FROM `user_table` WHERE User_Name='$user_username' && User_Account_Status='Active'";
 
         $result_user = mysqli_query($conn, $select_user);
         $result_row_user = mysqli_num_rows($result_user);
@@ -186,7 +186,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 echo "<script>alert('Password does not match')</script>";
             }
         } else {
-            echo "<script>alert('No records have')</script>";
+            echo "<script>alert('No records have or Account has deactivate.Please Contact our admin')</script>";
         }
     }
 
