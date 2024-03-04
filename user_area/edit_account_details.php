@@ -2,60 +2,31 @@
 <html lang="en">
 
 <?php
-       
-        $username=$_SESSION['username'];
 
-        $select_user_details_querry="SELECT * FROM `user_table` WHERE User_Name= '$username'";
-        $results_user=mysqli_query($conn,$select_user_details_querry);
-        $result_user_array=mysqli_fetch_array($results_user);
-        $userID=$result_user_array['User_ID'];
-        $userimage=$result_user_array['User_ProfileImage'];
-        $userfirstname=$result_user_array['User_FirstName'];
-        $userlastname=$result_user_array['User_LastName'];
-        $useremailaddress=$result_user_array['User_Email'];
-        $usermobilenumber=$result_user_array['User_MobilePhone'];
-        $useraddress=$result_user_array['User_Address'];
-        $userpostcode=$result_user_array['User_PostalCode'];
-        $userProvince=$result_user_array['User_Province'];
-        $userdistrict=$result_user_array['User_District'];
-        $usercity=$result_user_array['User_City'];
-       // echo "<script>alert('user image catches')</script>"; 
-      
+$username = $_SESSION['username'];
 
-     if(isset($_POST['update_button']))
-     {  
-        //catch the values
-        $updated_userid=$userID;
-        $updated_userName=$_POST['username'];
-        $updated_userFirstName=$_POST['userfirstname'];
-        $updated_userLastName=$_POST['userlastname'];
-        $updated_useraddress=$_POST['useraddress'];
-        $updated_userEmailaddress=$_POST['useremailaddress'];
-        $updated_userMobileNumber=$_POST['usermobilenumber'];
-        $updated_userPostalCode=$_POST['userpostalcode'];
-        $updated_userProvince=$_POST['userprovince'];
-        $updated_userDistrict=$_POST['userdistrict'];
-        $updated_userCity=$_POST['usercity'];
+$select_user_details_querry = "SELECT * FROM `user_table` WHERE User_Name= '$username'";
+$results_user = mysqli_query($conn, $select_user_details_querry);
+$result_user_array = mysqli_fetch_array($results_user);
+$userID = $result_user_array['User_ID'];
+$userimage = $result_user_array['User_ProfileImage'];
+$userfirstname = $result_user_array['User_FirstName'];
+$userlastname = $result_user_array['User_LastName'];
+$useremailaddress = $result_user_array['User_Email'];
+$usermobilenumber = $result_user_array['User_MobilePhone'];
+$useraddress = $result_user_array['User_Address'];
+$userpostcode = $result_user_array['User_PostalCode'];
+$userProvince = $result_user_array['User_Province'];
+$userdistrict = $result_user_array['User_District'];
+$usercity = $result_user_array['User_City'];
 
-        //File upload handling
-       $updated_userImagename = $_FILES['userimage01']['name'];
-       $updated_Imagetempname = $_FILES['userimage01']['tmp_name'];
-       $updated_imageUploadPath = "../images/profileimages/";
 
-       move_uploaded_file($updated_Imagetempname,$updated_imageUploadPath.$updated_userImagename);
 
-        //update user details according to values which user entered.
-        $update_user_details_querry="UPDATE `user_table` SET User_Name='$updated_userName',User_Email='$updated_userEmailaddress',User_FirstName='$updated_userFirstName',User_LastName='$updated_userLastName',User_Address='$updated_useraddress',User_MobilePhone='$updated_userMobileNumber',User_ProfileImage='$updated_userImagename',User_Province='$updated_userProvince',User_District='$updated_userDistrict',User_City='$updated_userCity',User_PostalCode='$updated_userPostalCode' WHERE User_ID='$updated_userid' ";
 
-        if(mysqli_query($conn,$update_user_details_querry)){
-            echo "<script>Successfully saved to Database</script>";
-            echo "<script>window.open('login_out.php','_self')</script>";
-        }else{
-            echo "Something Error";
-        }
-     }
 
-    ?>
+
+
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -98,7 +69,7 @@
 
     <form id="update_Form01" action="" class="updateuserdetails-form-style" method="POST" enctype="multipart/form-data">
 
-        
+
         <!-- user name -->
         <div class="row p-2 mb-3 mx-2 form-outline border">
             <label for="user_name" class="col-sm-3 col-form-label bg-light">User name</label>
@@ -169,15 +140,15 @@
             <div class="col-sm-9">
                 <select class="form-select" id="user_province" name="userprovince" required>
                     <option selected disabled>Select Province</option>
-                    <option value="Central">Central</option>
-                    <option value="Eastern">Eastern</option>
-                    <option value="Northern">Northern</option>
-                    <option value="North Central">North Central</option>
-                    <option value="North Western">North Western</option>
-                    <option value="Sabaragamuwa">Sabaragamuwa</option>
-                    <option value="Southern">Southern</option>
-                    <option value="Uva">Uva</option>
-                    <option value="Western">Western</option>
+                    <option value="Central" <?php echo ($userProvince=='Central') ? 'selected':'';?>>Central</option>
+                    <option value="Eastern" <?php echo ($userProvince=='Eastern') ? 'selected':'';?>>Eastern</option>
+                    <option value="Northern" <?php echo ($userProvince=='Northern') ? 'selected':'';?> >Northern</option>
+                    <option value="North Central" <?php echo ($userProvince=='North Central') ? 'selected':'';?>>North Central</option>
+                    <option value="North Western" <?php echo ($userProvince=='North Western') ? 'selected':'';?>>North Western</option>
+                    <option value="Sabaragamuwa" <?php echo ($userProvince=='Sabaragamuwa') ? 'selected':'';?>>Sabaragamuwa</option>
+                    <option value="Southern" <?php echo ($userProvince=='Southern') ? 'selected':'';?>>Southern</option>
+                    <option value="Uva" <?php echo ($userProvince=='Uva') ? 'selected':'';?>>Uva</option>
+                    <option value="Western"  <?php echo ($userProvince=='Western') ? 'selected':'';?>>Western</option>
                 </select>
                 <div id="provinceError" class="text-info">Please select your province</div>
             </div>
@@ -191,7 +162,61 @@
                 <select class="form-select" id="user_district" name="userdistrict" required>
                     <option selected disabled>Select District</option>
                     <!-- District options will be dynamically added here based on the selected province -->
+                    
+                    <?php
+                    if($userProvince=='Central')
+                    {
+                        $districtoptions=['Kandy', 'Matale', 'Nuwara Eliya'];
+                    }
 
+                    else if($userProvince=='Eastern')
+                    {
+                        $districtoptions=['Trincomalee', 'Batticaloa', 'Ampara'];
+                    }
+
+                    elseif($userProvince=='Northern')
+                    {
+                        $districtoptions=['Jaffna', 'Kilinochchi', 'Mannar', 'Mullaitivu', 'Vavuniya'];
+                    }
+
+                    elseif($userProvince=='North Central')
+                    {
+                        $districtoptions=['Anuradhapura', 'Polonnaruwa'];
+                    }
+
+                    elseif($userProvince=='North Western')
+                    {
+                        $districtoptions= ['Kurunegala', 'Puttalam'];
+                    }
+
+                    elseif($userProvince=='Sabaragamuwa')
+                    {
+                        $districtoptions=['Ratnapura', 'Kegalle'];
+                    }
+
+                    elseif($userProvince=='Southern')
+                    {
+                        $districtoptions=['Galle', 'Matara', 'Hambantota'];
+                    }
+
+                    elseif($userProvince=='Uva')
+                    {
+                        $districtoptions=['Badulla', 'Monaragala'];
+                    }
+
+                    
+                    elseif($userProvince=='Western')
+                    {
+                        $districtoptions=['Colombo', 'Gampaha', 'Kalutara'];
+                    }
+
+                    //preselect the values
+                    foreach($districtoptions as $district)
+                    {
+                        echo '<option value="'.$district.'" '.($userdistrict== $district ? 'selected' : '').'>'.$district.'</option>';
+                    }
+
+                    ?>
                 </select>
                 <div id="districtError" class="text-info">Please select your district</div>
             </div>
@@ -204,6 +229,119 @@
                 <select class="form-select" id="user_city" name="usercity" required>
                     <option selected disabled>Select City</option>
                     <!-- City options will be dynamically added here based on the selected district -->
+
+                    <?php
+                    if($userdistrict=='Kandy')
+                    {
+                        $cityOptions= ['Akurana', 'Gampola', 'Kandy', 'Kundasale', 'Pilimatalawa', 'Teldeniya'];
+                    }
+                    elseif($userdistrict=='Matale')
+                    {
+                        $cityOptions=['Dambulla', 'Galewela', 'Laggala-Pallegama', 'Matale', 'Naula', 'Palapathwela', 'Rattota', 'Ukuwela', 'Wilgamuwa'];
+                    }
+                    elseif($userdistrict=='Nuwara Eliya')
+                    {
+                        $cityOptions=['Ambagamuwa', 'Hanguranketha', 'Kotmale', 'Maskeliya', 'Nuwara Eliya'];
+                    }
+                    elseif($userdistrict=='Trincomalee')
+                    {
+                        $cityOptions= ['Gomarankadawala', 'Kantalai', 'Kinniya', 'Muttur', 'Seruvila', 'Thambalagamuwa', 'Trincomalee Town and Gravets'];
+                    }
+                    elseif($userdistrict=='Batticaloa')
+                    {
+                        $cityOptions=['Batticaloa', 'Eravur Pattu', 'Kalkudah', 'Koralaipattu', 'Manmunai', 'Porativu Pattu', 'Paddiruppu', 'Vaharai'];
+                    }
+                    elseif($userdistrict=='Ampara')
+                    {
+                        $cityOptions=['Akkaraipattu', 'Alayadivembu', 'Ampara', 'Dehiattakandiya', 'Kalmunai', 'Karaitivu Pattu', 'Lahugala', 'Mahaoya'];
+                    }
+                    elseif($userdistrict=='Jaffna')
+                    {
+                        $cityOptions=['Chavakachcheri', 'Jaffna', 'Kankesanthurai', 'Karaveddy', 'Maruthankerney', 'Nallur', 'Sandilipay'];
+                    }
+                    elseif($userdistrict=='Kilinochchi')
+                    {
+                        $cityOptions=['Kilinochchi'];
+                    }
+                    elseif($userdistrict=='Mannar')
+                    {
+                        $cityOptions=['Madhu', 'Mannar', 'Musali', 'Nanaddan'];
+                    }
+                    elseif($userdistrict=='Mullaitivu')
+                    {
+                        $cityOptions=['Mullaitivu'];
+                    }
+                    elseif($userdistrict=='Vavuniya')
+                    {
+                        $cityOptions=['Vavuniya', 'Vengalacheddikulam'];
+                    }
+                    elseif($userdistrict=='Anuradhapura')
+                    {
+                        $cityOptions=['Anuradhapura', 'Galnewa', 'Horowpathana', 'Ipalogama', 'Kahatagasdigiliya', 'Kebitigollawa', 'Kekirawa', 'Medawachchiya', 'Mihintale', 'Nachchadoowa', 'Nochchiyagama', 'Padaviya', 'Palagala', 'Thalawa'];
+                    }
+                    elseif($userdistrict=='Polonnaruwa')
+                    {
+                        $cityOptions=['Dimbulagala', 'Hingurakgoda', 'Lankapura', 'Medirigiriya', 'Polonnaruwa', 'Welikanda'];
+                    }
+                    elseif($userdistrict=='Kurunegala')
+                    {
+                        $cityOptions=['Alawwa', 'Bingiriya', 'Galgamuwa', 'Ganewatta', 'Giribawa', 'Ibbagamuwa', 'Kuliyapitiya', 'Kurunegala', 'Maho', 'Maspotha', 'Nikaweratiya', 'Panduwasnuwara', 'Pannala', 'Polgahawela', 'Rasnayakapura', 'Wariyapola', 'Weerambugedara'];
+                    }
+                    elseif($userdistrict=='Puttalam')
+                    {
+                        $cityOptions=['Anamaduwa', 'Chilaw', 'Karaitivu', 'Madampe', 'Mahakumbukkadawala', 'Nawagattegama', 'Nattandiya', 'Norochcholai', 'Pallama', 'Pomparippu', 'Puttalam', 'Vanathavilluwa'];
+                    }
+                    elseif($userdistrict=='Ratnapura')
+                    {
+                        $cityOptions=['Balangoda', 'Eheliyagoda', 'Elapatha', 'Embilipitiya', 'Godakawela', 'Imbulpe', 'Kiriella', 'Nivithigala', 'Opanayaka', 'Pelmadulla', 'Ratnapura', 'Weligepola'];
+                    }
+                    elseif($userdistrict=='Kegalle')
+                    {
+                        $cityOptions=['Aranayaka', 'Bulathkohupitiya', 'Dehiowita', 'Deraniyagala', 'Galigamuwa', 'Kegalle', 'Kitulgala', 'Kotiyakumbura', 'Mawanella', 'Rambukkana', 'Ruwanwella', 'Warakapola'];
+                    }
+                    elseif($userdistrict=='Galle')
+                    {
+                        $cityOptions=['Ambalangoda', 'Baddegama', 'Balapitiya', 'Bentota', 'Boossa', 'Elpitiya', 'Galle', 'Habaraduwa', 'Hikkaduwa', 'Karandeniya', 'Nagoda', 'Neluwa', 'Thawalama', 'Weligama'];
+                    }
+                    elseif($userdistrict=='Matara')
+                    {
+                        $cityOptions=['Akuressa', 'Devinuwara', 'Hakmana', 'Kamburupitiya', 'Kekanadura', 'Kirinda Puhulwella', 'Matara', 'Pasgoda', 'Pitabeddara', 'Thihagoda', 'Weligama'];
+                    }
+                    elseif($userdistrict=='Hambantota')
+                    {
+                        $cityOptions=['Ambalantota', 'Angunakolapelessa', 'Beliatta', 'Hambantota', 'Lunugamvehera', 'Sooriyawewa', 'Tissamaharama'];
+                    }
+                    elseif($userdistrict=='Badulla')
+                    {
+                        $cityOptions=['Badulla', 'Bandarawela', 'Ella', 'Haldummulla', 'Hali Ela', 'Haputale', 'Kandaketiya', 'Lunugala', 'Mahiyanganaya', 'Meegahakivula', 'Passara', 'Rideemaliyadda', 'Welimada'];
+                    }
+                    elseif($userdistrict=='Monaragala')
+                    {
+                        $cityOptions=['Badalkumbura', 'Bibile', 'Buttala', 'Kataragama', 'Madulla', 'Medagama', 'Monaragala', 'Sevanagala', 'Tanamalwila', 'Wellawaya'];
+                    }
+                    elseif($userdistrict=='Colombo')
+                    {
+                        $cityOptions=['Colombo 1', 'Colombo 2', 'Colombo 3', 'Colombo 4', 'Colombo 5', 'Colombo 6', 'Colombo 7', 'Colombo 8', 'Colombo 9', 'Colombo 10', 'Colombo 11', 'Colombo 12', 'Colombo 13', 'Colombo 14', 'Colombo 15'];
+                    }
+                    elseif($userdistrict=='Gampaha')
+                    {
+                        $cityOptions=['Attanagalla', 'Biyagama', 'Divulapitiya', 'Dompe', 'Gampaha', 'Ja-Ela', 'Katana', 'Kelaniya', 'Mahara', 'Minuwangoda', 'Mirigama', 'Negombo'];
+                    }
+                    elseif($userdistrict=='Kalutara')
+                    {
+                        $cityOptions=['Agalawatta', 'Bandaragama', 'Beruwala', 'Bulathsinhala', 'Dodangoda', 'Horana', 'Ingiriya', 'Kalutara', 'Madurawala', 'Matugama', 'Panadura', 'Walallawita'];
+                    }
+
+                     //preselect the values
+                     foreach($cityOptions as $city)
+                     {
+                         echo '<option value="'.$city.'" '.($usercity== $city ? 'selected' : '').'>'.$city.'</option>';
+                     }
+ 
+
+
+
+                    ?>
                 </select>
                 <div id="cityError" class="text-info">Please select your city</div>
             </div>
@@ -213,7 +351,7 @@
         <!-- user image -->
         <div class="row p-2 mb-3 mx-2 form-outline border">
             <label for="imageInput" class="form-label">Select Profile Image:</label>
-            <input type="file" class="form-control mb-1" id="image01" name="userimage01" required>
+            <input type="file" class="form-control mb-1" id="image01" name="userimage01" >
             <img src="../images/profileimages/<?php echo $userimage ?>" class="profile_image" alt="no image to display">
         </div>
 
@@ -231,7 +369,7 @@
 
     </form>
 
-    
+
     <!-- jQuery script for dynamic district options -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
@@ -383,3 +521,49 @@
 </body>
 
 </html>
+
+<?php
+if (isset($_POST['update_button'])) {
+    //catch the values
+    $updated_userid = $userID;
+    $updated_userName = $_POST['username'];
+    $updated_userFirstName = $_POST['userfirstname'];
+    $updated_userLastName = $_POST['userlastname'];
+    $updated_useraddress = $_POST['useraddress'];
+    $updated_userEmailaddress = $_POST['useremailaddress'];
+    $updated_userMobileNumber = $_POST['usermobilenumber'];
+    $updated_userPostalCode = $_POST['userpostalcode'];
+    $updated_userProvince = $_POST['userprovince'];
+    $updated_userDistrict = $_POST['userdistrict'];
+    $updated_userCity = $_POST['usercity'];
+
+    //File upload handling
+
+    //1.checked that if a new image is selected
+    if($_FILES['userimage01']['error']===UPLOAD_ERR_OK){
+    $updated_userImagename = $_FILES['userimage01']['name'];
+    $updated_Imagetempname = $_FILES['userimage01']['tmp_name'];
+    $updated_imageUploadPath = "../images/profileimages/";
+
+    move_uploaded_file($updated_Imagetempname, $updated_imageUploadPath . $updated_userImagename);
+    
+    //update user details according to values which user entered.-with new image
+    $update_user_details_querry = "UPDATE `user_table` SET User_Name='$updated_userName',User_Email='$updated_userEmailaddress',User_FirstName='$updated_userFirstName',User_LastName='$updated_userLastName',User_Address='$updated_useraddress',User_MobilePhone='$updated_userMobileNumber',User_ProfileImage='$updated_userImagename',User_Province='$updated_userProvince',User_District='$updated_userDistrict',User_City='$updated_userCity',User_PostalCode='$updated_userPostalCode' WHERE User_ID='$updated_userid' ";
+
+   }
+   else{
+
+    //update user details according to values which user entered.-with out new image value
+    $update_user_details_querry = "UPDATE `user_table` SET User_Name='$updated_userName',User_Email='$updated_userEmailaddress',User_FirstName='$updated_userFirstName',User_LastName='$updated_userLastName',User_Address='$updated_useraddress',User_MobilePhone='$updated_userMobileNumber',User_Province='$updated_userProvince',User_District='$updated_userDistrict',User_City='$updated_userCity',User_PostalCode='$updated_userPostalCode' WHERE User_ID='$updated_userid' ";
+   }
+    
+
+    if (mysqli_query($conn, $update_user_details_querry)) {
+        echo "<script>Successfully saved to Database</script>";
+        echo "<script>window.open('login_out.php','_self')</script>";
+    } else {
+        echo "Something Error";
+    }
+}
+
+?>
