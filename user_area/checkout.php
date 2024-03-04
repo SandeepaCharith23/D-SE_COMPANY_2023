@@ -42,7 +42,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
                     <ul class="nav-item">
-                        <a href="#">Subscri be Us</a>
+                        <a href="#">Subscribe Us</a>
                     </ul>
                     <ul class="nav-item">
                         <a href="#">Subscribe Us</a>
@@ -56,7 +56,7 @@ if (session_status() == PHP_SESSION_NONE) {
                         <a href="#">Our contact details</a>
                     </ul>
                     <ul class="nav-item">
-                        <a href="my_cart.php">
+                        <a href="../my_cart.php">
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                             <sup>
                                 <?php

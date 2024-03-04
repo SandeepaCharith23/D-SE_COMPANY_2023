@@ -1,8 +1,8 @@
 <?php
 include('../includes/connection.php');
-if (isset($_GET['invoice_number_id']) && isset($_GET['user_id'])) {
+if (isset($_GET['invoice_number_id']) && isset($_GET['invoice_user_id'])) {
     $selected_invoice_number = $_GET['invoice_number_id'];
-    $selected_invoice_holder_id = $_GET['user_id'];
+    $selected_invoice_holder_id = $_GET['invoice_user_id'];
 }
 
 ?>

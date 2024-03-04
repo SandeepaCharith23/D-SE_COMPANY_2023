@@ -50,7 +50,7 @@ $current_user_id = $user_details['User_ID'];
       echo "
             <tr>
             <td>$user_order_serial_number</td>
-            <td>$user_order_invoice_numebr</td>
+            <td><a href='user_profile.php?selected_invoice_id=$user_order_invoice_numebr'>$user_order_invoice_numebr</a></td>
             <td>$user_order_total_ordered_products</td>
             <td>$user_order_total_price</td>
             <td>$user_order_date</td>

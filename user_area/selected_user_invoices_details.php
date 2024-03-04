@@ -1,5 +1,10 @@
 <?php
-include('../includes/connection.php'); ?>
+include('../includes/connection.php');
+
+if (isset($_GET['selected_invoice_id'])) {
+    $selected_invoice_id = $_GET['selected_invoice_id'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,29 +15,20 @@ include('../includes/connection.php'); ?>
 </head>
 
 <body>
-    <h2 class="text-center text-success">Completed Orders-2024</h2>
+    <h2 class="text-center text-success">Selected Invoice details</h2>
     <table class="table table-bordered mt-2 text-center">
         <thead class="bg-info">
             <tr>
                 <th>Serial number</th>
-                <th>Invoice number</th>
-                <th>Invoice Amount(with out transport)</th>
-                <th>User Id</th>
-                <th>User Name</th>
-                <th>User Address</th>
-                <th>User Contact number</th>
                 <th>Product Name</th>
+                <th>Product Image</th>
                 <th>Product Quentity</th>
                 <th>Product Unitprice</th>
                 <th>Product SubTotal</th>
-                <th>Shipping status</th>
-                <th>Online payment status</th>
-            </tr>
-        </thead>
 
         <tbody>
             <?php
-            $get_pending_orders_querry = "SELECT * FROM `pending_orders` WHERE order_shipment_status='Shipped'";
+            $get_pending_orders_querry = "SELECT * FROM `pending_orders` WHERE  invoice_number=$selected_invoice_id";
             $results_pending_orders = mysqli_query($conn, $get_pending_orders_querry);
             $serial_number = 1;
             while ($pending_orders_array = mysqli_fetch_array($results_pending_orders)) {
@@ -58,6 +54,7 @@ include('../includes/connection.php'); ?>
 
                 $pending_order_product_name = $select_product_details_array['Product_Name'];
                 $pending_order_product_unit_price = $select_product_details_array['Product_UnitPrice'];
+                $pending_order_product_image = $select_product_details_array['Product_Image01'];
                 $pending_order_product_sub_total = $pending_order_product_quentity * $pending_order_product_unit_price;
                 $pending_order_product_sub_total_formatted = number_format($pending_order_product_sub_total, 2);
 
@@ -72,19 +69,11 @@ include('../includes/connection.php'); ?>
                 echo "
                     <tr>
                     <td>$serial_number</td>
-                    <td>$pending_order_invoice_number</td>
-                    <td>$pending_order_invoice_total_amount_formatted</td>
-                    <td>$pending_order_user_id</td>
-                    <td><a href='maindashboard.php?clicked_user_id=$pending_order_user_id'>$pending_order_user_name</td>
-                    <td>$pending_order_user_address</td>
-                    <td>$pending_order_user_contact_number</td>
                     <td>$pending_order_product_name</td>
+                    <td><img src='../product_images/$pending_order_product_image' style='width:50px;height:50px;'></td>
                     <td>$pending_order_product_quentity</td>
                     <td>$pending_order_product_unit_price</td>
                     <td>$pending_order_product_sub_total_formatted</td>
-                    <td>$pending_order_shippment_status</td>
-                    <td>$pending_order_online_payment_status</td>
-                    
                    
                 </tr>";
 
@@ -95,8 +84,20 @@ include('../includes/connection.php'); ?>
 
 
         </tbody>
-        
+        </tr>
+        </thead>
     </table>
+
+    <div class="conatiner border p-2 shadow">
+         <p>
+            <ul>
+                <li>Invoice Number: <?php echo $pending_order_invoice_number ?></li>
+                <li>Invoice total Amount-Rs <?php echo $pending_order_invoice_total_amount_formatted ?></li>
+                <li>Order current status: <?php echo $pending_order_shippment_status ?></li>
+            </ul>
+         </p>
+    </div>
+
 </body>
 
 </html>

@@ -227,7 +227,7 @@ if (session_status() == PHP_SESSION_NONE) {
         </div>
 
         <!-- Content Column -->
-        <div class="col-md-9 p-2  justify-content-start  shadow content-column">
+        <div class="col-md-9 p-2  justify-content-start  shadow content-column ">
             <!-- Content goes here -->
             <?php
              get_user_pending_orders();
@@ -247,6 +247,11 @@ if (session_status() == PHP_SESSION_NONE) {
              {
                 //redirect to edit user details page
                 include('delete_user_account.php');
+             }
+
+             if(isset($_GET['selected_invoice_id']))
+             {
+                include('selected_user_invoices_details.php');
              }
             ?>
         </div>
@@ -369,6 +374,7 @@ function get_user_pending_orders(){
                 if(!isset($_GET['delete_account'])){
                     if(!isset($_GET['my_orders'])){
                         if(!isset($_GET['my_cancellations'])){
+                            if(!isset($_GET['selected_invoice_id'])){
                               // get the current available pending orders count and display it.
                               $getting_user_orders_querry="SELECT * FROM `user_order` WHERE user_id=$currentuserID AND order_status='pending'";
                               $user_orders_results=mysqli_query($conn,$getting_user_orders_querry);
@@ -384,6 +390,7 @@ function get_user_pending_orders(){
                               }
            
                         };
+                    };
            
                     };
            

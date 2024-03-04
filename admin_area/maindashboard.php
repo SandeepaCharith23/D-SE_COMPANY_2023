@@ -232,7 +232,7 @@
 
         if (
           isset($_GET['invoice_number_id']) &&
-          isset($_GET['user_id'])
+          isset($_GET['invoice_user_id'])
         ) {
           // Include the file when all parameters are set
           include('complete_shippment_invoice.php');
@@ -261,7 +261,7 @@
           include('activate_account.php');
         }
 
-        if(isset($_GET['user_id']))
+        if(isset($_GET['clicked_user_id']))
         {
           include('selected_user_details.php');
         }

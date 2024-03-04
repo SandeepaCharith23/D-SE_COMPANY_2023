@@ -378,7 +378,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order_button'
     echo "<script>console.log('Inside function');</script>";
    
     echo "<script>console.log('Invoice number is $invoicenumber');</script>";
-    $product_status = "Cash on delivery";
+    // $product_status = "Cash on delivery";
+    $product_status = "Confirmed";
     $order_shipment_status='Not Shipped';
     $product_payment_method = $_POST['product_payment_method'];
     $order_billing_address = $_POST['billingAddress'];

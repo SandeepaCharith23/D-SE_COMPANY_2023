@@ -1,18 +1,17 @@
 <?php
 include('../includes/connection.php');
 
-
-
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h3 class="text-center">Available users</h3>
     <table class="table table-bordered mt-2 text-center">
@@ -34,21 +33,20 @@ include('../includes/connection.php');
         <tbody>
             <?php
 
-            $user_number=1;
+            $user_number = 1;
             //Get All available users 
-            $get_available_user_querry='SELECT * FROM `user_table`';
-            $available_users_resultset=mysqli_query($conn,$get_available_user_querry);
-            while($available_users_details_array=mysqli_fetch_array($available_users_resultset))
-            {
-                $user_name=$available_users_details_array['User_Name'];
-                $user_emailaddress=$available_users_details_array['User_Email'];
-                $user_mobilenum=$available_users_details_array['User_MobilePhone'];
-                $user_address=$available_users_details_array['User_Address'];
-                $user_profileimage01=$available_users_details_array['User_ProfileImage'];
-                $user_province=$available_users_details_array['User_Province'];
-                $user_district=$available_users_details_array['User_District'];
-                $user_city=$available_users_details_array['User_City'];
-                $user_account_status=$available_users_details_array['User_Account_Status'];
+            $get_available_user_querry = 'SELECT * FROM `user_table`';
+            $available_users_resultset = mysqli_query($conn, $get_available_user_querry);
+            while ($available_users_details_array = mysqli_fetch_array($available_users_resultset)) {
+                $user_name = $available_users_details_array['User_Name'];
+                $user_emailaddress = $available_users_details_array['User_Email'];
+                $user_mobilenum = $available_users_details_array['User_MobilePhone'];
+                $user_address = $available_users_details_array['User_Address'];
+                $user_profileimage01 = $available_users_details_array['User_ProfileImage'];
+                $user_province = $available_users_details_array['User_Province'];
+                $user_district = $available_users_details_array['User_District'];
+                $user_city = $available_users_details_array['User_City'];
+                $user_account_status = $available_users_details_array['User_Account_Status'];
                 echo "
             <tr>
                 <td>$user_number</td>
@@ -62,11 +60,11 @@ include('../includes/connection.php');
                 <td>$user_city</td>
                 <td>$user_account_status</td>
                  <td>";
-                 
-                 
-                if ($user_account_status == 'Suspended') 
-                {echo "<a href='maindashboard.php?selected_user_name_activate=$user_name&selected_user_emailaddress_activate=$user_emailaddress' class='bg-success p-2 text-white'>Activate Account</a>" ;}  
-                else{
+
+
+                if ($user_account_status == 'Suspended') {
+                    echo "<a href='maindashboard.php?selected_user_name_activate=$user_name&selected_user_emailaddress_activate=$user_emailaddress' class='bg-success p-2 text-white'>Activate Account</a>";
+                } else {
                     echo "<a href='maindashboard.php?selected_user_name=$user_name&selected_user_emailaddress=$user_emailaddress' class='bg-danger p-2 text-white'>Suspend Account</a>";
                 }
 
@@ -76,6 +74,7 @@ include('../includes/connection.php');
             }
             echo "</tbody></table>";
             ?>
-        
+
 </body>
+
 </html>

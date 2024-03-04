@@ -32,9 +32,9 @@ include('../includes/connection.php');
         </thead>
         <tbody>
             <?php
-            if(isset($_GET['user_id']))
+            if(isset($_GET['clicked_user_id']))
             {
-                $selected_user_id=$_GET['user_id'];
+                $selected_user_id=$_GET['clicked_user_id'];
             }
             $user_number = 1;
             //Get All available users 

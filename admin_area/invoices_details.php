@@ -65,7 +65,7 @@ include('../includes/connection.php');
             echo "<a href='maindashboard.php' class='bg-success p-2 text-white'>Already Shipped</a>";
 
           } else {
-            echo "<a href='maindashboard.php?invoice_number_id=$user_order_invoice_number&user_id=$order_user_id' class='bg-info p-2 text-white'>Mark as Shipped</a>";
+            echo "<a href='maindashboard.php?invoice_number_id=$user_order_invoice_number&invoice_user_id=$order_user_id' class='bg-info p-2 text-white'>Mark as Shipped</a>";
           }
 
           echo "</td></tr>";
