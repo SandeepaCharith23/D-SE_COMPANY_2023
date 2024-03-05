@@ -29,7 +29,7 @@
 </head>
 
 <body class="fluid-container main-body">
-  <h1 class="text-center">Admin Dashboard-D&SE Company</h1>
+  <h1 class="text-center">Admin Dashboard-D&SE Trading</h1>
 
   <!-- 1.navigation bar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-info p-2 justify-content-center">
@@ -38,7 +38,7 @@
       <!-- 1.Navbar -banner -->
       <a href="#" class="navbar-brand">
         <!-- Navbar Brand text -->
-        <img src="../images/logo.png" alt="no image" width="30" height="30"> D & SE Company
+        <img src="../images/logo.png" alt="no image" width="30" height="30"> D & SE Trading
       </a>
 
       <!-- 2.Navbar-toggler -->
@@ -62,12 +62,7 @@
             <a class="nav-link  border p-2" href="#">Register</a>
           </li>
  -->
-
-
         </ul>
-
-
-
       </div>
 
 
@@ -76,13 +71,13 @@
 
 
   <!-- 2.search bar -->
-  <div class="container-fluid text-center m-4">
+  <!-- <div class="container-fluid text-center m-4">
     <form class="d-flex custom_searchbar" role="search">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success  custom_searchbutton" type="submit">Search</button>
     </form>
 
-  </div>
+  </div> -->
 
 
   <div class="row">
@@ -96,7 +91,7 @@
           <img class="card-img-top p-1" src="../images/userimage01.jpg" class="profile-picture" style="width: 100px; height: 100px; border-radius: 50%;" alt="no image">
           <div class="card-body custom-card-body">
             <h4>Hi Dasun</h4>
-            <button class="btn btn-primary"> profile</button>
+            <a class="btn btn-primary" href="maindashboard.php?admin_profile"> profile</a>
           </div>
         </div>
       </div>
@@ -265,7 +260,11 @@
         {
           include('selected_user_details.php');
         }
-
+        
+        if(isset($_GET['admin_profile']))
+        {
+          include('admin_profile.php');
+        }
         
 
         ?>

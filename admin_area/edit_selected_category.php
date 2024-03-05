@@ -36,7 +36,7 @@ if (isset($_GET['edit_selected_category_id'])) {
 <!-- 2.Product Category description -->
 <div class="mb-4">
     <label for="prouctCategory" class="form-label">Edit your product Category Description:</label>
-    <input type="text" class="form-control" id="prouctCategoryDes" aria-describedby="productCategorydescription" name="product_category_description" value="<?php echo $category_description?>" required>
+    <input type="text" class="form-control" id="prouctCategoryDes" aria-describedby="productCategorydescription" name="product_category_description" value="<?php echo htmlspecialchars($category_description)?>" required>
     <div id="productCategorydescription" class="form-text">Product Category-must be clear and Easily understand</div>
 </div>
 

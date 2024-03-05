@@ -36,7 +36,7 @@ if (isset($_GET['edit_selected_brand_id'])) {
     <!-- 2.Product Brand Description -->
     <div class="mb-4">
         <label for="prouctBrandDescription" class="form-label">Edit your product Brand Description:</label>
-        <input type="textarea" class="form-control" id="prouctBrandDescription" aria-describedby="productBranddescription" name="product_brand_description" value="<?php echo $brand_description?>" required>
+        <input type="textarea" class="form-control" id="prouctBrandDescription" aria-describedby="productBranddescription" name="product_brand_description" value="<?php echo htmlspecialchars($brand_description)?>" required>
         <div id="productBranddescription" class="form-text">Product Brand description-must be clear and Easily understand</div>
     </div>
 
