@@ -60,7 +60,7 @@
             </div>
 
            <a href="admin_area/maindashboard.php"><input type="submit" value="login" class="button" id="adminloginbutton" ></a> 
-            <p>Don't have an account <a href="user_area/registration_page.php">Create new Account</a></p>
+            <p>Don't have an account <a href="admin_area/admin_registration.php">Create new Account</a></p>
         </form>
 
         <!-- sign-Up Screen -->
