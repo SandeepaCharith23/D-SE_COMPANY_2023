@@ -120,6 +120,7 @@
           <h3>User managemnet</h3>
           <ul>
             <li><a href="maindashboard.php?available_users">Available users</a></li>
+            <li><a href="maindashboard.php?available_admins">Available admins</a></li>
           </ul>
 
           <!-- 3.product Categories Dropdown -->
@@ -265,6 +266,24 @@
         {
           include('admin_profile.php');
         }
+        
+        if(isset($_GET['available_admins']))
+        {
+          include('all_available_admins.php');
+        }
+
+        if(isset($_GET['selected_admin_name_activate']) && isset($_GET['selected_admin_emailaddress_activate']))
+        {
+        // echo " <script>alert('Admin activate page')</script>";
+         include('activate_admin.php');
+        }
+
+        if(isset($_GET['selected_admin_name_deactivate']) && isset($_GET['selected_admin_emailaddress_deactivate']))
+        {
+         echo " <script>alert('Admin de-activate page')</script>";
+         include('deactivate_admin.php');
+        }
+
         
 
         ?>
