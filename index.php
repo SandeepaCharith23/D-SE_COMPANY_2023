@@ -47,12 +47,12 @@
             <i class="fas fa-close" id="searchbarclosebutton"></i>
         </form>
 
-        <form action="admin_area/maindashboard.php" class="login-form">
+        <form action="admin_area/login_process.php" class="login-form" method="POST">
             <div class="login-heading">
                 <h3>Login for Admin </h3> <span class="close-button" id="close-button"> <i class="fa fa-close"></i></span>
             </div>
-            <input type="email" placeholder="Please Enter Your Email address" class="textfield-box">
-            <input type="password" placeholder="Please Enter Your password" class="textfield-box">
+            <input type="email" placeholder="Please Enter Your Email address" class="textfield-box" name="adminemailaddress" required>
+            <input type="password" placeholder="Please Enter Your password" class="textfield-box" name="adminpassword" required>
             <div class="flex">
                 <input type="checkbox" name="" id="remember-me">
                 <label for="remember-me">Remember me</label>

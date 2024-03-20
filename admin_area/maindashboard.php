@@ -1,3 +1,28 @@
+<?php
+// Start the session at the beginning of the script
+session_start();
+
+include('../includes/connection.php');
+
+// Check if the user is logged in (you can modify this condition based on your authentication logic)
+if (isset($_SESSION['admin_id'])) {
+    // The user is logged in, you can access session variables
+    $admin_id = $_SESSION['admin_id'];
+    $admin_username = $_SESSION['admin_username'];
+    $admin_profileimagename=$_SESSION['admin_profileimage'];
+
+    echo "<script>console.log('$admin_username')</script>";
+    echo "<script>console.log('$admin_profileimagename')</script>";
+
+
+    // ... (use the session variables as needed in your code)
+} else {
+    // Redirect to the login page or perform any other action for non-logged-in users
+    header("Location: login.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,6 +105,48 @@
   </div> -->
 
 
+  <!-- user account details and logout or login button -->
+  <div id="useraccountdisplaysection" class="useraccountdisplaysection " style="top: 180%;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-gradient m-2">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <?php
+                        if (!isset($_SESSION['admin_username'])) {
+                            echo "Welocome guest";
+                        } else {
+                            echo "Welcome Admin-- " . $_SESSION['admin_username'];
+                        }
+                        ?>
+                    </a>
+                </li>
+                <?php
+                if (!isset($_SESSION['admin_username'])) {
+                    echo "
+                            <li class='nav-item'>
+                            <a class='nav-link' href=''>Log in
+                            </a>
+                            </li>
+                            ";
+                } else {
+                    echo "
+                            <li class='nav-item'>
+                            <a class='nav-link' href='admin_logout.php'>Log Out
+                            </a>
+                            </li>
+                            ";
+                }
+                ?>
+
+              
+
+
+            </ul>
+        </nav>
+    </div>
+    
+
+
   <div class="row">
 
     <!-- 01.left column--admin banner section and button section -->
@@ -88,9 +155,9 @@
       <div class="container mt-2 p-2 pe-1 ps-1 align-items-center text-center" style="width: 15rem;">
         <h4>Welcome admin-User</h4>
         <div class="card admin_banner ">
-          <img class="card-img-top p-1" src="../images/userimage01.jpg" class="profile-picture" style="width: 100px; height: 100px; border-radius: 50%;" alt="no image">
+          <img class="card-img-top p-1" src="../images/profileimages/<?php echo $admin_profileimagename?>" class="profile-picture" style="width: 100px; height: 100px; border-radius: 50%;" alt="no image">
           <div class="card-body custom-card-body">
-            <h4>Hi Dasun</h4>
+            <h4><?php echo $admin_username?></h4>
             <a class="btn btn-primary" href="maindashboard.php?admin_profile"> profile</a>
           </div>
         </div>
@@ -147,7 +214,7 @@
         if (isset($_GET['available_products'])) {
           //redirect to edit user details page
           include('view_all_products.php');
-         // echo "<h1 class='text-center'>Available products</h1>";
+          // echo "<h1 class='text-center'>Available products</h1>";
         }
 
         if (isset($_GET['insert_products'])) {
@@ -158,8 +225,7 @@
           include('view_all_categories.php');
         }
 
-        if(isset($_GET['edit_selected_category_id']))
-        {
+        if (isset($_GET['edit_selected_category_id'])) {
           include('edit_selected_category.php');
         }
 
@@ -176,33 +242,28 @@
           include('view_all_brands.php');
         }
 
-        
+
         if (isset($_GET['edit_selected_brand_id'])) {
           include('edit_selected_brand.php');
         }
 
-        if(isset($_GET['edit_product']))
-        {
+        if (isset($_GET['edit_product'])) {
           include('edit_product_details.php');
         }
 
-        if(isset($_GET['delete_product']))
-        {
+        if (isset($_GET['delete_product'])) {
           include('delete_selected_product.php');
         }
-        
-        if(isset($_GET['delete_selected_category_id']))
-        {
+
+        if (isset($_GET['delete_selected_category_id'])) {
           include('delete_selected_category.php');
         }
 
-        if(isset($_GET['delete_selected_brand_id']))
-        {
+        if (isset($_GET['delete_selected_brand_id'])) {
           include('delete_selected_brand.php');
         }
 
-        if(isset($_GET['pending_orders']))
-        {
+        if (isset($_GET['pending_orders'])) {
           include('all_pending_orders.php');
         }
 
@@ -215,14 +276,12 @@
           include('complete_shippment.php');
         }
 
-        
-        if(isset($_GET['completed_orders']))
-        {
+
+        if (isset($_GET['completed_orders'])) {
           include('completed_orders.php');
         }
 
-        if(isset($_GET['invoice_details']))
-        {
+        if (isset($_GET['invoice_details'])) {
           include('invoices_details.php');
         }
 
@@ -234,8 +293,7 @@
           include('complete_shippment_invoice.php');
         }
 
-        if(isset($_GET['available_users']))
-        {
+        if (isset($_GET['available_users'])) {
           include('all_available_user.php');
         }
 
@@ -247,7 +305,7 @@
           include('suspend_user.php');
         }
 
-       
+
 
         if (
           isset($_GET['selected_user_name_activate']) &&
@@ -257,34 +315,29 @@
           include('activate_account.php');
         }
 
-        if(isset($_GET['clicked_user_id']))
-        {
+        if (isset($_GET['clicked_user_id'])) {
           include('selected_user_details.php');
         }
-        
-        if(isset($_GET['admin_profile']))
-        {
+
+        if (isset($_GET['admin_profile'])) {
           include('admin_profile.php');
         }
-        
-        if(isset($_GET['available_admins']))
-        {
+
+        if (isset($_GET['available_admins'])) {
           include('all_available_admins.php');
         }
 
-        if(isset($_GET['selected_admin_name_activate']) && isset($_GET['selected_admin_emailaddress_activate']))
-        {
-        // echo " <script>alert('Admin activate page')</script>";
-         include('activate_admin.php');
+        if (isset($_GET['selected_admin_name_activate']) && isset($_GET['selected_admin_emailaddress_activate'])) {
+          // echo " <script>alert('Admin activate page')</script>";
+          include('activate_admin.php');
         }
 
-        if(isset($_GET['selected_admin_name_deactivate']) && isset($_GET['selected_admin_emailaddress_deactivate']))
-        {
-         echo " <script>alert('Admin de-activate page')</script>";
-         include('deactivate_admin.php');
+        if (isset($_GET['selected_admin_name_deactivate']) && isset($_GET['selected_admin_emailaddress_deactivate'])) {
+          echo " <script>alert('Admin de-activate page')</script>";
+          include('deactivate_admin.php');
         }
 
-        
+
 
         ?>
       </div>
@@ -293,7 +346,7 @@
 
 
 
-  
+
 
 
 

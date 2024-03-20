@@ -81,7 +81,7 @@ $adminCreatedDate = $result_admin_array['admin_created_time'];
                 </div>
             </div>
 
-        
+
 
             <!-- user image -->
             <div class="row p-2 mb-3 mx-2 form-outline border">
