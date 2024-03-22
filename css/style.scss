@@ -2,7 +2,7 @@
 
 * {
     font-family: 'Roboto', sans-serif;
-    
+
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -11,7 +11,7 @@
     text-decoration: none;
     text-transform: none;
 
-    
+
 }
 
 
@@ -164,90 +164,90 @@ html {
             justify-content: space-between;
             padding-left: 5rem;
         }
-    
+
         .footer-information {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: flex-start;
             padding: 5rem 1rem;
-    
-    
+
+
             h2 {
                 @include titleText(1.5rem);
                 color: $black;
                 font-family: 'Times New Roman', Times, serif;
                 text-decoration: underline;
             }
-    
+
             p {
                 @include graphText(1rem);
             }
-    
-    
+
+
             .footer-column01 {
                 flex: 1 1 20vw;
-    
+
                 // background-color: #4D45CB;
                 .contact-details-column {
                     padding: 1rem;
                     border: $border;
                     box-shadow: $box-shadow;
                     margin-bottom: 1rem;
-    
-    
+
+
                 }
-    
+
                 .social-media-column {
                     display: flex;
                     padding: 1rem;
                     border: $border;
                     box-shadow: $box-shadow;
-    
+
                     i {
                         height: 2rem;
                         width: 2rem;
                         margin-right: 2rem;
                         //color: $white;
-    
+
                         &:hover {
                             color: $primarycoloryellow;
                         }
                     }
                 }
             }
-    
+
             .footer-column02 {
                 flex: 1 1 20vw;
                 //background-color: #c7c5e8;
-    
+
             }
-    
+
             .footer-column03 {
                 flex: 1 1 20vw;
                 // background-color: #666;
             }
-    
+
             .footer-column04 {
                 flex: 1 1 15vw;
                 // background-color: #36eaba;
             }
-    
+
             .footer-column05 {
                 flex: 1 1 100vw;
                 padding-top: 2rem;
                 // background-color:#F1C40F;
             }
         }
-    
+
         .copy-rights-row {
             text-align: center;
             align-items: center;
             padding-bottom: 2rem;
         }
-    
-    
-    
+
+
+
     }
 }
 
@@ -288,7 +288,7 @@ html {
     }
 }
 
-.buttonstyle01{
+.buttonstyle01 {
     display: inline-block;
     padding: 1rem;
     font-size: 1rem;
@@ -1452,11 +1452,11 @@ section {
         .products-container {
             // background-color: $primarycoloryellow;
             // @include grid(30vw);
-             display: flex;
+            display: flex;
             flex-wrap: wrap;
             justify-content: flex-start;
             padding-top: 5rem;
-            
+
 
             .product {
                 background-color: $light-bg;
@@ -1471,11 +1471,11 @@ section {
                 text-align: center;
                 border-radius: 2rem;
                 position: relative;
-                
+
                 //     // Add the following styles for fixed height
                 // height: 600px; // Set a fixed height for all product cards
                 // width: 400px; // Adjust the width as needed
-                
+
                 //     // Ensure the content doesn't overflow
                 // overflow: hidden;
 
@@ -1518,7 +1518,7 @@ section {
                     }
 
                     .product-add-to-cart {
-                       
+
 
                         i {
                             font-size: 0.5rem;
@@ -1531,7 +1531,7 @@ section {
                         }
                     }
 
-                    .product_card_button{
+                    .product_card_button {
                         display: inline-block;
                         padding: 1rem;
                         font-size: 1rem;
@@ -1540,7 +1540,7 @@ section {
                         border: $borderwhite;
                         cursor: pointer;
                         border-radius: 10%;
-            
+
                         &:hover {
                             background-color: $primarycoloryellow;
                         }
@@ -1556,7 +1556,7 @@ section {
         }
     }
 
-    .productcategoryandbrandsdisplay{
+    .productcategoryandbrandsdisplay {
         // background-color: $primarycolorblue;
         border: $border;
         box-shadow: $box-shadow;
@@ -1946,19 +1946,19 @@ section {
                 display: flex;
                 gap: 1rem;
 
-                .product_addtocart_button{
+                .product_addtocart_button {
                     display: inline-block;
-                        padding: 1rem;
-                        font-size: 1rem;
-                        color: $white;
-                        background: $primarycolorlightblue;
-                        border: $borderwhite;
-                        cursor: pointer;
-                        border-radius: 10%;
-            
-                        &:hover {
-                            background-color: $primarycoloryellow;
-                        }
+                    padding: 1rem;
+                    font-size: 1rem;
+                    color: $white;
+                    background: $primarycolorlightblue;
+                    border: $borderwhite;
+                    cursor: pointer;
+                    border-radius: 10%;
+
+                    &:hover {
+                        background-color: $primarycoloryellow;
+                    }
                 }
 
                 input {
@@ -2030,7 +2030,7 @@ section {
 }
 
 // .form_style01 {
-   
+
 //     box-shadow: $box-shadow;
 //     padding: 1rem;
 
@@ -2046,7 +2046,7 @@ section {
 
 //     }
 
-    
+
 //     lable {
 
 //         font-size: 1rem;
@@ -2055,7 +2055,7 @@ section {
 // }
 
 .custom_footer {
-    
+
     bottom: 0;
 }
 
@@ -2098,7 +2098,7 @@ section {
         }
 
         .close-button {
-            
+
             @include iconBox();
             margin: 1rem;
             top: 0;
@@ -2117,7 +2117,7 @@ section {
 
     }
 
-    
+
 
 }
 
@@ -2127,7 +2127,7 @@ section {
 
 
 //6.Start of login_page.php scss
-.login-form-style{
+.login-form-style {
     max-width: 100vw;
     margin: 0 auto;
     margin: 10px;
@@ -2135,8 +2135,8 @@ section {
     border: $border;
 }
 
-.signUp-form-style{
-    
+.signUp-form-style {
+
     max-width: 100vw;
     margin: 0 auto;
     margin: 10px;
@@ -2174,8 +2174,8 @@ section {
 }
 
 //scss o
-.updateuserdetails-form-style{
-    
+.updateuserdetails-form-style {
+
     max-width: 100vw;
     margin: 0 auto;
     margin: 10px;
@@ -2188,6 +2188,7 @@ section {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }

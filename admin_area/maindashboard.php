@@ -11,8 +11,8 @@ if (isset($_SESSION['admin_id'])) {
     $admin_username = $_SESSION['admin_username'];
     $admin_profileimagename=$_SESSION['admin_profileimage'];
 
-    echo "<script>console.log('$admin_username')</script>";
-    echo "<script>console.log('$admin_profileimagename')</script>";
+   // echo "<script>console.log('$admin_username')</script>";
+   // echo "<script>console.log('$admin_id')</script>";
 
 
     // ... (use the session variables as needed in your code)
@@ -158,7 +158,7 @@ if (isset($_SESSION['admin_id'])) {
           <img class="card-img-top p-1" src="../images/profileimages/<?php echo $admin_profileimagename?>" class="profile-picture" style="width: 100px; height: 100px; border-radius: 50%;" alt="no image">
           <div class="card-body custom-card-body">
             <h4><?php echo $admin_username?></h4>
-            <a class="btn btn-primary" href="maindashboard.php?admin_profile"> profile</a>
+            <a class="btn btn-primary" href="maindashboard.php?admin_profile_name=<?php echo $admin_username?>&&admin_id=<?php echo $admin_id?>"> profile</a>
           </div>
         </div>
       </div>
@@ -319,7 +319,7 @@ if (isset($_SESSION['admin_id'])) {
           include('selected_user_details.php');
         }
 
-        if (isset($_GET['admin_profile'])) {
+        if (isset($_GET['admin_profile_name']) && isset($_GET['admin_id']) ) {
           include('admin_profile.php');
         }
 

@@ -54,12 +54,12 @@
             <input type="email" placeholder="Please Enter Your Email address" class="textfield-box" name="adminemailaddress" required>
             <input type="password" placeholder="Please Enter Your password" class="textfield-box" name="adminpassword" required>
             <div class="flex">
-                <input type="checkbox" name="" id="remember-me">
+                <input type="checkbox" name="remember-me" id="remember-me">
                 <label for="remember-me">Remember me</label>
                 <a href="#">Forget password</a>
             </div>
 
-           <a href="admin_area/maindashboard.php"><input type="submit" value="login" class="button" id="adminloginbutton" ></a> 
+            <input type="submit" value="login" class="button" id="adminloginbutton">
             <p>Don't have an account <a href="admin_area/admin_registration.php">Create new Account</a></p>
         </form>
 

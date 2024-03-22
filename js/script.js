@@ -19,18 +19,18 @@ let productBnnerSlides=document.querySelectorAll('.productslide');
 let productBnnerslideIcons=document.querySelectorAll('.slide-icon');
 let productBnnernumberslideIcons=productBnnerSlides.length;
 
-let adminloginbutton=document.getElementById('adminloginbutton');
+//let adminloginbutton=document.getElementById('adminloginbutton');
 
-console.log(adminloginbutton);
+//console.log(adminloginbutton);
 
-// //admin login function
-adminloginbutton.addEventListener('submit',function(){
-    console.log('Insert admin login button'); 
+//admin login function
+// adminloginbutton.addEventListener('submit',function(){
+//     console.log('Insert admin login button'); 
    
-    alert("Redirect user to main Dashboard"); 
-    window.location.href='maindashboard.php';
-}
-);
+//     alert("Redirect user to main Dashboard"); 
+//     window.location.href='maindashboard.php';
+// }
+// );
 
 
 //Product Slide show JS Automatic slide show
