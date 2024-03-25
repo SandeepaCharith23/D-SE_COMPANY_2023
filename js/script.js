@@ -2,35 +2,15 @@ let menubutton=document.querySelector('#menu-btn');
 let navbar=document.querySelector('.header .navbar');
 let searchForm=document.querySelector('.header .search-form');//select the searchbar
 let searchbarclosebutton=document.getElementById('searchbarclosebutton');
-
 let loginForm=document.querySelector('.header .login-form');//select the loginform
 let loginformcloseButton=document.querySelector('.header .login-form #close-button');
-
-
 let SignUpForm=document.querySelector('.header .signUp-form');//select the SignUpform
 let SignUpformcloseButton=document.querySelector('.header .signUp-form #close-button');
-
-
-
-
 let productBnnerNextbtn=document.querySelector('.products .navigation .next-btn');
 let productBnnerPrevbtn=document.querySelector('.products .navigation .prev-btn');
 let productBnnerSlides=document.querySelectorAll('.productslide');
 let productBnnerslideIcons=document.querySelectorAll('.slide-icon');
 let productBnnernumberslideIcons=productBnnerSlides.length;
-
-//let adminloginbutton=document.getElementById('adminloginbutton');
-
-//console.log(adminloginbutton);
-
-//admin login function
-// adminloginbutton.addEventListener('submit',function(){
-//     console.log('Insert admin login button'); 
-   
-//     alert("Redirect user to main Dashboard"); 
-//     window.location.href='maindashboard.php';
-// }
-// );
 
 
 //Product Slide show JS Automatic slide show

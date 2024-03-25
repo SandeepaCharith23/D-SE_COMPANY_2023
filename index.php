@@ -17,9 +17,8 @@
 
 <body>
     <!-- header section start -->
-
     <header class="header">
-        <a href="#" class="logo"> <i class="fa fa-cogs"></i> D & SE Company PVT.LTD </a>
+        <a href="#" class="logo"> <i class="fa fa-cogs"></i> D & SE TRADING </a>
 
         <nav class="navbar">
             <a href="#home">Home</a>
@@ -48,6 +47,13 @@
         </form>
 
         <form action="admin_area/login_process.php" class="login-form" method="POST">
+            
+            <!-- Add a progress bar -->
+            <!-- <div class="progress-container">
+                <div class="progress"></div>
+                <div class="progress-text">0%</div>
+            </div> -->
+
             <div class="login-heading">
                 <h3>Login for Admin </h3> <span class="close-button" id="close-button"> <i class="fa fa-close"></i></span>
             </div>
@@ -123,7 +129,9 @@
                             engineering and construction.
                             They involve the planning, layout, and cost assessment of electrical systems for various
                             applications, such as
-                            residential, commercial, industrial, or infrastructure projects.</p>
+                            residential, commercial, industrial, or infrastructure projects.
+                            
+                        </p>
 
                         <a href="#features" class="button">Know More</a>
                     </div>

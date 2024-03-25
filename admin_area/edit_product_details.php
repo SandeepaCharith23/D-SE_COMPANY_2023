@@ -267,33 +267,33 @@ if (isset($_GET['edit_product'])) {
 <?php
 
 if (isset($_POST['product_update_button'])) {
-    //echo "<script>console.log('update button clicked')</script>";
+    echo "<script>console.log('update button clicked')</script>";
     //echo "<script>console.log('update product name is $updated_product_name')</script>";
 
-    $updated_product_name = $_POST['productName'];
-    $updated_product_Keywords = $_POST['productkeywords'];
-    $updated_product_Description = $_POST['productDescriptionText'];
-    $updated_product_Category_ID = $_POST['product_category'];
-    $updated_product_Brand_ID = $_POST['product_brands'];
-    $updated_product_Quentity = $_POST['productQuentity'];
+     $updated_product_name = $_POST['productName'];
+     $updated_product_Keywords = $_POST['productkeywords'];
+     $updated_product_Description = $_POST['productDescriptionText'];
+     $updated_product_Category_ID = $_POST['product_category'];
+     $updated_product_Brand_ID = $_POST['product_brands'];
+     $updated_product_Quentity = $_POST['productQuentity'];
     $updated_product_UnitPrice = $_POST['productUnitPrice'];
-    // $Product_Status = 'active';
-    //$updated_product_Status = $_POST['productAvailability'];
-    $updated_product_Status = $_POST['productAvailability'] ? 'active' : 'inactive';
+     // $Product_Status = 'active';
+     //$updated_product_Status = $_POST['productAvailability'];
+     $updated_product_Status = $_POST['productAvailability'] ? 'active' : 'inactive';
 
-    //access images-name
+    // //access images-name
     $updated_product_Imagename01 = $_FILES['image01']['name'];
     $updated_product_Imagename02 = $_FILES['image02']['name'];
     $updated_product_Imagename03 = $_FILES['image03']['name'];
     $updated_product_Imagename04 = $_FILES['image04']['name'];
 
-    //accessing images-temp names-temp path
+    // //accessing images-temp names-temp path
     $updated_product_tempImage01 = $_FILES['image01']['tmp_name'];
     $updated_product_tempImage02 = $_FILES['image02']['tmp_name'];
     $updated_product_tempImage03 = $_FILES['image03']['tmp_name'];
     $updated_product_tempImage04 = $_FILES['image04']['tmp_name'];
 
-    // Check if the file input is empty, if so, use the existing image path
+    // // Check if the file input is empty, if so, use the existing image path
     if (empty($updated_product_Imagename01)) {
         $updated_product_Imagename01 = $selected_product_image01;
     }

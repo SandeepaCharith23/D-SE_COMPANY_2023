@@ -99,7 +99,7 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['admin_username'])) {
         </div>
 
         <div class="form-outline mb-4 w-50 m-auto  text-center">
-            <button type="submit" name="update_admin_details_1" id="update_button" class="btn btn-primary col-6 mx-auto">Update Admin details</button>
+            <button type="submit" name="update_admin_details" id="update_button" class="btn btn-primary col-6 mx-auto">Update Admin details</button>
         </div>
 
 
@@ -111,7 +111,40 @@ if (isset($_SESSION['admin_id']) && isset($_SESSION['admin_username'])) {
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_admin_details'])) {
 
-echo "<script>console.log('insider button clicke')</script>";
+echo "<script>console.log('Update button clicked')</script>";
+
+//catch the updated values
+$updated_admin_name=$_POST['admin_user_name'];
+$updated_admin_mobile_number=$_POST['admin_mobilenumber'];
+$updated_admin_profile_pic_imagename=$_FILES['admin_image']['name'];
+$updated_admin_profile_pic_tempname=$_FILES['admin_image']['tmp_name'];
+
+if(empty($updated_admin_profile_pic_imagename))
+{
+    $updated_admin_profile_pic_imagename=$admin_profilepic;
+}
+
+//save selected pic 
+move_uploaded_file($updated_admin_profile_pic_tempname,"../images/profileimages/$updated_admin_profile_pic_imagename");
+echo "<script>alert('Successfully updated Admin profile picture.')</script>";
+
+//update profile information
+$update_profile_details_querry="UPDATE `admin_table` SET admin_username='$updated_admin_name' , admin_mobilenumber= '$updated_admin_mobile_number',admin_profile_image='$updated_admin_profile_pic_imagename' WHERE admin_id='$admin_id' &&  admin_emailaddress='$admin_emailaddress'";
+$results_updated_profile_details=mysqli_query($conn,$update_profile_details_querry);
+if($results_updated_profile_details)
+{
+    echo "<script>alert('Successfully updated Admin details.You will Automatically signout form account and Please login again using your password and user email')</script>";
+    echo "<script>window.open('admin_logout.php','_self')</script>";
+
+}else{
+    echo "<script>alert('Failed to update admin details')</script>";
+};
+
+
+
+echo "<script>console.log('$updated_admin_name')</script>";
+echo "<script>console.log('$updated_admin_profile_pic_imagename')</script>";
+
 
 }
 

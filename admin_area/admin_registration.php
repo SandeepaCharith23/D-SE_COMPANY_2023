@@ -231,8 +231,10 @@ if (isset($_POST['register_admin_button'])) {
         if (mysqli_query($conn, $insert_new_admin_querry)) {
             echo "<script>alert('Successfully add a new admin to database,Our admin will enter you to inside')</script>";
             echo "<script>console.log('Successfully add a new admin')</script>";
+            echo "<script>window.location.href = '../index.php';</script>";
         } else {
             echo "<script>alert('Something went wrong,Please contact our admin for more details.')</script>";
+            echo "<script>window.location.href = '../index.php';</script>";
         }
     }
 }
