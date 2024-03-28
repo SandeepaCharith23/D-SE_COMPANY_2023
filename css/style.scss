@@ -1095,6 +1095,23 @@ section {
                 @include titleText(2rem);
             }
         }
+
+        .contact-details-column-style{
+            border: $border;
+            display: block;
+            padding: 2rem;
+            margin-top: 1rem;
+
+            h2 {
+                @include titleText(2.0rem);
+            }
+
+            p {
+                @include graphText(2.0rem);
+                padding: 1.0rem;
+            
+            }
+        }
     }
 }
 

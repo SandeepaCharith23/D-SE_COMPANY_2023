@@ -6,8 +6,9 @@
             <div class="contact-details-column">
                 <!-- <img src="images/logo.png" alt="no image"> -->
                 <h2>Contact</h2>
-                <p><strong>Address</strong>:58/2,Mirigama</p>
-                <p><strong>Phone</strong>:+94 71-2222222</p>
+                <p><strong>Address</strong>No 35/9 Jayampathi,Neligama, Mirigama</p>
+                <p><strong>Phone</strong>:+94 752948648</p>
+                <p><strong>Email</strong>:dasunpremathilake93@gmail.com</p>
                 <p><strong>Hours</strong>:9:00-18:00 ,Mon-Sat</p>
             </div>
             <h2>Follow Us</h2>
