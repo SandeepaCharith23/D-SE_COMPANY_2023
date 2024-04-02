@@ -385,7 +385,7 @@
     <section class="products" id="products">
 
         <div class="heading">
-            <h1>Explore our Products Store</h1>
+            <h1>Explore our online Products Store</h1>
         </div>
 
 

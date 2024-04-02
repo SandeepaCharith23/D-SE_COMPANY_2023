@@ -876,9 +876,9 @@ section {
 //End of the feature section -css
 //Start of the Product section
 .products {
-    background-color: $yellow;
+   // background-color: $primarycolorblue;
     align-items: center;
-    min-height: 95vh;
+    min-height: 90vh;
     padding: 1rem 1rem;
     box-shadow: $box-shadow;
 
@@ -886,8 +886,8 @@ section {
 
     img {
 
-        width: 50rem;
-        height: 50rem;
+        width: 20rem;
+        height: 20rem;
         object-fit: cover;
 
 
@@ -910,7 +910,7 @@ section {
 
     .productslider {
         align-items: center;
-        //background-color: #F1C40F;
+        background-color: #F1C40F;
         position: relative;
 
 
@@ -918,7 +918,7 @@ section {
         .productslide {
             position: absolute;
             // min-height: 95vh;
-            // background-color: palegreen;
+            background-color: palegreen;
             border: $border;
             display: flex;
             flex-wrap: wrap;
@@ -2310,7 +2310,7 @@ section {
     }
 
     .products {
-        min-height: 50vh;
+        min-height: 90vh;
     }
 }
 
