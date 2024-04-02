@@ -47,7 +47,7 @@
         </form>
 
         <form action="admin_area/login_process.php" class="login-form" method="POST">
-            
+
             <!-- Add a progress bar -->
             <!-- <div class="progress-container">
                 <div class="progress"></div>
@@ -129,7 +129,7 @@
                             They involve the planning, layout, and cost assessment of electrical systems for various
                             applications, such as
                             residential, commercial, industrial, or infrastructure projects.
-                            
+
                         </p>
 
                         <a href="#features" class="button">Know More</a>
@@ -452,7 +452,7 @@
         <h1 class="heading">Contact Us</h1>
 
         <div class="row">
-        
+
             <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1979.0088912881854!2d80.12668119909682!3d7.238810104043714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2slk!4v1711346028199!5m2!1sen!2slk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             <form action="" method="POST">
                 <h3>Contact us from Email</h3>
@@ -462,11 +462,11 @@
                 <textarea name="customer_message" class="box" placeholder="Enter your Message" cols="30" rows="10"></textarea>
                 <input type="submit" value="Send email" name="Send_Email" class="button">
             </form>
-            
+
 
         </div>
         <div class="row">
-        <div class="contact-details-column-style">
+            <div class="contact-details-column-style">
                 <!-- <img src="images/logo.png" alt="no image"> -->
                 <h2>Contact</h2>
                 <p><strong>Address</strong>No 35/9 Jayampathi,Neligama, Mirigama</p>

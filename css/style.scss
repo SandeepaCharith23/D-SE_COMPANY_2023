@@ -340,9 +340,14 @@ section {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
 
 // start of the header section -css
@@ -463,13 +468,13 @@ section {
         &.active {
             display: block;
         }
-        
+
         .progress-container {
             position: relative;
             width: 100px;
             height: 100px;
         }
-        
+
         .progress {
             position: absolute;
             width: 100%;
@@ -478,16 +483,16 @@ section {
             border: 10px solid #ccc;
             border-top-color: #4caf50;
             animation: spin 1s linear infinite;
-          }
-          
-          .progress-text {
+        }
+
+        .progress-text {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-          }
+        }
 
-        
+
 
         .login-heading {
 
@@ -861,9 +866,9 @@ section {
 
 
             li {
-                @include paraText(2.5rem);
+                @include paraText(2.0rem);
                 // font-size: 2.5rem;
-                line-height: 3.5rem;
+                line-height: 3.0rem;
             }
 
         }
@@ -876,54 +881,48 @@ section {
 //End of the feature section -css
 //Start of the Product section
 .products {
-   // background-color: $primarycolorblue;
+    // background-color: $primarycolorblue;
     align-items: center;
-    min-height: 90vh;
+    min-height: 100vh;
     padding: 1rem 1rem;
     box-shadow: $box-shadow;
 
-
-
     img {
-
-        width: 20rem;
-        height: 20rem;
+        width: 20vw;
+        height: 50vh;
         object-fit: cover;
-
-
     }
 
     h1 {
         @include titleText(4rem);
         text-decoration: underline;
-
-
     }
 
     p {
-        @include graphText(2rem);
-        line-height: 3.5rem;
-        padding-bottom: 5rem;
-
+        @include graphText(1.5rem);
+        line-height: 3.0rem;
+        padding-bottom: 2rem;
 
     }
 
     .productslider {
         align-items: center;
-        background-color: #F1C40F;
+       // background-color: #F1C40F;
         position: relative;
 
 
 
         .productslide {
-            position: absolute;
+            //position: absolute;
             // min-height: 95vh;
-            background-color: palegreen;
+           // background-color: palegreen;
             border: $border;
             display: flex;
             flex-wrap: wrap;
+            
             padding: 1rem;
-            justify-content: space-between;
+            align-items: center;
+            //justify-content: space-between;
             margin: 1rem;
             //border: $border;
             border-radius: 2rem;
@@ -1096,7 +1095,7 @@ section {
             }
         }
 
-        .contact-details-column-style{
+        .contact-details-column-style {
             border: $border;
             display: block;
             padding: 2rem;
@@ -1109,7 +1108,7 @@ section {
             p {
                 @include graphText(2.0rem);
                 padding: 1.0rem;
-            
+
             }
         }
     }
@@ -2370,7 +2369,7 @@ section {
     }
 
     .products {
-        min-height: 40vh;
+        min-height: 90vh;
     }
 
     .productshomefooter {
@@ -2531,15 +2530,16 @@ section {
     }
 
     .products {
-        min-height: 50vh;
+        min-height: 90vh;
 
         img {
-            height: 40rem;
-            width: 40rem;
+            height: 40vh;
+            width: 40vw;
         }
 
         .productslider {
             .productslide {
+                flex-direction: column;
                 .productimage {
                     flex: 1 1 10vw;
                 }
@@ -2738,8 +2738,47 @@ section {
 
     }
 
+    .feature {
+      .box{
+        .image {
+            padding: 1rem;
+            flex: 1 1 42rem;
+            //align-items: center;
+            //background-color: #36eaba;
+
+            img {
+                
+                width: 42rem;
+                height: 40vh;
+
+            }
+        }
+         
+        .content{
+            padding: 1rem 2rem;
+            flex: 1 1 42rem;
+            // background-color: #4D45CB;
+
+            h3 {
+                @include titleText(2.5rem);
+                // font-size: 3rem;
+                line-height: 3.0rem;
+
+            }
+
+
+            li {
+                @include paraText(1.5rem);
+                // font-size: 2.5rem;
+                line-height: 2.0rem;
+            }
+
+        }
+      }
+    }
+
     .products {
-        min-height: 50vh;
+        min-height: 90vh;
 
         h1 {
             font-size: 3rem;
@@ -2969,6 +3008,6 @@ section {
     }
 
     .products {
-        min-height: 40vh;
+        min-height: 90vh;
     }
 }
