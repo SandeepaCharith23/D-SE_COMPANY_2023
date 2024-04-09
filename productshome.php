@@ -35,6 +35,7 @@ session_start();
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand logo" href="index.php" class="logo"> <i class="fa fa-cogs"></i> D & SE Company PVT.LTD </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -80,9 +81,15 @@ session_start();
                         </a>
                     </ul>
 
+
+
                 </div>
             </div>
         </nav>
+
+        <div class="icons search-button-div">
+            <div class="fas fa-search" id="productshome-search-form-button"></div>
+        </div>
 
         <?php
         if (!isset($_SESSION['username'])) {
@@ -99,10 +106,8 @@ session_start();
 
 
         <form action="search_product.php" class="search-form" id="producthomesearchform" method="GET">
-            <input class="form-control me-2" type="search" name="search_data" placeholder="Search here..." id="search-box" aria-label="Search" style="width: 50%;">
-            <!-- <label for="search-box" class="fas fa-search"></label> -->
-            <!-- <Button class="btn btn-outline-dark" type="submit">Search</Button> -->
-            <input type="submit" class="btn btn-outline-dark" value="Search" name="search_data_product" style="width: 10%;">
+            <input class="form-control me-2" type="search" name="search_data" placeholder="Search here..." id="search-box" aria-label="Search" style="width: 60%;">
+            <input type="submit" class="btn btn-outline-dark buttontype01" value="Search" name="search_data_product" style="width: 20%;">
         </form>
 
         <!-- user login form -->
@@ -140,7 +145,7 @@ session_start();
     <div id="headerbanner" class="headerbanner">
 
         <h1>Welcome to our online shop</h1>
-        <p>In this stage we expect to display our products only ,Then you can contact us on whatsup and email.</p>
+        <p>Welcome to D & SE Trading online store! Discover our diverse selection of groceries and electronics. Although we don't have online payment options yet, we're committed to enhancing your shopping experience soon. Stay tuned!</p>
 
     </div>
 
@@ -344,44 +349,50 @@ session_start();
 
     <!-- link custom js file -->
 
-   
+
 </body>
 
 <script>
-        let loginFormuser = document.getElementById('login-form-user');
-        let closebuttonofuserlogin = document.getElementById('userlogin-close-button');
-        document.querySelector('#login-btn-user').onclick = () => {
-            console.log('inside Login  button');
-            //loginFormuser.classList.toggle('active');
-            window.open('user_area/login_page.php', '_self');
+    let loginFormuser = document.getElementById('login-form-user');
+    let closebuttonofuserlogin = document.getElementById('userlogin-close-button');
+    let searchiconbutton = document.getElementById('productshome-search-form-button');
+    document.querySelector('#login-btn-user').onclick = () => {
+        console.log('inside Login  button');
+        //loginFormuser.classList.toggle('active');
+        window.open('user_area/login_page.php', '_self');
 
-            // Call the function to load the login page when the page loads
-            //loadLoginPage();
-            // navbar.classList.remove('active-navbar');
-            // menubutton.classList.remove('fa-times');
-            // searchForm.classList.remove('active');
-        };
+        // Call the function to load the login page when the page loads
+        //loadLoginPage();
+        // navbar.classList.remove('active-navbar');
+        // menubutton.classList.remove('fa-times');
+        // searchForm.classList.remove('active');
+    };
 
-        closebuttonofuserlogin.onclick = () => {
-            loginFormuser.classList.remove('active');
-        }
+    closebuttonofuserlogin.onclick = () => {
+        loginFormuser.classList.remove('active');
+    }
 
-        // Function to load login page content into the specified div
-        // function loadLoginPage() {
-        //     var xhttp = new XMLHttpRequest();
-        //     xhttp.onreadystatechange = function() {
-        //         if (this.readyState == 4 && this.status == 200) {
-        //             // Replace the content of the div with the response from login.php
-        //             document.getElementById("login-form-user").innerHTML = this.responseText;
-        //         }
-        //     };
-        //     // Specify the path to your login.php file
-        //     xhttp.open("GET", "user_area/login_page.php", true);
-        //     xhttp.send();
-        // }
+    // Function to load login page content into the specified div
+    // function loadLoginPage() {
+    //     var xhttp = new XMLHttpRequest();
+    //     xhttp.onreadystatechange = function() {
+    //         if (this.readyState == 4 && this.status == 200) {
+    //             // Replace the content of the div with the response from login.php
+    //             document.getElementById("login-form-user").innerHTML = this.responseText;
+    //         }
+    //     };
+    //     // Specify the path to your login.php file
+    //     xhttp.open("GET", "user_area/login_page.php", true);
+    //     xhttp.send();
+    // }
 
-        //
-    </script>
-    <script src="js/script.js"></script>
+    //
+
+    searchiconbutton.onclick = () => {
+        console.log('Products home search button Clicked');
+        
+    };
+</script>
+<script src="js/script.js"></script>
 
 </html>

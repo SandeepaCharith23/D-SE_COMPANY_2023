@@ -785,6 +785,7 @@ section {
         }
 
         .content {
+            @include graphText(2rem);
             border: $border;
             border-radius: 2rem;
             padding: 1rem 2rem;
@@ -907,7 +908,7 @@ section {
 
     .productslider {
         align-items: center;
-       // background-color: #F1C40F;
+        // background-color: #F1C40F;
         position: relative;
 
 
@@ -915,11 +916,11 @@ section {
         .productslide {
             //position: absolute;
             // min-height: 95vh;
-           // background-color: palegreen;
+            // background-color: palegreen;
             border: $border;
             display: flex;
             flex-wrap: wrap;
-            
+
             padding: 1rem;
             align-items: center;
             //justify-content: space-between;
@@ -1063,7 +1064,7 @@ section {
     }
 
     .row {
-
+        padding: auto;
         display: flex;
         flex-wrap: wrap;
         gap: 2rem;
@@ -1123,61 +1124,71 @@ section {
     padding: 2rem;
 
 
-    .slide {
-        border: $border;
-        padding: 2rem;
+    .reviews-slider {
+        .swiper-wrapper {
+            display: flex; // Flexbox display for the swiper wrapper
 
-        p {
-            @include graphText(2.0rem);
-            padding: 1.5rem;
-            position: relative;
-            margin-bottom: 2.0rem;
-            background: var(--light-bg);
-
-
-            &::before {
-                content: '';
-                position: absolute;
-                bottom: -1rem;
-                left: 2rem;
-                width: 2rem;
-                height: 2rem;
-                background: var(--light-bg);
-                transform: rotate(45deg);
-            }
         }
 
-        .user {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding-bottom: 2rem;
+        .slide {
+            border: $border;
+            border-radius: 2%;
+            padding: 2rem;
+            height: 30vh;
 
-            img {
-                width: 7rem;
-                height: 7rem;
+            p {
+                @include graphText(1.0rem);
+                padding: 1.5rem;
+                position: relative;
+                margin-bottom: 2.0rem;
+                background: var(--light-bg);
 
 
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: -1rem;
+                    left: 2rem;
+                    width: 2rem;
+                    height: 2rem;
+                    background: var(--light-bg);
+                    transform: rotate(45deg);
+                }
             }
 
-            h3 {
-                @include titleText(2rem);
-            }
+            .user {
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+                padding-bottom: 2rem;
 
-            h4 {
-                @include graphText(1rem);
-            }
+                img {
+                    width: 10vw;
+                    height: 10vh;
 
-            .stars {
-                padding-top: 0.5rem;
 
-                i {
-                    font-size: 1.5rem;
-                    color: var(--yellow);
                 }
 
+                h3 {
+                    @include titleText(1rem);
+                }
+
+                h4 {
+                    @include graphText(1rem);
+                }
+
+                .stars {
+                    padding-top: 0.5rem;
+
+                    i {
+                        font-size: 1.5rem;
+                        color: var(--yellow);
+                    }
+
+                }
             }
         }
+
     }
 
 }
@@ -1197,7 +1208,7 @@ section {
 
     .credit {
 
-        @include titleText(2rem);
+        @include titleText(1rem);
 
         span {
             a {
@@ -1285,6 +1296,7 @@ section {
     //start of -Search Form
     .search-form {
         position: absolute;
+        // display: none;
         top: 70%;
         left: 50%;
         transform: translateX(-50%);
@@ -1439,14 +1451,21 @@ section {
     }
 
     //login-form-for user
+    .search-button-div{
 
+        .fas.fa-search{
+            display: none;
+            
+        }
+       
+    }
 
 
 }
 
 .headerbanner {
     background-image: url("images/shopping_banner_small.jpg");
-    min-height: 40vh;
+    min-height: 30vh;
     background-color: $primarycolorblue;
     width: 100%;
     background-size: cover;
@@ -1458,13 +1477,15 @@ section {
 
 
     h1 {
-        @include titleText(3rem);
+        @include titleText(2rem);
         color: $white;
     }
 
     p {
-        @include graphText(2rem);
+        @include graphText(1.5rem);
+        font-style:italic;
         color: $white;
+        padding: auto;
     }
 
 
@@ -2399,6 +2420,7 @@ section {
     }
 }
 
+//Tab size
 @media (max-width:769px) {
     html {
         font-size: 50.0%;
@@ -2449,6 +2471,26 @@ section {
         gap: 0.5rem;
     }
 
+    .reviews {
+
+        .reviews-slider {
+            .swiper-wrapper {
+                display: flex; // Flexbox display for the swiper wrapper
+
+            }
+
+            .slide {
+                padding: 1.0rem;
+
+
+                .p {
+                    @include graphText(2.0rem);
+                }
+            }
+        }
+
+    }
+
     section {
         padding: 2rem 2rem;
     }
@@ -2480,11 +2522,7 @@ section {
 
 
 
-        .icons div {
-            display: none;
-            @include iconBox();
-            margin-left: 0.6rem;
-        }
+       
 
         //start of -Search Form
         .search-form {
@@ -2496,6 +2534,7 @@ section {
             background: $white;
             box-shadow: $box-shadow;
             padding: 1rem;
+            display: none;
 
 
             &.active {
@@ -2524,7 +2563,14 @@ section {
         }
 
         //End of -Search Form
+        .search-button-div{
 
+            .fas.fa-search{
+                display: block;
+                
+            }
+           
+        }
 
 
     }
@@ -2540,6 +2586,7 @@ section {
         .productslider {
             .productslide {
                 flex-direction: column;
+
                 .productimage {
                     flex: 1 1 10vw;
                 }
@@ -2608,18 +2655,22 @@ section {
     }
 
 
+
+
 }
 
 
 //Mobile phone L size
 @media (max-width:426px) {
+    section {
+        padding: 0.5rem 0.5rem;
+    }
 
 
     .header {
-
         min-height: 10vh;
         padding: 1rem;
-
+        
         .logo {
             font-size: 2rem;
             display: inline;
@@ -2642,8 +2693,8 @@ section {
     }
 
     .home {
-        min-height: 50vh;
-
+        min-height: 40vh;
+        
         .image {
             margin-top: 2rem;
             margin-left: 10rem;
@@ -2682,15 +2733,14 @@ section {
         min-height: 40vh;
 
         .heading {
-
             margin-bottom: 1.0rem;
-
             span {
-                font-size: 3.0rem;
+                font-size: 2.0rem;
+               
             }
 
             h1 {
-                font-size: 3.5rem;
+                font-size: 2.5rem;
                 padding-top: 0.5rem;
             }
         }
@@ -2729,52 +2779,149 @@ section {
         }
     }
 
-    section {
-        padding: 0.5rem 0.5rem;
+    .aboutus {
+        min-height: 25vh;
+       
+    
+        .maincontent {
+            background: $primarycolorlightblue;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 0.5rem;
+    
+            .image {
+                flex-wrap: 1 1 42vw;
+               
+    
+                img {
+                    width: 50vw;
+                    height: 50vh;
+                }
+            }
+    
+            .content {
+                border: $border;
+                border-radius: 2rem;
+                padding: 1rem 2rem;
+                margin: 1rem;
+                flex: 1 1 42vw;
+                box-shadow: $box-shadow;
+               
+    
+                h2 {
+                    font-size: 1.5rem;
+                    padding-bottom: 1rem;
+                    text-align: center;
+                }
+    
+                p {
+                    font-size: 1.0rem;
+                    line-height: 2rem;
+                    padding-bottom: 1.5rem;
+                }
+    
+            }
+        }
     }
 
+    .reviews {
+
+        .reviews-slider {
+            
+            .swiper-wrapper {
+                display: flex; // Flexbox display for the swiper wrapper
+               
+            }
+
+            .slide {
+                padding: 0.5rem;
+                height: 50vh;
+                background-color: $primarycoloryellow;
+
+                .p {
+                    @include graphText(1.0rem);
+                    line-height: 1.5rem;
+                }
+
+                .user {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    padding-bottom: 1rem;
+
+                    img {
+                        width: 5vw;
+                        height: 5vh;
+                    }
+
+                    h3 {
+                        @include titleText(1rem);
+                    }
+
+                    h4 {
+                        @include graphText(1rem);
+                    }
+
+                    .stars {
+                        padding-top: 0.5rem;
+
+                        i {
+                            font-size: 1.5rem;
+                            color: var(--yellow);
+                        }
+
+                    }
+                }
+            }
+        }
+
+    }
+
+    
     .footer {
         font-size: 1rem;
 
     }
 
     .feature {
-      .box{
-        .image {
-            padding: 1rem;
-            flex: 1 1 42rem;
-            //align-items: center;
-            //background-color: #36eaba;
+        .box {
+            .image {
+                padding: 1rem;
+                flex: 1 1 42rem;
+                //align-items: center;
+                //background-color: #36eaba;
 
-            img {
-                
-                width: 42rem;
-                height: 40vh;
+                img {
+
+                    width: 42rem;
+                    height: 40vh;
+
+                }
+            }
+
+            .content {
+                padding: 1rem 2rem;
+                flex: 1 1 42rem;
+                // background-color: #4D45CB;
+
+                h3 {
+                    @include titleText(2.5rem);
+                    // font-size: 3rem;
+                    line-height: 3.0rem;
+
+                }
+
+
+                li {
+                    @include paraText(1.5rem);
+                    // font-size: 2.5rem;
+                    line-height: 2.0rem;
+                }
 
             }
         }
-         
-        .content{
-            padding: 1rem 2rem;
-            flex: 1 1 42rem;
-            // background-color: #4D45CB;
-
-            h3 {
-                @include titleText(2.5rem);
-                // font-size: 3rem;
-                line-height: 3.0rem;
-
-            }
-
-
-            li {
-                @include paraText(1.5rem);
-                // font-size: 2.5rem;
-                line-height: 2.0rem;
-            }
-
-        }
-      }
     }
 
     .products {
@@ -2813,12 +2960,11 @@ section {
 
     .productshomesheader {
         min-height: 10vh;
-        padding: 3rem 3rem;
+        padding: 1rem 1rem;
+        
 
         .logo {
-
             font-size: 1.0rem;
-
             i {
                 display: none;
                 font-size: 1.0rem;
@@ -2839,7 +2985,7 @@ section {
 
 
         .icons div {
-            display: none;
+           // display: none;
             @include iconBox();
             margin-left: 0.6rem;
         }
@@ -2847,28 +2993,38 @@ section {
         //start of -Search Form
         .search-form {
             position: absolute;
-            top: 80%;
+            top: 90%;
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
             background: $white;
+            border: $border;
             box-shadow: $box-shadow;
             padding: 1rem;
+            display: none;
+            
+            .btn {
+                &.btn-outline-dark {
+                    font-size: 1rem;
+                    padding: auto;
+                }
+            }
 
-
+           
             &.active {
                 display: flex;
             }
 
             input {
                 width: 100%;
-                padding: 1.2rem 1.4rem;
-                font-size: 1.6rem;
+                padding: 1.0rem 1.0rem;
+                font-size: 1.5rem;
 
             }
 
             i {
                 @include smalliconBox();
+                background-color: #3498db;
             }
 
             lable {

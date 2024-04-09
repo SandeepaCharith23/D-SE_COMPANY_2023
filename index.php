@@ -423,28 +423,7 @@
 
 
     </section>
-
     <!-- End of the product section -->
-
-    <!-- start of a slide show -->
-    <!-- <section id="products" class="productsA">
-        <div class="slideshow-container">
-            <div class="mySlides fade">
-                
-            </div>
-            <div class="mySlides fade">
-                <img src="images/features02.png" alt="Image 2">
-            </div>
-            <div class="mySlides fade">
-                <img src="images/features03.png" alt="Image 3">
-            </div>
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-
-    </section> -->
-
-    <!-- end of the slide show -->
 
     <!-- Start of the Contact-Us section-07 -->
     <section class="contact" id="contact">
@@ -476,8 +455,8 @@
             </div>
         </div>
     </section>
-
     <!-- End of the Contact-Us section-07 -->
+
     <!-- Reviews section start -->
     <section class="reviews" id="reviews">
         <div class="heading">
@@ -565,12 +544,7 @@
     </section>
     <!--End of the review section-->
 
-
-
-
-
     <!-- Start of the footer section-10 -->
-
     <section class="footer">
         <div class="links">
             <a class="button" href="#home">Home</a>

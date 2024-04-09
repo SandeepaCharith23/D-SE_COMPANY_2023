@@ -105,7 +105,9 @@ menubutton.onscroll=()=>{
 
 
 //productshome.php js functions
-//1.login button click
+//1.search button function
+
+
 
 
 

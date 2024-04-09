@@ -544,6 +544,9 @@ section {
   height: 50rem;
 }
 .aboutus .maincontent .content {
+  font-size: 2rem;
+  color: #000;
+  line-height: 1.5;
   border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
   border-radius: 2rem;
   padding: 1rem 2rem;
@@ -670,6 +673,7 @@ section {
   text-transform: capitalize;
 }
 .contact .row {
+  padding: auto;
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -720,12 +724,17 @@ section {
   background-color: #7067f2;
   padding: 2rem;
 }
-.reviews .slide {
-  border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
-  padding: 2rem;
+.reviews .reviews-slider .swiper-wrapper {
+  display: flex;
 }
-.reviews .slide p {
-  font-size: 2rem;
+.reviews .reviews-slider .slide {
+  border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
+  border-radius: 2%;
+  padding: 2rem;
+  height: 30vh;
+}
+.reviews .reviews-slider .slide p {
+  font-size: 1rem;
   color: #000;
   line-height: 1.5;
   padding: 1.5rem;
@@ -733,7 +742,7 @@ section {
   margin-bottom: 2rem;
   background: var(--light-bg);
 }
-.reviews .slide p::before {
+.reviews .reviews-slider .slide p::before {
   content: "";
   position: absolute;
   bottom: -1rem;
@@ -743,30 +752,30 @@ section {
   background: var(--light-bg);
   transform: rotate(45deg);
 }
-.reviews .slide .user {
+.reviews .reviews-slider .slide .user {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   padding-bottom: 2rem;
 }
-.reviews .slide .user img {
-  width: 7rem;
-  height: 7rem;
+.reviews .reviews-slider .slide .user img {
+  width: 10vw;
+  height: 10vh;
 }
-.reviews .slide .user h3 {
-  font-size: 2rem;
+.reviews .reviews-slider .slide .user h3 {
+  font-size: 1rem;
   color: #000;
   text-transform: capitalize;
 }
-.reviews .slide .user h4 {
+.reviews .reviews-slider .slide .user h4 {
   font-size: 1rem;
   color: #000;
   line-height: 1.5;
 }
-.reviews .slide .user .stars {
+.reviews .reviews-slider .slide .user .stars {
   padding-top: 0.5rem;
 }
-.reviews .slide .user .stars i {
+.reviews .reviews-slider .slide .user .stars i {
   font-size: 1.5rem;
   color: var(--yellow);
 }
@@ -779,7 +788,7 @@ section {
   margin: 0.5rem;
 }
 .footer .credit {
-  font-size: 2rem;
+  font-size: 1rem;
   color: #000;
   text-transform: capitalize;
 }
@@ -986,10 +995,13 @@ section {
 .productshomesheader .login-form-user p a:hover {
   text-decoration: underline;
 }
+.productshomesheader .search-button-div .fas.fa-search {
+  display: none;
+}
 
 .headerbanner {
   background-image: url("images/shopping_banner_small.jpg");
-  min-height: 40vh;
+  min-height: 30vh;
   background-color: #4D45CB;
   width: 100%;
   background-size: cover;
@@ -999,16 +1011,18 @@ section {
   flex-direction: column;
 }
 .headerbanner h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   color: #000;
   text-transform: capitalize;
   color: #ffffff;
 }
 .headerbanner p {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #000;
   line-height: 1.5;
+  font-style: italic;
   color: #ffffff;
+  padding: auto;
 }
 
 .useraccountdisplaysection {
@@ -1730,6 +1744,17 @@ section {
   .home {
     gap: 0.5rem;
   }
+  .reviews .reviews-slider .swiper-wrapper {
+    display: flex;
+  }
+  .reviews .reviews-slider .slide {
+    padding: 1rem;
+  }
+  .reviews .reviews-slider .slide .p {
+    font-size: 2rem;
+    color: #000;
+    line-height: 1.5;
+  }
   section {
     padding: 2rem 2rem;
   }
@@ -1775,6 +1800,7 @@ section {
     background: #ffffff;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
     padding: 1rem;
+    display: none;
   }
   .productshomesheader .search-form.active {
     display: flex;
@@ -1801,6 +1827,9 @@ section {
   .productshomesheader .search-form lable {
     font-size: 1rem;
     margin: 0 3rem;
+  }
+  .productshomesheader .search-button-div .fas.fa-search {
+    display: block;
   }
   .products {
     min-height: 90vh;
@@ -1841,6 +1870,9 @@ section {
   }
 }
 @media (max-width: 426px) {
+  section {
+    padding: 0.5rem 0.5rem;
+  }
   .header {
     min-height: 10vh;
     padding: 1rem;
@@ -1859,7 +1891,7 @@ section {
     display: inline;
   }
   .home {
-    min-height: 50vh;
+    min-height: 40vh;
   }
   .home .image {
     margin-top: 2rem;
@@ -1899,10 +1931,10 @@ section {
     margin-bottom: 1rem;
   }
   .services .heading span {
-    font-size: 3rem;
+    font-size: 2rem;
   }
   .services .heading h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     padding-top: 0.5rem;
   }
   .services .swiper-button-next,
@@ -1930,8 +1962,82 @@ section {
   .services .swiper-button-prev {
     right: 6rem;
   }
-  section {
-    padding: 0.5rem 0.5rem;
+  .aboutus {
+    min-height: 25vh;
+  }
+  .aboutus .maincontent {
+    background: #7067f2;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  .aboutus .maincontent .image {
+    flex-wrap: 1 1 42vw;
+  }
+  .aboutus .maincontent .image img {
+    width: 50vw;
+    height: 50vh;
+  }
+  .aboutus .maincontent .content {
+    border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    flex: 1 1 42vw;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  }
+  .aboutus .maincontent .content h2 {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+    text-align: center;
+  }
+  .aboutus .maincontent .content p {
+    font-size: 1rem;
+    line-height: 2rem;
+    padding-bottom: 1.5rem;
+  }
+  .reviews .reviews-slider .swiper-wrapper {
+    display: flex;
+  }
+  .reviews .reviews-slider .slide {
+    padding: 0.5rem;
+    height: 50vh;
+    background-color: #f3b90b;
+  }
+  .reviews .reviews-slider .slide .p {
+    font-size: 1rem;
+    color: #000;
+    line-height: 1.5;
+    line-height: 1.5rem;
+  }
+  .reviews .reviews-slider .slide .user {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+  }
+  .reviews .reviews-slider .slide .user img {
+    width: 5vw;
+    height: 5vh;
+  }
+  .reviews .reviews-slider .slide .user h3 {
+    font-size: 1rem;
+    color: #000;
+    text-transform: capitalize;
+  }
+  .reviews .reviews-slider .slide .user h4 {
+    font-size: 1rem;
+    color: #000;
+    line-height: 1.5;
+  }
+  .reviews .reviews-slider .slide .user .stars {
+    padding-top: 0.5rem;
+  }
+  .reviews .reviews-slider .slide .user .stars i {
+    font-size: 1.5rem;
+    color: var(--yellow);
   }
   .footer {
     font-size: 1rem;
@@ -1984,7 +2090,7 @@ section {
   }
   .productshomesheader {
     min-height: 10vh;
-    padding: 3rem 3rem;
+    padding: 1rem 1rem;
   }
   .productshomesheader .logo {
     font-size: 1rem;
@@ -2017,21 +2123,27 @@ section {
   }
   .productshomesheader .search-form {
     position: absolute;
-    top: 80%;
+    top: 90%;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
     background: #ffffff;
+    border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
     padding: 1rem;
+    display: none;
+  }
+  .productshomesheader .search-form .btn.btn-outline-dark {
+    font-size: 1rem;
+    padding: auto;
   }
   .productshomesheader .search-form.active {
     display: flex;
   }
   .productshomesheader .search-form input {
     width: 100%;
-    padding: 1.2rem 1.4rem;
-    font-size: 1.6rem;
+    padding: 1rem 1rem;
+    font-size: 1.5rem;
   }
   .productshomesheader .search-form i {
     height: 3rem;
@@ -2043,6 +2155,7 @@ section {
     cursor: pointer;
     text-align: center;
     background: #4D45CB;
+    background-color: #3498db;
   }
   .productshomesheader .search-form i:hover {
     background: #f3b90b;
