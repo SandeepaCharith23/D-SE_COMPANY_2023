@@ -29,12 +29,32 @@ session_start();
 <body>
 
     <header class="productshomesheader">
+        <a class="logo" href="index.php" class="logo"> <i class="fa fa-cogs"></i> D & SE Company PVT.LTD </a>
+
+        <nav class="navbar">
+            <a href="#">Home</a>
+            <a href="display_all_products.php">Our Products</a>
+            <a href="#ourdiscountbannersection">Our Discounts</a>
+            <a href="#advertisements-banners-sec">Our Sponsers</a>
+            <a href="#newsubscription-section">Subscribe Us</a>
+            <a href="#newsubscription-section">Our contact details</a>
+
+            <a href="my_cart.php">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <sup>
+                    <?php
+                    cart_item_count();
+
+                    ?>
+                </sup>
+            </a>
 
 
+        </nav>
 
-        <nav class="navbar navbar-expand-lg">
+        <!-- <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand logo" href="index.php" class="logo"> <i class="fa fa-cogs"></i> D & SE Company PVT.LTD </a>
+                
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -85,22 +105,25 @@ session_start();
 
                 </div>
             </div>
-        </nav>
+        </nav> -->
 
-        <div class="icons search-button-div">
+        <div class="icons">
+            <div class="fas fa-bars" id="productshome-menu-btn"></div>
             <div class="fas fa-search" id="productshome-search-form-button"></div>
+            <?php
+            if (!isset($_SESSION['username'])) {
+                echo "
+                    
+                    <div id='login-btn-user' class='fas fa-user'></div>
+               
+                            ";
+            } else {
+            }
+            ?>
+
         </div>
 
-        <?php
-        if (!isset($_SESSION['username'])) {
-            echo "
-                    <div class='icons'>
-                    <div id='login-btn-user' class='fas fa-user'></div>
-                </div>
-                            ";
-        } else {
-        }
-        ?>
+
 
 
 
@@ -108,6 +131,7 @@ session_start();
         <form action="search_product.php" class="search-form" id="producthomesearchform" method="GET">
             <input class="form-control me-2" type="search" name="search_data" placeholder="Search here..." id="search-box" aria-label="Search" style="width: 60%;">
             <input type="submit" class="btn btn-outline-dark buttontype01" value="Search" name="search_data_product" style="width: 20%;">
+            <i class="fas fa-close" id="searchbarclosebutton1"></i>
         </form>
 
         <!-- user login form -->
@@ -154,15 +178,20 @@ session_start();
         <nav class="navbar navbar-expand-lg navbar-dark bg-gradient m-2">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="user_area/user_profile.php">
+                    
                         <?php
                         if (!isset($_SESSION['username'])) {
-                            echo "Welocome guest";
+                            echo "<a class='nav-link' href=''>
+                            Welcome guest
+                            </a>";
                         } else {
-                            echo "Welcome  " . $_SESSION['username'];
+                            
+                            echo "<a class='nav-link' href=''>
+                            Welcome  " . $_SESSION['username'] ."
+                            </a>";
                         }
                         ?>
-                    </a>
+                    
                 </li>
 
                 <?php
@@ -187,9 +216,6 @@ session_start();
             </ul>
         </nav>
     </div>
-
-
-
 
     <section class="products-display-section" id="products-display-section">
         <div class="heading">
@@ -356,6 +382,11 @@ session_start();
     let loginFormuser = document.getElementById('login-form-user');
     let closebuttonofuserlogin = document.getElementById('userlogin-close-button');
     let searchiconbutton = document.getElementById('productshome-search-form-button');
+    let searchform1 = document.getElementById('producthomesearchform');
+    let searchform1closebutton = document.getElementById('searchbarclosebutton1');
+    let productshomemenubars=document.getElementById('productshome-menu-btn');
+    let navbar=document.querySelector('.productshomesheader .navbar');
+
     document.querySelector('#login-btn-user').onclick = () => {
         console.log('inside Login  button');
         //loginFormuser.classList.toggle('active');
@@ -389,8 +420,23 @@ session_start();
     //
 
     searchiconbutton.onclick = () => {
-        console.log('Products home search button Clicked');
+        //console.log('Products home search button Clicked');
+        searchform1.classList.toggle('active');
+        navbar.classList.remove('active-navbar');
+
+    };
+
+    searchform1closebutton.onclick = () => {
+        //console.log('Search form close button Clicked');
+        searchform1.classList.remove('active');
         
+    };
+
+    productshomemenubars.onclick=()=>{
+        console.log('products home menu button Clicked');
+        productshomemenubars.classList.toggle('fa-times');
+        navbar.classList.toggle('active-navbar');
+        searchform1.classList.remove('active');
     };
 </script>
 <script src="js/script.js"></script>

@@ -54,6 +54,7 @@ function getproducts()
         <div class='stars'>
         <i class='fas fa-star'></i>
         <i class='fas fa-star'></i>
+        <i class='fas fa-star'></i>
         </div>
         
         <a href='productshome.php?add_to_cart_product_id=$product_ID' class='product_card_button'>Add To cart</a>
@@ -448,13 +449,19 @@ function get_unique_category_products()
                 $product_image01 = $row_products_data['Product_Image01'];
                 $product_date = $row_products_data['Product_Date'];
                 $product_status = $row_products_data['Product_Status'];
+                
+                $select_brandname_querry="SELECT * FROM `product_brands` WHERE Brand_ID=$product_brand_ID";
+                $brand_name_array=mysqli_fetch_array(mysqli_query($conn,$select_brandname_querry));
+                $brand_name=$brand_name_array['Brand_Name'];
+                
+                
                 echo "
                 <div class='col-md-4 mb-2'>
                 <div class='card product' onclick='#' >
                 <img src='product_images/$product_image01' class='card-img-top' alt='$product_name'>
                 <div class='card-body product-description'>
                 <h1 class='card-title'>$product_name</h1>
-                <span>$product_brand_ID</span>
+                <span>$brand_name</span>
                 <p class='card-text'>$product_description</p>
                 <h2>$product_unitprice</h2>
                 <div class='stars'>
@@ -517,13 +524,18 @@ function get_unique_brand_products()
                 $product_image01 = $row_products_data['Product_Image01'];
                 $product_date = $row_products_data['Product_Date'];
                 $product_status = $row_products_data['Product_Status'];
+                
+                $select_brandname_querry="SELECT * FROM `product_brands` WHERE Brand_ID=$product_brand_ID";
+                $brand_name_array=mysqli_fetch_array(mysqli_query($conn,$select_brandname_querry));
+                $brand_name=$brand_name_array['Brand_Name'];
+                
                 echo "
                 <div class='col-md-4 mb-2'>
                 <div class='card product' onclick='#' >
                 <img src='product_images/$product_image01' class='card-img-top' alt='$product_name'>
                 <div class='card-body product-description'>
                 <h1 class='card-title'>$product_name</h1>
-                <span>$product_brand_ID</span>
+                <span>$brand_name</span>
                 <p class='card-text'>$product_description</p>
                 <h2>$product_unitprice</h2>
                 <div class='stars'>

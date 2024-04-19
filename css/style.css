@@ -829,11 +829,16 @@ section {
 }
 .productshomesheader .navbar a {
   margin: 0 0.5rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #000;
 }
 .productshomesheader .navbar a:hover {
   text-decoration: underline;
+}
+.productshomesheader #productshome-menu-btn {
+  cursor: pointer;
+  font-size: 2rem;
+  display: none;
 }
 .productshomesheader .icons div {
   height: 5rem;
@@ -846,7 +851,7 @@ section {
   cursor: pointer;
   text-align: center;
   background: #4D45CB;
-  margin: 1rem;
+  margin-left: 0.6rem;
 }
 .productshomesheader .icons div:hover {
   background: #f3b90b;
@@ -854,6 +859,7 @@ section {
 }
 .productshomesheader .search-form {
   position: absolute;
+  display: none;
   top: 70%;
   left: 50%;
   transform: translateX(-50%);
@@ -861,7 +867,6 @@ section {
   background: #ffffff;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   padding: 1rem;
-  display: flex;
   align-items: center;
   gap: 1rem;
   animation: fadeIn 0.2s linear;
@@ -896,6 +901,21 @@ section {
 }
 .productshomesheader .search-form lable:hover {
   background-color: #F1C40F;
+}
+.productshomesheader .search-form i {
+  height: 3rem;
+  width: 3rem;
+  line-height: 3rem;
+  font-size: 2rem;
+  color: #ffffff;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
+  cursor: pointer;
+  text-align: center;
+  background: #4D45CB;
+}
+.productshomesheader .search-form i:hover {
+  background: #f3b90b;
+  color: #ffffff;
 }
 .productshomesheader .login-form-user {
   position: absolute;
@@ -995,9 +1015,6 @@ section {
 .productshomesheader .login-form-user p a:hover {
   text-decoration: underline;
 }
-.productshomesheader .search-button-div .fas.fa-search {
-  display: none;
-}
 
 .headerbanner {
   background-image: url("images/shopping_banner_small.jpg");
@@ -1022,7 +1039,7 @@ section {
   line-height: 1.5;
   font-style: italic;
   color: #ffffff;
-  padding: auto;
+  padding: 1rem;
 }
 
 .useraccountdisplaysection {
@@ -1051,7 +1068,7 @@ section {
 .products-display-section .productsdisplay .products-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-around;
   padding-top: 5rem;
 }
 .products-display-section .productsdisplay .products-container .product {
@@ -1081,7 +1098,7 @@ section {
   font-size: 2.5rem;
 }
 .products-display-section .productsdisplay .products-container .product .product-description span {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 .products-display-section .productsdisplay .products-container .product .product-description p {
   font-size: 1rem;
@@ -1763,33 +1780,41 @@ section {
     padding: 3rem 3rem;
   }
   .productshomesheader .logo {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
   .productshomesheader .logo i {
-    display: none;
     font-size: 1.5rem;
   }
+  .productshomesheader #productshome-menu-btn {
+    display: inline-block;
+    transition: 0.2s linear;
+  }
+  .productshomesheader #productshome-menu-btn.fa-times {
+    transform: rotate(180deg);
+  }
+  .productshomesheader .navbar {
+    position: absolute;
+    top: 99%;
+    left: 0;
+    right: 0;
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
+    align-items: flex-start;
+    flex-direction: column;
+    background: #ffffff;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: 0.2s linear;
+  }
+  .productshomesheader .navbar.active-navbar {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
   .productshomesheader .navbar a {
-    margin: 0 1rem;
-    font-size: 2rem;
-  }
-  .productshomesheader .icons div {
-    display: none;
-    height: 5rem;
-    width: 5rem;
-    line-height: 5rem;
-    font-size: 2rem;
-    background: #eee;
-    color: #ffffff;
-    border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
-    cursor: pointer;
-    text-align: center;
-    background: #4D45CB;
-    margin-left: 0.6rem;
-  }
-  .productshomesheader .icons div:hover {
-    background: #f3b90b;
-    color: #ffffff;
+    display: block;
+    padding: 1rem;
+    margin: 0;
+    font-size: 1.5rem;
+    text-decoration: none;
   }
   .productshomesheader .search-form {
     position: absolute;
@@ -1828,9 +1853,6 @@ section {
     font-size: 1rem;
     margin: 0 3rem;
   }
-  .productshomesheader .search-button-div .fas.fa-search {
-    display: block;
-  }
   .products {
     min-height: 90vh;
   }
@@ -1851,7 +1873,7 @@ section {
     font-size: 2rem;
   }
   .products-display-section .productsdisplay .products-container .product .product-description span {
-    font-size: 3.5rem;
+    font-size: 1.5rem;
   }
   .products-display-section .productsdisplay .products-container .product .product-description h2 {
     font-size: 2rem;
@@ -1882,7 +1904,7 @@ section {
     display: inline;
   }
   .header .logo i {
-    font-size: 0.5rem;
+    font-size: 1rem;
   }
   .header .logo .fa-cogs {
     display: none;
@@ -2092,9 +2114,6 @@ section {
     min-height: 10vh;
     padding: 1rem 1rem;
   }
-  .productshomesheader .logo {
-    font-size: 1rem;
-  }
   .productshomesheader .logo i {
     display: none;
     font-size: 1rem;
@@ -2102,24 +2121,6 @@ section {
   .productshomesheader .navbar a {
     margin: 0 0.5rem;
     font-size: 1rem;
-  }
-  .productshomesheader .icons div {
-    display: none;
-    height: 5rem;
-    width: 5rem;
-    line-height: 5rem;
-    font-size: 2rem;
-    background: #eee;
-    color: #ffffff;
-    border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
-    cursor: pointer;
-    text-align: center;
-    background: #4D45CB;
-    margin-left: 0.6rem;
-  }
-  .productshomesheader .icons div:hover {
-    background: #f3b90b;
-    color: #ffffff;
   }
   .productshomesheader .search-form {
     position: absolute;
@@ -2169,6 +2170,7 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(80vw, 1fr));
     gap: 1.5rem;
+    justify-content: space-around;
   }
   .products-display-section .productsdisplay .products-container .product {
     min-width: 30vw;

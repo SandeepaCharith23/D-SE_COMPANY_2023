@@ -1274,7 +1274,7 @@ section {
     .navbar a {
 
         margin: 0 0.5rem;
-        font-size: 1.0rem;
+        font-size: 1.5rem;
         color: $black;
 
 
@@ -1285,18 +1285,27 @@ section {
 
 
     }
+    
+   
+    #productshome-menu-btn {
+        cursor: pointer;
+        font-size: 2rem;
+        display: none;
 
+    }
 
 
     .icons div {
         @include iconBox();
-        margin: 1rem;
+        margin-left: 0.6rem;
+
+       
     }
 
     //start of -Search Form
     .search-form {
         position: absolute;
-        // display: none;
+        display: none;
         top: 70%;
         left: 50%;
         transform: translateX(-50%);
@@ -1304,7 +1313,7 @@ section {
         background: $white;
         box-shadow: $box-shadow;
         padding: 1rem;
-        display: flex;
+       // display: flex;
         align-items: center;
         gap: 1rem;
         animation: fadeIn .2s linear;
@@ -1334,6 +1343,11 @@ section {
             }
 
 
+        }
+
+        i{
+            @include smalliconBox();
+           
         }
     }
 
@@ -1451,14 +1465,7 @@ section {
     }
 
     //login-form-for user
-    .search-button-div{
-
-        .fas.fa-search{
-            display: none;
-            
-        }
-       
-    }
+   
 
 
 }
@@ -1485,7 +1492,7 @@ section {
         @include graphText(1.5rem);
         font-style:italic;
         color: $white;
-        padding: auto;
+        padding: 1rem;
     }
 
 
@@ -1522,7 +1529,7 @@ section {
             // @include grid(30vw);
             display: flex;
             flex-wrap: wrap;
-            justify-content: flex-start;
+            justify-content: space-around;
             padding-top: 5rem;
 
 
@@ -1532,7 +1539,8 @@ section {
                 border: $border;
                 margin: 1rem;
                 box-shadow: $box-shadow;
-                //min-width: 45vw;
+                //width: 45vw;
+                //height: 40vh;
                 cursor: pointer;
                 transition: 2ms ease;
                 align-items: center;
@@ -1570,7 +1578,7 @@ section {
                     }
 
                     span {
-                        font-size: 1.5rem;
+                        font-size: 1.0rem;
                     }
 
                     p {
@@ -2457,6 +2465,7 @@ section {
                 display: block;
                 padding: 1rem;
                 margin: 0;
+                
 
             }
         }
@@ -2501,23 +2510,52 @@ section {
 
         .logo {
 
-            font-size: 1.5rem;
+            font-size: 2.5rem;
 
             i {
-                display: none;
+               
                 font-size: 1.5rem;
 
             }
 
         }
 
-        .navbar a {
+        #productshome-menu-btn{
 
-            margin: 0 1rem;
-            font-size: 2.0rem;
+            display: inline-block;
+            transition: 0.2s linear;
 
+            &.fa-times {
+                transform: rotate(180deg);
+            }
+        }
 
+       
 
+        .navbar {
+            position: absolute;
+            top: 99%;
+            left: 0;
+            right: 0;
+            border-top: $border;
+            align-items: flex-start;
+            flex-direction: column;
+            background: $white;
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            transition: 0.2s linear;
+
+            &.active-navbar {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+
+            a {
+                display: block;
+                padding: 1rem;
+                margin: 0;
+                font-size: 1.5rem;
+                text-decoration: none;
+
+            }
         }
 
 
@@ -2563,14 +2601,7 @@ section {
         }
 
         //End of -Search Form
-        .search-button-div{
-
-            .fas.fa-search{
-                display: block;
-                
-            }
-           
-        }
+        
 
 
     }
@@ -2619,7 +2650,7 @@ section {
                         }
 
                         span {
-                            font-size: 3.5rem;
+                            font-size: 1.5rem;
                         }
 
                         h2 {
@@ -2676,7 +2707,7 @@ section {
             display: inline;
 
             i {
-                font-size: 0.5rem;
+                font-size: 1.0rem;
 
             }
 
@@ -2964,7 +2995,7 @@ section {
         
 
         .logo {
-            font-size: 1.0rem;
+           
             i {
                 display: none;
                 font-size: 1.0rem;
@@ -2984,11 +3015,7 @@ section {
 
 
 
-        .icons div {
-           // display: none;
-            @include iconBox();
-            margin-left: 0.6rem;
-        }
+        
 
         //start of -Search Form
         .search-form {
@@ -3049,6 +3076,7 @@ section {
 
             .products-container {
                 @include grid(80vw);
+                justify-content: space-around;
 
                 .product {
                     min-width: 30vw;

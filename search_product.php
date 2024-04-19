@@ -28,97 +28,148 @@ include('functions/common_functions.php');
 <body>
 
 <header class="productshomesheader">
+        <a class="logo" href="index.php" class="logo"> <i class="fa fa-cogs"></i> D & SE Company PVT.LTD </a>
 
+        <nav class="navbar">
+            <a href="#">Home</a>
+            <a href="display_all_products.php">Our Products</a>
+            <a href="#ourdiscountbannersection">Our Discounts</a>
+            <a href="#advertisements-banners-sec">Our Sponsers</a>
+            <a href="#newsubscription-section">Subscribe Us</a>
+            <a href="#newsubscription-section">Our contact details</a>
 
-
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-        <a class="navbar-brand logo" href="productshome.php" class="logo"> <i class="fa fa-cogs"></i> D & SE Company PVT.LTD </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav-item">
-                <a href="productshome.php">Home</a>
-            </ul>
-            <ul class="nav-item">
-                <a href="display_all_products.php">Our Products</a>
-            </ul>
-            <ul class="nav-item">
-                <a href="#ourdiscountbannersection">Our Discounts</a>
-            </ul>
-            <ul class="nav-item">
-                <a href="#advertisements-banners-sec">Our Sponsers</a>
-            </ul>
-
-            <ul class="nav-item">
-                <a href="#newsubscription-section">Subscribe Us</a>
-            </ul>
-
-            <ul class="nav-item">
-                <a href="#newsubscription-section">Our contact details</a>
-            </ul>
-            <ul class="nav-item">
-                <a href="my_cart.php">
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    <sup>
-                        <?php
-                        cart_item_count();
-
-                        ?>
-                    </sup>
-                </a>
-            </ul>
-            <ul class="nav-item">
-                <a href="#">Total price:
+            <a href="my_cart.php">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <sup>
                     <?php
-                    total_cart_price();
+                    cart_item_count();
 
                     ?>
-                </a>
-            </ul>
+                </sup>
+            </a>
+
+
+        </nav>
+
+        <!-- <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav-item">
+                        <a href="#">Home</a>
+                    </ul>
+                    <ul class="nav-item">
+                        <a href="display_all_products.php">Our Products</a>
+                    </ul>
+                    <ul class="nav-item">
+                        <a href="#ourdiscountbannersection">Our Discounts</a>
+                    </ul>
+                    <ul class="nav-item">
+                        <a href="#advertisements-banners-sec">Our Sponsers</a>
+                    </ul>
+
+                    <ul class="nav-item">
+                        <a href="#newsubscription-section">Subscribe Us</a>
+                    </ul>
+
+                    <ul class="nav-item">
+                        <a href="#newsubscription-section">Our contact details</a>
+                    </ul>
+                    <ul class="nav-item">
+                        <a href="my_cart.php">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            <sup>
+                                <?php
+                                cart_item_count();
+
+                                ?>
+                            </sup>
+                        </a>
+                    </ul>
+                    <ul class="nav-item">
+                        <a href="#">Total price:
+                            <?php
+                            total_cart_price();
+
+                            ?>
+                        </a>
+                    </ul>
+
+
+
+                </div>
+            </div>
+        </nav> -->
+
+        <div class="icons">
+            <div class="fas fa-bars" id="productshome-menu-btn"></div>
+            
+            <?php
+            if (!isset($_SESSION['username'])) {
+                echo "
+                    
+                    <div id='login-btn-user' class='fas fa-user'></div>
+               
+                            ";
+            } else {
+            }
+            ?>
 
         </div>
-    </div>
-</nav>
-
-<div class="icons">
-    <div id="login-btn-user" class="fas fa-user"></div>
-</div>
 
 
-<form action="search_product.php" class="search-form" id="producthomesearchform" method="GET">
-    <input class="form-control me-2" type="search" name="search_data" placeholder="Search here..." id="search-box" aria-label="Search" style="width: 50%;">
-    <!-- <label for="search-box" class="fas fa-search"></label> -->
-    <!-- <Button class="btn btn-outline-dark" type="submit">Search</Button> -->
-    <input type="submit" class="btn btn-outline-dark" value="Search" name="search_data_product" style="width: 10%;">
-</form>
-
-<!-- user login form -->
-<div action="" class="login-form-user" id="login-form-user">
-    <div class="login-heading">
-        <h3>Login for user </h3> <span class="close-button" id="userlogin-close-button"> <i class="fa fa-close"></i></span>
-    </div>
-    <input type="email" placeholder="Please Enter Your Email address" class="textfield-box">
-    <input type="password" placeholder="Please Enter Your password" class="textfield-box">
-    <div class="flex">
-        <input type="checkbox" name="" id="remember-me">
-        <label for="remember-me">Remember me</label>
-        <a href="#">Forget password</a>
-    </div>
-
-    <a href="productshome.php"><input type="submit" value="login" class="button" id="adminloginbutton"></a>
-    <p>Don't have an account <a href="user_area/registration_page.php">Create new Account</a></p>
-</div>
 
 
-</header>
+
+
+        <form action="search_product.php" class="search-form" id="producthomesearchform" method="GET">
+            <input class="form-control me-2" type="search" name="search_data" placeholder="Search here..." id="search-box" aria-label="Search" style="width: 60%;">
+            <input type="submit" class="btn btn-outline-dark buttontype01" value="Search" name="search_data_product" style="width: 20%;">
+            <i class="fas fa-close" id="searchbarclosebutton1"></i>
+        </form>
+
+        <!-- user login form -->
+        <div action="" class="login-form-user" id="login-form-user">
+            <div class="login-heading">
+                <h3>Login for user </h3> <span class="close-button" id="userlogin-close-button"> <i class="fa fa-close"></i></span>
+            </div>
+            <input type="email" placeholder="Please Enter Your Email address" class="textfield-box">
+            <input type="password" placeholder="Please Enter Your password" class="textfield-box">
+            <div class="flex">
+                <input type="checkbox" name="" id="remember-me">
+                <label for="remember-me">Remember me</label>
+                <a href="#">Forget password</a>
+            </div>
+
+            <a href="productshome.php"><input type="submit" value="login" class="button" id="adminloginbutton"></a>
+            <p>Don't have an account <a href="user_area/registration_page.php">Create new Account</a></p>
+
+
+
+
+        </div>
+
+
+
+
+    </header>
+
+    <!-- execute add to cart function -->
+    <?php
+    add_to_cart();
+
+    ?>
+
 
     <div id="headerbanner" class="headerbanner">
 
         <h1>Welcome to our online shop</h1>
-        <p>In this stage we expect to display our products only ,Then you can contact us on whatsup and email.</p>
+        <p>Welcome to D & SE Trading online store! Discover our diverse selection of groceries and electronics. Although we don't have online payment options yet, we're committed to enhancing your shopping experience soon. Stay tuned!</p>
 
     </div>
 
@@ -313,7 +364,9 @@ include('functions/common_functions.php');
     <!-- link custom js file -->
     <script>
         let loginFormuser = document.getElementById('login-form-user');
+        let productshomemenubars=document.getElementById('productshome-menu-btn');
         let closebuttonofuserlogin=document.getElementById('userlogin-close-button');
+        let navbar=document.querySelector('.productshomesheader .navbar');
         document.querySelector('#login-btn-user').onclick = () => {
             console.log('inside Login  button');
             //loginFormuser.classList.toggle('active');
@@ -345,6 +398,13 @@ include('functions/common_functions.php');
         // }
 
         //
+
+        productshomemenubars.onclick=()=>{
+        console.log('products home menu button Clicked');
+        productshomemenubars.classList.toggle('fa-times');
+        navbar.classList.toggle('active-navbar');
+       
+    };
     </script>
 
 
