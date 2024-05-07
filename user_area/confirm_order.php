@@ -65,9 +65,10 @@ include('../functions/ipaddress.php');
 
                             global $conn;
                             $Total_cart_price = 0;
-                            $user_ip_address = getIPAddress1();
+                          //  $user_ip_address = getIPAddress1();
+                            $session_id = $_COOKIE['PHPSESSID'];
 
-                            $select_carts_querry = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$user_ip_address'";
+                            $select_carts_querry = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$session_id'";
                             $results_carts = mysqli_query($conn, $select_carts_querry);
 
                             $data_row_count = mysqli_num_rows($results_carts);
@@ -160,11 +161,11 @@ include('../functions/ipaddress.php');
 
                         global $conn;
 
-                        $user_ip_address = getIPAddress1();
+                       // $user_ip_address = getIPAddress1();
 
-                        function getusercredential($conn, $user_ip_address)
+                        function getusercredential($conn, $session_id)
                         {
-                            $select_user_credential_querry = "SELECT * FROM `user_table` WHERE User_IPaddress='$user_ip_address'";
+                            $select_user_credential_querry = "SELECT * FROM `user_table` WHERE User_IPaddress='$session_id'";
                             $user_details_results = mysqli_query($conn, $select_user_credential_querry);
                             $user_details_array_result = mysqli_fetch_array($user_details_results);
 
@@ -173,7 +174,7 @@ include('../functions/ipaddress.php');
                             return $user_id;
                         };
 
-                        $select_carts_querry = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$user_ip_address'";
+                        $select_carts_querry = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$session_id'";
                         $results_carts = mysqli_query($conn, $select_carts_querry);
 
                         //get the product quentity $data_row_count=available product count
@@ -399,7 +400,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order_button'
     }
 
     //get all available product id and quenties from cart table
-    $select_carts_querry1 = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$user_ip_address'";
+    $select_carts_querry1 = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$session_id'";
     $results_carts1 = mysqli_query($conn, $select_carts_querry1);
     //$order_id = mt_rand();
 
@@ -422,7 +423,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_order_button'
 
 
     //    //Delete cart detail from the cart details
-    $delete_cart_querry = "DELETE  FROM `cart_details` WHERE User_IPaddress='$user_ip_address'";
+    $delete_cart_querry = "DELETE  FROM `cart_details` WHERE User_IPaddress='$session_id'";
     $result_delete_cart = mysqli_query($conn, $delete_cart_querry);
 
     echo "<script>alert('Order is delete from cart details');</script>";

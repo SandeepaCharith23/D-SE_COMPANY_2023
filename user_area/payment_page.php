@@ -50,8 +50,9 @@ include('../functions/ipaddress.php');
                                 global $conn;
                                 $Total_cart_price = 0;
                                 $user_ip_address = getIPAddress1();
+                                $session_id = $_COOKIE['PHPSESSID'];
 
-                                $select_carts_querry = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$user_ip_address'";
+                                $select_carts_querry = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$session_id'";
                                 $results_carts = mysqli_query($conn, $select_carts_querry);
 
                                 $data_row_count = mysqli_num_rows($results_carts);
@@ -145,9 +146,10 @@ include('../functions/ipaddress.php');
                         global $conn;
 
                         $user_ip_address = getIPAddress1();
+                        $session_id = $_COOKIE['PHPSESSID'];
 
-                        function getusercredential($conn,$user_ip_address){
-                          $select_user_credential_querry="SELECT * FROM `user_table` WHERE User_IPaddress='$user_ip_address'";
+                        function getusercredential($conn,$session_id){
+                          $select_user_credential_querry="SELECT * FROM `user_table` WHERE User_IPaddress='$session_id'";
                           $user_details_results=mysqli_query($conn,$select_user_credential_querry);
                           $user_details_array_result=mysqli_fetch_array($user_details_results); 
 
@@ -157,7 +159,7 @@ include('../functions/ipaddress.php');
 
                         };
 
-                        $select_carts_querry = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$user_ip_address'";
+                        $select_carts_querry = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$session_id'";
                         $results_carts = mysqli_query($conn, $select_carts_querry);
 
                         $data_row_count = mysqli_num_rows($results_carts);

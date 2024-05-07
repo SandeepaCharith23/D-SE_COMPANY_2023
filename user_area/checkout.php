@@ -44,13 +44,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     <ul class="nav-item">
                         <a href="#">Subscribe Us</a>
                     </ul>
-                    <ul class="nav-item">
-                        <a href="#">Subscribe Us</a>
-                    </ul>
-
-                    <ul class="nav-item">
-                        <a href="#">Subscribe Us</a>
-                    </ul>
+                    
 
                     <ul class="nav-item">
                         <a href="#">Our contact details</a>
