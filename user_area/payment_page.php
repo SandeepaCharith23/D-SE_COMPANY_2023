@@ -148,8 +148,8 @@ include('../functions/ipaddress.php');
                         $user_ip_address = getIPAddress1();
                         $session_id = $_COOKIE['PHPSESSID'];
 
-                        function getusercredential($conn,$session_id){
-                          $select_user_credential_querry="SELECT * FROM `user_table` WHERE User_IPaddress='$session_id'";
+                        function getusercredential($conn,$user_ip_address){
+                          $select_user_credential_querry="SELECT * FROM `user_table` WHERE User_IPaddress='$user_ip_address'";
                           $user_details_results=mysqli_query($conn,$select_user_credential_querry);
                           $user_details_array_result=mysqli_fetch_array($user_details_results); 
 

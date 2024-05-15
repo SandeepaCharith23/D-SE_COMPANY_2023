@@ -1168,6 +1168,34 @@ section {
   background: #f3b90b;
   color: #ffffff;
 }
+.product-display-pagination .pagination button {
+  height: 3rem;
+  width: 3rem;
+  line-height: 3rem;
+  font-size: 2rem;
+  padding: 1rem;
+  color: #ffffff;
+  border: 0.1rem solid rgba(0, 0, 0, 0.3019607843);
+  border-radius: 10%;
+  cursor: pointer;
+  text-align: center;
+  background: #4D45CB;
+  background-color: #36eaba;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.product-display-pagination .pagination button:hover {
+  background: #f3b90b;
+  color: #ffffff;
+}
+.product-display-pagination .pagination button:hover {
+  background-color: #2ca790;
+}
+.product-display-pagination .page-numbers {
+  margin: 0 10px;
+}
 
 .productcategorylisttile {
   background-color: #7067f2;

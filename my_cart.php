@@ -90,12 +90,20 @@
 
                     global $conn;
                     $Total_cart_price = 0;
-                    $user_ip_address = getIPAddress();
+                  //  $user_ip_address = getIPAddress();
 
-                    $select_carts_querry = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$user_ip_address'";
+                    //using session id instead of IP address
+                    $session_id = $_COOKIE['PHPSESSID'];
+
+                    $select_carts_querry = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$session_id'";
                     $results_carts = mysqli_query($conn, $select_carts_querry);
+                    
+                    
 
                     $data_row_count = mysqli_num_rows($results_carts);
+
+                    //testing purpose
+                    echo "<script>alert('products counts -$data_row_count in your session $session_id');</script>";
 
                     if ($data_row_count > 0) {
 
@@ -335,7 +343,7 @@
                         $update_cart_details_query = "UPDATE `cart_details` SET Product_Quentity = ? WHERE User_IPaddress = ? AND Product_Id= ? ";
 
                         $stmt = $conn->prepare($update_cart_details_query);
-                        $stmt->bind_param('isi', $updated_product_quentity, $user_ip_address, $cart_product_id);
+                        $stmt->bind_param('isi', $updated_product_quentity, $session_id, $cart_product_id);
                         $stmt->execute();
 
                         
@@ -446,7 +454,7 @@
 
             $user_ip_address = getIPAddress();
 
-            $select_carts_querry = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$user_ip_address'";
+            $select_carts_querry = "SELECT * FROM `cart_details` WHERE  User_IPaddress='$session_id'";
             $results_carts = mysqli_query($conn, $select_carts_querry);
 
             $data_row_count = mysqli_num_rows($results_carts);

@@ -292,9 +292,12 @@ session_start();
     </section>
 
     <section class="product-display-pagination">
-        <a href="#">1</a>
+        <a href="#">&lt;</a>
         <a href="#">2</a>
         <a href="#"><i class="fa fa-arrow-right"></i></a>
+        <button class="prev-btn">&lt;</button>
+        <span class="page-numbers"></span>
+        <button class="next-btn">&gt;</button>
     </section>
 
 

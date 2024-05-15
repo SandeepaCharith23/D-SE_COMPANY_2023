@@ -1650,6 +1650,25 @@ section {
 
 
     }
+
+    .pagination button {
+        @include smalliconBox1();
+        background-color: #36eaba;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+    }
+
+      .pagination button:hover {
+        background-color: #2ca790;
+      }
+      
+      .page-numbers {
+        margin: 0 10px;
+      }
+
+
 }
 
 //product category list Tile scss in products home 

@@ -25,7 +25,7 @@ include('../includes/connection.php');
     global $conn;
 
     // Number of rows to display on each page
-    $rowsPerPage = 30;
+    $rowsPerPage = 50;
 
     // Calculate the current page (default to 1 if not set)
     $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -140,6 +140,8 @@ include('../includes/connection.php');
         $total_rows_result = mysqli_query($conn, $total_rows_query);
         $total_rows_array = mysqli_fetch_assoc($total_rows_result);
         $total_rows = $total_rows_array['total'];
+        echo "<script>console.log('".$total_rows_query."')</script>";
+
 
         $total_pages = ceil($total_rows / $rowsPerPage);
 

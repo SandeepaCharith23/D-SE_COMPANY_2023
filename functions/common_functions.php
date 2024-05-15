@@ -15,7 +15,7 @@ function getproducts()
 
         if (!isset($_GET['brandId'])) {
             //1.create search querry
-            $select_products_query = "SELECT * FROM `products`  WHERE Product_Status='active' ORDER BY RAND() LIMIT 0,10";
+            $select_products_query = "SELECT * FROM `products`  WHERE Product_Status='active' ORDER BY RAND()";
 
             //2.excute query and fetch data
             $results_products = mysqli_query($conn, $select_products_query);
@@ -630,6 +630,7 @@ function getIPAddress() {
 
 
 //function-add to cart 
+/*
 function add_to_cart(){
    
 
@@ -639,7 +640,10 @@ function add_to_cart(){
         global $conn;
 
         //get the Ip or proxy address of a user
-        $ip_address=getIPAddress();
+       $ip_address=getIPAddress();
+       
+       // Start or resume the session
+       //session_start();
 
         //get the product id
         $added_product_id=$_GET['add_to_cart_product_id'];
@@ -679,6 +683,83 @@ function add_to_cart(){
 
 }
 
+*/
+//function to add to cart
+function add_to_cart(){
+   
+
+    if(isset($_GET['add_to_cart_product_id']))
+    {  
+        //get the connection
+        global $conn;
+
+       
+       
+       // Start or resume the session
+        if (session_status()== PHP_SESSION_NONE)
+        {
+            session_start();
+        }
+        
+        
+        //get the product id
+        $added_product_id=$_GET['add_to_cart_product_id'];
+        
+        // Get the session ID from the cookie
+        $session_id = $_COOKIE['PHPSESSID'];
+
+        // Output the session ID
+         // echo "Session ID: " . $session_id;
+         // echo "<script>alert('session is created and session id is $session_id');</script>";
+
+        //1.if product was already in session-Increase the product amount and save it in cart details
+           if(isset($_SESSION['cart'][$added_product_id])){
+            
+            // If the product is already in the cart, increment the quantity
+            $_SESSION['cart'][$added_product_id]++;
+
+            $updated_product_quentity=$_SESSION['cart'][$added_product_id];
+
+           // echo "<script>alert('Updated product quantity: ' + $updated_product_quentity);</script>";
+
+            //update cart details 
+            $update_cartdetails_query="UPDATE `cart_details` SET `Product_Quentity`=$updated_product_quentity WHERE Product_Id=$added_product_id && User_IPaddress='$session_id'";
+            mysqli_query($conn,$update_cartdetails_query);
+
+            echo "<script>alert('This Product is already present in your cart and we will increase the product amount by one.');</script>";
+            echo "<script>window.open('productshome.php','_self')</script>";
+            echo "<script>window.location.reload()</script>";
+           
+        } else {
+
+            // If the product is not in the cart, add it with quantity 1
+            $_SESSION['cart'][$added_product_id] = 1;
+
+           // echo "<script>alert('added product id :- $added_product_id');</script>";
+
+            $insert_querry="INSERT INTO`cart_details`(Product_Id,User_IPaddress,Product_Quentity) VALUES($added_product_id,'$session_id',1)";
+        
+            //execute
+            mysqli_query($conn,$insert_querry);
+
+            echo "<script>alert('Product is successfully added to cart and redirect user in to products home');</script>";
+           
+           // echo "<script>alert('This Product is added to your cart and your session id is $session_id');</script>";
+
+
+            echo "<script>window.open('productshome.php','_self')</script>";
+            echo "<script>window.location.reload()</script>";
+        }
+
+        //2.if product was not include in session add new cart according to session id
+        
+
+
+    }
+
+
+}
+
 //function to get the itemcount of the cart
 function cart_item_count(){
     if(isset($_GET['add_to_cart_product_id']))
@@ -690,15 +771,24 @@ function cart_item_count(){
         //get the Ip or proxy address of a user
         $ip_address=getIPAddress();
 
+        // Get the session ID from the cookie
+        $session_id = $_COOKIE['PHPSESSID'];
+        
+        //display a msg
+          //echo "<script>alert('Inside cart_item_count() method awaked and  session id is $session_id');</script>";
+        
 
         //select all data from cart_details specified the user Ip address
-        $selct_query="SELECT * FROM `cart_details` WHERE  User_IPaddress='$ip_address'";
+        $selct_query="SELECT * FROM `cart_details` WHERE  User_IPaddress='$session_id'";
 
         //execute and get the result querry
         $result_query=mysqli_query($conn,$selct_query);
 
         //get the result count
         $products_in_cart=mysqli_num_rows($result_query);
+
+          //testing purpose
+        //   echo "<script>alert('products counts -$products_in_cart in your session $session_id');</script>";
 
     }
 
@@ -712,9 +802,12 @@ function cart_item_count(){
         //get the Ip or proxy address of a user
         $ip_address=getIPAddress();
 
+         // Get the session ID from the cookie
+         $session_id = $_COOKIE['PHPSESSID'];
+
 
         //select all data from cart_details specified the user Ip address
-        $selct_query="SELECT * FROM `cart_details` WHERE  User_IPaddress='$ip_address'";
+        $selct_query="SELECT * FROM `cart_details` WHERE  User_IPaddress='$session_id '";
 
         //execute and get the result querry
         $result_query=mysqli_query($conn,$selct_query);
@@ -736,8 +829,12 @@ function total_cart_price(){
    global $conn;
    $Total_cart_price=0;
    $user_ip_address=getIPAddress();
+   
+   // Get the session ID from the cookie
+   $session_id = $_COOKIE['PHPSESSID'];
+   
 
-   $select_carts_querry="SELECT * FROM `cart_details` WHERE  User_IPaddress='$user_ip_address'";
+   $select_carts_querry="SELECT * FROM `cart_details` WHERE  User_IPaddress='$session_id'";
    $results_cart=mysqli_query($conn,$select_carts_querry);
 
    while($carts_array=mysqli_fetch_array($results_cart)){
