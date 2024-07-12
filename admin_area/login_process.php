@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //compare passwords
         if (password_verify($admin_password, $saved_hash_password)) {
             // Passwords match
-            echo "<script>alert('Login successful.')</script>";
+            echo "<script>alert('Administrator login successful. Welcome back.')</script>";
             //echo "<script>window.open('maindashboard.php','_self')</script>";
 
             // Store relevant information in session variables
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         } else {
             // Passwords do not match
-            echo "<script>alert('Login Unsuccessful.Please Check your password again')</script>";
+            echo "<script>alert('Login unsuccessful. Please check your password and try again.')</script>";
 
             // Redirect to main index page on wrong password
             echo "<script>window.location.href = '../index.php';</script>";
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     } else {
         // No records found for the given email address
-        echo "<script>alert('Something went wrong ,No records or Action is not done')</script>";
+        echo "<script>alert('Something went wrong. No records found or the action was not completed.')</script>";
 
         // Wait for the user to dismiss the alert before redirecting
         

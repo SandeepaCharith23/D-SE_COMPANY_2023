@@ -875,6 +875,20 @@ function total_cart_price(){
 
 }
 
+//function -pending cart item count
+function pending_orders_count(){
+    global $conn;
+    
+    //select querry for selecting pending orders from pending order table.
+    $select_pending_order_querry="SELECT * FROM pending_orders WHERE order_shipment_status='Not Shipped'";
+
+    $result_querry=mysqli_query($conn,$select_pending_order_querry);
+
+    $pending_orders_count=mysqli_num_rows($result_querry);
+
+    echo $pending_orders_count;
+} 
+
 ?>
 
 

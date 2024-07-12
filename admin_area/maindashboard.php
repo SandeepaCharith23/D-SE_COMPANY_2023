@@ -3,6 +3,7 @@
 session_start();
 
 include('../includes/connection.php');
+include('../functions/common_functions.php');
 
 // Check if the user is logged in (you can modify this condition based on your authentication logic)
 if (isset($_SESSION['admin_id'])) {
@@ -178,7 +179,13 @@ if (isset($_SESSION['admin_id'])) {
           <!-- 2.Order management dropdown -->
           <h3>Order Managemnet</h3>
           <ul>
-            <li><a href="maindashboard.php?pending_orders">Shipment Pending Orders</a></li>
+            <li><a href="maindashboard.php?pending_orders">Shipment Pending Orders</a>
+            <sup style="color: red; font-size: 14px; font-weight: bold; background-color: yellow; border-radius: 50%; padding: 2px;">
+            <?php 
+                pending_orders_count();
+              ?>
+            </sup>
+            </li>
             <li><a href="maindashboard.php?completed_orders">Shipment completed Orders</a></li>
             <li><a href="maindashboard.php?invoice_details">Invoices details</a></li>
 

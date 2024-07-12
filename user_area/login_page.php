@@ -165,28 +165,32 @@ if (session_status() == PHP_SESSION_NONE) {
         //3.Check that is there any records according to given user name 
         if ($result_row_user > 0) {
             $_SESSION['username']=$user_username;
-            echo "<script>alert('Yes are in user table-Registered user')</script>";
+            
+            //
+            echo "<script>alert('You are successfully registered as a user.')</script>";
+
             //4.verify password -compare the entered passwored with hash password inside the DB
             if (password_verify($user_userpassword, $result_data['User_Password'])) {
-                echo "<script>alert('Password has match')</script>";
+                
+                echo "<script>alert('Password verified successfully.')</script>";
 
                 if($result_row_user==1 && $results_available_carts_row==0)
                 {   
                     $_SESSION['username']=$user_username;
-                    echo "<script>alert('Password match and no records on available carts')</script>";
+                    echo "<script>alert('Password verified. No records found in available carts.')</script>";
                     echo "<script>window.open('user_profile.php','_self')</script>";
                 }else{
                     $_SESSION['username']=$user_username;
-                    echo "<script>alert('Password match and have one or more records on available carts')</script>"; 
+                    echo "<script>alert('Password verified. One or more records found in available carts.')</script>"; 
                     echo "<script>window.open('payment_page.php','_self')</script>"; 
                 }
 
                 echo "<script>window.open('../productshome.php','_self')</script>";
             } else {
-                echo "<script>alert('Password does not match')</script>";
+                echo "<script>alert('Incorrect password. Please try again.')</script>";
             }
         } else {
-            echo "<script>alert('No records have or Account has deactivate.Please Contact our admin')</script>";
+            echo "<script>alert('No records found or account is deactivated. Please contact our admin.')</script>";
         }
     }
 
