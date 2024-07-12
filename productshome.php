@@ -186,7 +186,7 @@ session_start();
                             </a>";
                         } else {
                             
-                            echo "<a class='nav-link' href=''>
+                            echo "<a class='nav-link' href='user_area\user_profile.php'>
                             Welcome  " . $_SESSION['username'] ."
                             </a>";
                         }

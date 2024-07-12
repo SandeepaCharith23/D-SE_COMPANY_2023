@@ -28,7 +28,11 @@
     include('includes/headersection01.php');
     include('functions/ipaddress.php');
     include('functions/common_functions.php');
-    @session_start();
+    
+    // Start or resume the session
+    if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    }
 
     ?>
 

@@ -147,14 +147,17 @@ include('../functions/ipaddress.php');
 
                         $user_ip_address = getIPAddress1();
                         $session_id = $_COOKIE['PHPSESSID'];
+                        $username=$_SESSION['username'];
 
-                        function getusercredential($conn,$user_ip_address){
-                          $select_user_credential_querry="SELECT * FROM `user_table` WHERE User_IPaddress='$user_ip_address'";
+                        echo"<script>alert('user name is : $username')</script>";
+
+                        function getusercredential($conn,$user_ip_address,$username){
+                          $select_user_credential_querry="SELECT * FROM `user_table` WHERE User_IPaddress='$user_ip_address' || User_Name='$username'";
                           $user_details_results=mysqli_query($conn,$select_user_credential_querry);
                           $user_details_array_result=mysqli_fetch_array($user_details_results); 
 
                           $user_id=$user_details_array_result['User_ID'];
-
+                          echo"<script>alert('user id is : $user_id')</script>";
                           return $user_id;
 
                         };
@@ -169,7 +172,7 @@ include('../functions/ipaddress.php');
                     <h4 class='px-3'>Total price for your cart: Rs <strong> $Total_cart_price/=</strong> +shipping cost </h4>
                     
                     
-                    <button class='btn btn-primary px-3 mx-3'><a href='confirm_order.php?user_id=" . getusercredential($conn, $user_ip_address) . "' class='text-light text-decoration-none'>Confirm Order </a></button>
+                    <button class='btn btn-primary px-3 mx-3'><a href='confirm_order.php?user_id=" . getusercredential($conn, $user_ip_address,$username) . "' class='text-light text-decoration-none'>Confirm Order </a></button>
                     
                     <button class='btn btn-primary px-3 mx-3'><a href='../my_cart.php' class='text-light text-decoration-none'>Back to Cart </a></button>
 

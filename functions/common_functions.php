@@ -709,8 +709,8 @@ function add_to_cart(){
         $session_id = $_COOKIE['PHPSESSID'];
 
         // Output the session ID
-         // echo "Session ID: " . $session_id;
-         // echo "<script>alert('session is created and session id is $session_id');</script>";
+         echo "Session ID: " . $session_id;
+         echo "<script>alert('session is created and session id is $session_id');</script>";
 
         //1.if product was already in session-Increase the product amount and save it in cart details
            if(isset($_SESSION['cart'][$added_product_id])){
@@ -721,6 +721,9 @@ function add_to_cart(){
             $updated_product_quentity=$_SESSION['cart'][$added_product_id];
 
            // echo "<script>alert('Updated product quantity: ' + $updated_product_quentity);</script>";
+
+           //testing purposes
+           echo "<script>alert('There is a product in your session id: $session_id');</script>";
 
             //update cart details 
             $update_cartdetails_query="UPDATE `cart_details` SET `Product_Quentity`=$updated_product_quentity WHERE Product_Id=$added_product_id && User_IPaddress='$session_id'";
@@ -736,6 +739,8 @@ function add_to_cart(){
             $_SESSION['cart'][$added_product_id] = 1;
 
            // echo "<script>alert('added product id :- $added_product_id');</script>";
+            //testing purposes
+            echo "<script>alert('There is a no specific product in your session id: $session_id' but we are add new one);</script>";
 
             $insert_querry="INSERT INTO`cart_details`(Product_Id,User_IPaddress,Product_Quentity) VALUES($added_product_id,'$session_id',1)";
         

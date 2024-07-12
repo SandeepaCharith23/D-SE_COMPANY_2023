@@ -78,7 +78,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-center">
 
-            <nav class="navbar navbar-expand-lg" style=" width:40%">
+            <nav class="navbar navbar-expand-lg" style=" width:100%">
                 <div class="container-fluid">
                     <a class="navbar-brand logo" href="../productshome.php" class="logo"> <i class="fa fa-cogs"></i> D & SE Company PVT.LTD </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
