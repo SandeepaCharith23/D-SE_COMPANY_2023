@@ -1,3 +1,11 @@
+<?php
+// Start or resume the session
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -433,13 +441,13 @@
         <div class="row">
 
             <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1979.0088912881854!2d80.12668119909682!3d7.238810104043714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2slk!4v1711346028199!5m2!1sen!2slk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <form action="" method="POST">
+            <form action="send_email_contactus.php" method="POST">
                 <h3>Contact us from Email</h3>
-                <input type="text" name="customer_name" placeholder="Enter your name" class="box">
-                <input type="email" name="customer_emailaddress" placeholder="Enter your Email address" class="box">
-                <input type="number" name="customer_contact_number" placeholder="Enter your Mobile Number" class="box">
-                <textarea name="customer_message" class="box" placeholder="Enter your Message" cols="30" rows="10"></textarea>
-                <input type="submit" value="Send email" name="Send_Email" class="button">
+                <input type="text" name="customer_name" placeholder="Enter your name" class="box" required>
+                <input type="email" name="customer_emailaddress" placeholder="Enter your Email address" class="box" required>
+                <input type="number" name="customer_contact_number" placeholder="Enter your Mobile Number" class="box" required>
+                <textarea name="customer_message" class="box" placeholder="Enter your Message" cols="30" rows="10" required></textarea>
+                <input type="submit" value="Send email" name="submit_contactus" class="button">
             </form>
 
 
@@ -573,9 +581,47 @@
 
 
     <!-- link custom js file -->
-
+     
+    <script src="https://code.jquery.com/jquery-3.7.1.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/script.js?v=123"></script>
+
+    <script>
+        var email_send_process_msg="<?= $_SESSION['email_status'] ?? ' ';    ?>";
+
+        if(email_send_process_msg == 'Thank you for contact Us-D & SE Tradings.')
+        {
+
+        Swal.fire({
+        position: "top-center",
+        icon: "success",
+        text: email_send_process_msg,
+        title: "Your message has been send to the admin",
+        showConfirmButton: false,
+        timer: 3000
+        });
+
+        <?php unset($_SESSION['email_status']); ?>
+        }else{
+            Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+            footer: '<a href="#">Why do I have this issue?</a>'
+        }); 
+
+        <?php 
+        unset($_SESSION['email_status']);
+        
+        
+        ?>
+        }
+        
+    </script>
+
+    
+    
 
     <script type="module">
         import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.mjs'
