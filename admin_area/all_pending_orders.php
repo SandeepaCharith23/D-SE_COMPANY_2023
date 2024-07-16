@@ -73,7 +73,7 @@ include('../includes/connection.php');?>
                     <td>$pending_order_invoice_number</td>
                     <td>$pending_order_invoice_total_amount_formatted</td>
                     <td>$pending_order_user_id</td>
-                    <td><a href='maindashboard.php?user_id=$pending_order_user_id'>$pending_order_user_name</td>
+                    <td><a href='maindashboard.php?clicked_user_id=$pending_order_user_id'>$pending_order_user_name</td>
                     <td>$pending_order_user_address</td>
                     <td>$pending_order_user_contact_number</td>
                     <td>$pending_order_product_name</td>

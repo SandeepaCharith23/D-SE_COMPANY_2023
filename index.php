@@ -603,7 +603,9 @@ if (session_status() == PHP_SESSION_NONE) {
         });
 
         <?php unset($_SESSION['email_status']); ?>
-        }else{
+        }
+
+        if(email_send_process_msg == 'There was an error sending your message. Please try again later-D & SE Tradings.'){
             Swal.fire({
             icon: "error",
             title: "Oops...",
